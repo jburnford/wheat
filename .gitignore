@@ -1,0 +1,31 @@
+# Raw OCR outputs (large; reproducible from PDFs)
+output/
+
+# Source PDFs (large; downloaded separately)
+pdfs/
+
+# Map crops (large)
+lynch_map/
+
+# Dataverse shapefiles (large binary; available from original distribution)
+dataverse/
+
+# CGNDB downloads (large; redownloadable)
+cgndb/
+
+# GeoNames downloads
+geonames/
+
+# Intermediate / scratch
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+
+# Big tables we don't push — derived ones get rebuilt by scripts
+tables/elevators.csv
+tables/elevators_enriched.csv
+tables/elevators_final.csv
+tables/unmatched_candidates.csv
+tables/unmatched_stations.csv
+tables/web_lookup_queue.csv

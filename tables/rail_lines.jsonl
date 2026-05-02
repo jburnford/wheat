@@ -1,0 +1,223 @@
+{"line": "Burstall→Leader", "stations": ["Burstall","Gascoigne","Mendham","Leader"]}
+{"line": "Leader→Swift Current", "stations": ["Leader","Prelate","Sceptre","Lemsford","Portreeve","Lancer","Abbey","Shackleton","Cabri","Battrum","Pennant","Success","Cantaur","Beverley","Swift Current"]}
+{"line": "Beechy line", "stations": ["Beechy","Demaine","Riverhurst","Gilroy","Central Butte"]}
+{"line": "Mainline W of Swift Current", "stations": ["Hatton","Kincorth","Maple Creek","Cardell","Cross","Piapot","Sidewood","Tompkins","Carmichael","Gull Lake","Antelope","Webb","Swift Current"]}
+{"line": "Mainline E of Swift Current", "stations": ["Swift Current","Waldeck","Rush Lake","Herbert","Morse","Ernfold","Uren","Chaplin"]}
+{"line": "Swift Current→Vanguard", "stations": ["Swift Current","Dunelm","Wymark","Blumenhof","Neville","Pambrun","Vanguard"]}
+{"line": "Hodgeville→Gravelbourg", "stations": ["Hodgeville","St Boswells","Bateman","Gravelbourg"]}
+{"line": "Senate→Lafleche mainline", "stations": ["Govenlock","Senate","Consul","Vidora","Robsart","Ravenscrag","Eastend","Southfork","Dollard","Shaunavon","Instow","Scotsguard","Admiral","Crichton","Cadillac","Gouverneur","Ponteix","Aneroid","Hazenmore","Kincaid","Meyronne","Woodrow","Lafleche"]}
+{"line": "Woodrow→Assiniboia", "stations": ["Woodrow","Lafleche","Melaval","Limerick","Valor","Assiniboia"]}
+{"line": "Vantage→Assiniboia", "stations": ["Vantage","Congress","Assiniboia"]}
+{"line": "Assiniboia→Radville", "stations": ["Assiniboia","Willows","Readlyn","Verwood","Landscape","Viceroy","Horizon","Glasnevin","Ogema","Hardy","Ceylon","Radville"]}
+{"line": "Bengough Branch", "stations": ["Bengough","Ritchie","Hardy"]}
+{"line": "Parry→Radville", "stations": ["Parry","Moreland","Pangman","Amulet","Khedive","Brooking","Radville"]}
+{"line": "Radville→Weyburn", "stations": ["Radville","Trossachs","Yeoman","Tatagwa","Weyburn"]}
+{"line": "Axford→Weyburn", "stations": ["Axford","McTaggart","Weyburn"]}
+{"line": "Weyburn→Estevan", "stations": ["Weyburn","Ralph","Halbrite","Midale","Macoun","Hitchcock","Estevan"]}
+{"line": "N branch E of Weyburn", "stations": ["Handsworth","Griffin","Froude","Stoughton","Forget","Huntoon"]}
+{"line": "Middle branch E of Weyburn", "stations": ["Hume","Innes","Viewfield","Benson"]}
+{"line": "Radville→Bryant", "stations": ["Radville","Colgate","Goodwater","Bryant","Kingsford"]}
+{"line": "Neptune→Estevan", "stations": ["Neptune","Maxim","Tribune","Bromhead","Torquay","Outram","Estevan"]}
+{"line": "Kirkella\u2192Brandon", "stations": ["Kirkella", "Elkhorn", "Hargrave", "Virden", "Oak Lake", "Griswold", "Alexander", "Kemnay", "Brandon"]}
+{"line": "Windthorst\u2192Maryfield", "stations": ["Windthorst", "Neelby", "Bender", "Kennedy", "Dumas", "Wawota", "Walpole", "Fairlight", "Maryfield"]}
+{"line": "Stoughton\u2192Reston", "stations": ["Stoughton", "Forget", "Kisbey", "Arcola", "Carlyle", "Manor", "Wauchope", "Frys", "Redvers", "Antler", "Sinclair", "Reston"]}
+{"line": "Maryfield SW branch", "stations": ["Maryfield", "Ryerson", "Mair", "Parkman", "Carlyle"]}
+{"line": "Maryfield SE branch", "stations": ["Maryfield", "Ebor", "Cromer", "Ewart", "Reston"]}
+{"line": "Alida\u2192Reston", "stations": ["Alida", "Nottingham", "Storthoaks", "Fertile", "Tilston", "Broomhill", "Reston"]}
+{"line": "Macoun\u2192Carlyle", "stations": ["Macoun", "Bryant", "Lampman", "Browning", "Wordsworth", "Carlyle"]}
+{"line": "Estevan\u2192Lauder", "stations": ["Estevan", "Bienfait", "Hirsch", "Frobisher", "Glen Ewan", "Oxbow", "Carnduff", "Carievale", "Gainsborough", "Pierson", "Elva", "Melita", "Napinka", "Lauder"]}
+{"line": "Napinka\u2192Killarney", "stations": ["Napinka", "Medora", "Deloraine", "Whitewater", "Boissevain", "Ninga", "Killarney"]}
+{"line": "Lauder\u2192Dunrea", "stations": ["Lauder", "Hartney", "Underhill", "Elgin", "Fairfax", "Minto", "Margaret", "Dunrea"]}
+{"line": "Lyleton\u2192Deloraine", "stations": ["Lyleton", "Cameron", "Coulter", "Waskada", "Cranmer", "Goodlands", "Deloraine"]}
+{"line": "Melville line", "stations": ["Gillespie", "Finnie", "Duff", "Colmer", "Cana", "Melville", "Waldron", "Bangor", "Atwater", "Zeneta", "Yarbo", "Marchwell"]}
+{"line": "Neudorf\u2192Spy Hill", "stations": ["Balcarres", "Abernethy", "Lemberg", "Neudorf", "Killaly", "Grayson", "Dubuc", "Stockholm", "Esterhazy", "Hazelcliffe", "Tantallon", "Spy Hill"]}
+{"line": "Mainline S of QuAppelle", "stations": ["Sintaluta", "Summerberry", "Grenfell", "Oakshela", "Broadview", "Percival", "Whitewood", "Burrows", "Wapella", "Red Jacket", "Moosomin", "Fleming", "Kirkella"]}
+{"line": "Candiac\u2192Doonside", "stations": ["Candiac", "Glenavon", "Lovat", "Peebles", "Dalzell", "Kipling", "Hawthorne", "Langbank", "Vandura", "Kelso", "Doonside"]}
+{"line": "Peebles/Windthorst branch", "stations": ["Adair", "Baring", "Peebles", "Windthorst", "Neelby", "Bender", "Kennedy", "Dumas", "Wawota"]}
+{"line": "Churchbridge spur", "stations": ["Churchbridge", "Endcliffe", "Langenburg", "Russell"]}
+{"line": "Rocanville area", "stations": ["Rocanville", "Welwyn", "McAuley"]}
+{"line": "Northern Mainline Invermay\u2192Dauphin", "stations": ["Invermay", "Rama", "Buchanan", "Tiny", "Canora", "Verigin", "Kamsack", "Cote", "Runnymede", "Togo", "Makaroff", "McLean Sdg", "Roblin", "Bield", "Grand View", "Gilbert Plains", "Ashville", "Dauphin"]}
+{"line": "Canora N branch", "stations": ["Canora", "Amsterdam", "Tadmor", "Hassan", "Stenen", "Norquay", "Arran"]}
+{"line": "Canora\u2192Yorkton", "stations": ["Canora", "Burgis", "Gorlitz", "Ebenezer", "Pollock", "Yorkton"]}
+{"line": "Tuffnell\u2192Marchwell", "stations": ["Tuffnell", "Sheho", "Insinger", "Theodore", "Springside", "Orcadia", "Yorkton", "Rokeby", "Clonmel", "Saltcoats", "Bredenbury", "Churchbridge", "Langenburg", "Marchwell"]}
+{"line": "Yorkton\u2192Wroxton N loop", "stations": ["Yorkton", "Mehan", "Rhein", "Stornoway", "Wroxton"]}
+{"line": "Yorkton\u2192Wroxton S loop", "stations": ["Yorkton", "Sturdee", "Tonkin", "Barbour", "Kessock", "Wroxton"]}
+{"line": "Wroxton\u2192Russell", "stations": ["Wroxton", "Calder", "MacNutt", "Dropmore", "Shellmouth", "Inglis", "Cracknell", "Russell"]}
+{"line": "Yorkton\u2192Melville", "stations": ["Yorkton", "Peoples", "Brewer", "Melville"]}
+{"line": "Yorkton\u2192Willowbrook", "stations": ["Yorkton", "Fonehill", "Willowbrook"]}
+{"line": "Otthon spur", "stations": ["Yorkton", "Chrysler", "Otthon"]}
+{"line": "Hubbard\u2192Yarbo NW-SE", "stations": ["Hubbard", "Goodeve", "Fenwood", "Birmingham", "Melville", "Cana", "Waldron", "Bangor", "Atwater", "Zeneta", "Yarbo"]}
+{"line": "Balcarres\u2192Melville", "stations": ["Balcarres", "Lorlie", "Finnie", "Duff", "Colmer", "Melville"]}
+{"line": "Dauphin N", "stations": ["Dauphin", "Valley River", "Sifton", "Ethelbert", "Pine River"]}
+{"line": "Sifton\u2192Fork River", "stations": ["Sifton", "Fork River"]}
+{"line": "Dauphin SE", "stations": ["Dauphin", "Ochre River", "Makinak", "Laurier"]}
+{"line": "Ste Rose spur", "stations": ["Ochre River", "Ste Rose"]}
+{"line": "Kelvington\u2192Swan River", "stations": ["Kelvington", "Nut Mountain", "Lintlaw", "Ketchen", "Preeceville", "Sturgis", "Stenen", "Hyas", "Norquay", "Pelly", "Arran", "Benito", "Durban", "Kenville", "Swan River"]}
+{"line": "Sturgis S branch", "stations": ["Sturgis", "Hassan", "Tadmor", "Amsterdam"]}
+{"line": "Lower mainline (Kylemore)", "stations": ["Kylemore", "Kuroki", "Margo", "Invermay", "Rama", "Buchanan"]}
+{"line": "Swan River N", "stations": ["Swan River", "Bowsman"]}
+{"line": "Swan River E", "stations": ["Swan River", "Sevick", "Minitonas"]}
+{"line": "TL edge", "stations": ["Crooked River"]}
+{"line": "Eldred\u2192Prince Albert", "stations": ["Eldred", "Debden", "Canwood", "Shellbrook", "Holbein", "Curtwell", "Prince Albert"]}
+{"line": "Shellbrook\u2192Hafford", "stations": ["Shellbrook", "Kilwinning", "Leask", "Marcelin", "Blaine Lake", "Krydor", "Hafford"]}
+{"line": "Richard\u2192Tallman", "stations": ["Richard", "Speers", "Hafford", "Redberry", "Tallman"]}
+{"line": "Maymont line", "stations": ["Maymont", "Fielding"]}
+{"line": "Carlton branch", "stations": ["Carlton", "Laird", "Waldheim", "Hepburn"]}
+{"line": "PA\u2192Rosthern", "stations": ["Prince Albert", "Red Deer Hill", "Duck Lake", "Leckford", "Rosthern", "Arma"]}
+{"line": "PA\u2192Leofnard", "stations": ["Prince Albert", "Davis", "Fenton", "St. Louis", "Hoey", "Domremy", "Wakaw", "Leofnard"]}
+{"line": "PA\u2192Eldersley", "stations": ["Prince Albert", "Brancepeth", "Birch Hills", "Weldon", "Kinistino", "Beatty", "Melfort", "Star City", "Valparaiso", "Tisdale", "Eldersley"]}
+{"line": "Melfort\u2192Daylesford", "stations": ["Melfort", "Lipsett", "Pathlow", "St. Brieux", "Daylesford"]}
+{"line": "Ridgedale branch", "stations": ["Ridgedale", "Brooksby", "Whittome"]}
+{"line": "NW mainline (Biggar)", "stations": ["Saskatoon", "Cory", "Grandora", "Asquith", "Rhyl", "Perdue", "Keppel", "Vance", "Biggar", "Argo"]}
+{"line": "Asquith parallel", "stations": ["Saskatoon", "Dunfermline", "Asquith"]}
+{"line": "NW branch (N Battleford)", "stations": ["Saskatoon", "Dalmeny", "Langham", "Borden", "Radisson", "Fielding", "Maymont", "Ruddell", "Lilac", "Brada", "North Battleford"]}
+{"line": "N branch via Dalmeny", "stations": ["Dalmeny", "Mennon", "Hepburn", "Waldheim", "Laird", "Tallman"]}
+{"line": "N mainline (Rosthern/PA)", "stations": ["Saskatoon", "Factoria Siding", "Clarkboro", "Osler", "Hague", "Rosthern", "Arma", "Leckford"]}
+{"line": "E mainline (Humboldt)", "stations": ["Clarkboro", "Aberdeen", "Vonda", "Howell", "Dana", "Bruno", "Carmel", "Humboldt", "Muenster", "Englefeld", "Watson", "Quill Lake", "Clair"]}
+{"line": "E mainline (Sutherland)", "stations": ["Saskatoon", "Sutherland", "Engen", "Floral", "Cheviot", "Blucher", "Elstow"]}
+{"line": "NS through Dana", "stations": ["Wakaw", "Leofnard", "Cudworth", "Bremen", "Dana", "Peterson", "Meacham", "Rutan", "Viscount"]}
+{"line": "NS through Humboldt", "stations": ["Pathlow", "St. Brieux", "Daylesford", "Lenore Lake", "Moseley", "Humboldt", "Dixon", "Romance", "Leroy"]}
+{"line": "NS through Watson", "stations": ["Naicam", "Spalding", "Daphne", "Watson", "Wimmer"]}
+{"line": "SK\u2192Biggar S track", "stations": ["Hawood", "Juniata", "Kinley", "Leney", "Normanton", "Argo"]}
+{"line": "SK\u2192Biggar N track", "stations": ["Grandora", "Asquith", "Rhyl", "Perdue", "Keppel", "Vance", "Biggar"]}
+{"line": "SK\u2192Zealandia", "stations": ["Saskatoon", "Vanscoy", "Delisle", "Laura", "Tessier", "Harris", "Zealandia"]}
+{"line": "Delisle branch", "stations": ["Delisle", "Chambers", "Bird View", "Swanson", "Ardath"]}
+{"line": "SK\u2192Hanley", "stations": ["Saskatoon", "Haultain", "Dundurn", "Indi", "Hanley"]}
+{"line": "SK\u2192Watrous", "stations": ["Saskatoon", "Duro", "Clavet", "Bradwell", "Allan", "Zelma", "Young", "Xena", "Watrous", "Venn"]}
+{"line": "Young S branch", "stations": ["Young", "Plassey", "Renown"]}
+{"line": "Mainline E (Elfros)", "stations": ["Elstow", "Colonsay", "Viscount", "Wolverine", "Plunkett", "Guernsey", "Lanigan", "Esk", "Dafoe", "Kandahar", "Wynyard", "Mozart", "Elfros"]}
+{"line": "NS through Colonsay", "stations": ["Meacham", "Rutan", "Colonsay", "Neely"]}
+{"line": "NS through Lanigan", "stations": ["Leroy", "Vigor", "Lanigan", "Drake", "Lockwood", "Ambassador"]}
+{"line": "N line (Humboldt area)", "stations": ["Carmel", "Dixon", "Muenster", "Englefeld", "Watson", "Wimmer", "Quill Lake", "Clair"]}
+{"line": "Swift Current\u2192Regina mainline", "stations": ["Swift Current", "Waldeck", "Rush Lake", "Herbert", "Morse", "Ernfold", "Chaplin", "Uren", "Secretan", "Valjean", "Parkbeg", "Mortlach", "Caron", "Boharm", "Moose Jaw", "Pasqua", "Belle Plaine", "Pense", "Grand Coulee", "Pinkie", "Regina", "Balgonie", "Jameson"]}
+{"line": "Moose Jaw\u2192Dunblane", "stations": ["Moose Jaw", "Belbeck", "Tuxford", "Marquis", "Keeler", "Brownlee", "Eyebrow", "Tugaske", "Bridgeford", "Aiktow", "Elbow", "Dunblane"]}
+{"line": "Moose Jaw\u2192Beechy", "stations": ["Moose Jaw", "Archydal", "Grayburn", "Rowletta", "Lake Valley", "Darmody", "Mawer", "Central Butte", "Lawson", "Gilroy", "Riverhurst", "Demaine", "Beechy"]}
+{"line": "Dunblane\u2192Lucky Lake", "stations": ["Dunblane", "Tullie", "Birsay", "Lucky Lake"]}
+{"line": "Regina\u2192Craik", "stations": ["Regina", "Condie", "Lumsden", "Disley", "Bethune", "Findlater", "Chamberlain", "Aylesbury", "Craik", "Girvan"]}
+{"line": "Regina\u2192Liberty", "stations": ["Regina", "Condie", "Craven", "Valeport", "Silton", "Dilke", "Holdfast", "Penzance", "Liberty"]}
+{"line": "Regina\u2192Duval", "stations": ["Regina", "Condie", "Tregarva", "Bora", "Franks Lake", "Gibbs", "Bulyea", "Strassburg", "Duval"]}
+{"line": "Bulyea E branch", "stations": ["Bulyea", "Earl Grey", "Markinch", "Southey", "Cupar"]}
+{"line": "Regina\u2192Edenwold", "stations": ["Regina", "Zehner", "Edenwold"]}
+{"line": "Moose Jaw\u2192Expanse N", "stations": ["Moose Jaw", "Archive", "Buttress", "Crestwynd", "Expanse"]}
+{"line": "Moose Jaw\u2192Expanse S", "stations": ["Moose Jaw", "Baildon", "Tilney", "Briercrest", "Hearne", "Claybank", "Dunkirk", "Expanse"]}
+{"line": "Moose Jaw\u2192Milestone", "stations": ["Moose Jaw", "Pasqua", "Stelcam", "Drinkwater", "Pitman", "Rouleau", "Diana", "Wilcox", "Corinne", "Milestone"]}
+{"line": "S of Regina", "stations": ["Regina", "Rowatt", "Estlin", "Gray", "Riceton", "Bechard"]}
+{"line": "SE of Regina", "stations": ["Regina", "Richardson", "Kronau", "Lajord"]}
+{"line": "SK\u2192Outlook SW", "stations": ["Saskatoon", "Vanscoy", "Delisle", "Laura", "Tessier", "Harris", "Zealandia", "Sovereign", "Milden", "Bounty", "Conquest", "Outlook"]}
+{"line": "Delisle\u2192Ardath", "stations": ["Delisle", "Chambers", "Bird View", "Swanson", "Ardath"]}
+{"line": "Elrose\u2192Dunblane", "stations": ["Elrose", "Forgan", "Hughton", "Wiseton", "Dinsmore", "Anerly", "Surbiton", "Macrorie", "Tichfield", "Dunblane"]}
+{"line": "Outlook\u2192Dunblane", "stations": ["Outlook", "Broderick", "Glenside", "Bratton", "Macrorie", "Tichfield", "Dunblane"]}
+{"line": "Outlook\u2192Craik", "stations": ["Outlook", "Broderick", "Glenside", "Hawarden", "Strongfield", "Loreburn", "Elbow", "Aiktow", "Bridgeford", "Aylesbury", "Craik"]}
+{"line": "SK\u2192Craik mainline", "stations": ["Saskatoon", "Haultain", "Dundurn", "Indi", "Hanley", "Strong", "Kenaston", "Holder", "Bladworth", "Davidson", "Girvan", "Craik", "Aylesbury"]}
+{"line": "Young\u2192Holdfast", "stations": ["Young", "Plassey", "Renown", "Amazon", "Simpson", "Imperial", "Stalwart", "Liberty", "Penzance", "Holdfast"]}
+{"line": "Watrous\u2192Lestock", "stations": ["Watrous", "Venn", "Undora", "Tate", "Semans", "Raymore", "Punnichy", "Quinton", "Lestock"]}
+{"line": "Lanigan\u2192Bulyea", "stations": ["Lanigan", "Drake", "Lockwood", "Ambassador", "Nokomis", "Hatfield", "Govan", "Cymric", "Duval", "Strassburg", "Bulyea"]}
+{"line": "Bulyea\u2192Cupar", "stations": ["Bulyea", "Earl Grey", "Markinch", "Southey", "Cupar"]}
+{"line": "Halkirk-Veldt-Castor (manual)", "stations": ["Halkirk", "Veldt", "Castor"]}
+{"line": "Wolseley-Adair-Baring (manual)", "stations": ["Wolseley", "Adair", "Baring"]}
+{"line": "AB Crowsnest mainline", "stations": ["Cowley", "Lundbreck", "Pincher", "Brocket", "Macleod", "Pearce", "Monarch", "Kipp", "Lethbridge", "Coaldale", "Chin", "Taber", "Barnwell", "Fincastle", "Purple Springs", "Grassy Lake", "Burdett", "Bow Island", "Winnifred", "Whitla", "Seven Persons", "Dunmore", "Medicine Hat", "Pashley", "Irvine"]}
+{"line": "NS Macleod", "stations": ["Claresholm", "Woodhouse", "Granum", "Macleod"]}
+{"line": "Carmangay\u2192Kipp", "stations": ["Carmangay", "Barons", "Nobleford", "Commerce", "Kipp"]}
+{"line": "Lethbridge\u2192Coutts", "stations": ["Lethbridge", "Wilson", "Stirling", "Craddock", "New Dayton", "Warner", "Milk River", "Coutts"]}
+{"line": "Stirling\u2192Manyberries", "stations": ["Stirling", "Judson", "Wrentham", "Foremost", "Nemiscam", "Etzikom", "Pakowki", "Orion", "Manyberries"]}
+{"line": "Lethbridge\u2192Cardston", "stations": ["Lethbridge", "Raymond", "Welling", "Magrath", "Spring Coulee", "Bradshaw", "Raley", "Cardston"]}
+{"line": "Raley\u2192Woolford", "stations": ["Raley", "Woolford"]}
+{"line": "Top edge AB", "stations": ["Retlaw", "Vauxhall", "Scope"]}
+{"line": "Neidpath spur", "stations": ["Lethbridge", "Neidpath"]}
+{"line": "Calgary\u2192Macleod NS", "stations": ["Okotoks", "Aldersyde", "High River", "Cayley", "Nanton", "Parkland", "Stavely", "Claresholm", "Woodhouse", "Granum", "Macleod"]}
+{"line": "Aldersyde\u2192Kipp", "stations": ["Mazeppa", "Blackie", "Brant", "Ensign", "Vulcan", "Kirkcaldy", "Champion", "Carmangay", "Barons", "Nobleford", "Commerce", "Kipp"]}
+{"line": "Bassano\u2192Empress", "stations": ["Bassano", "Countess", "Rosemary", "Duchess", "Millicent", "Patricia", "Jenner", "Iddesleigh", "Atlee", "Cavendish", "Bindloss"]}
+{"line": "Bassano\u2192Medicine Hat", "stations": ["Bassano", "Cassils", "Brooks", "Tilley", "Alderson", "Suffield", "Bowell", "Medicine Hat"]}
+{"line": "Lomond branch", "stations": ["Lomond", "Travers", "Enchant", "Retlaw", "Vauxhall", "Scope"]}
+{"line": "Calgary NS mainline", "stations": ["Carstairs", "Crossfield", "Airdrie", "Calgary", "Okotoks", "Aldersyde", "High River", "Cayley"]}
+{"line": "Calgary\u2192Bassano", "stations": ["Calgary", "Indus", "Dalemead", "Carseland", "Gleichen", "Cluny", "Crowfoot", "Bassano"]}
+{"line": "Langdon branch", "stations": ["Langdon", "Cheadle", "Strathmore", "Namaka", "Stangmuir", "Stobart"]}
+{"line": "Calgary\u2192Three Hills", "stations": ["Calgary", "Conrich", "Delacour", "Keoma", "Kathryn", "Irricana", "Beiseker", "Acme", "Swalwell", "Twining", "Three Hills"]}
+{"line": "Irricana\u2192Drumheller", "stations": ["Irricana", "Bircham", "Grainger", "Carbon", "Hesketh", "Drumheller", "Rosedale"]}
+{"line": "Dalroy N route", "stations": ["Dalroy", "Nightingale", "Redland", "Rosebud"]}
+{"line": "Dalroy S route", "stations": ["Dalroy", "Ardenode", "Baintree", "Tudor", "Standard", "Chancellor", "Hussar", "Makepeace"]}
+{"line": "Drumheller\u2192Hanna N", "stations": ["Drumheller", "Gartly", "Munson", "Morrin", "Delia", "Craigmyle", "Watts", "Hanna"]}
+{"line": "Drumheller\u2192Hanna S", "stations": ["Drumheller", "Gartly", "Munson", "Mecheche", "Watts", "Hanna"]}
+{"line": "Hanna\u2192Sibbald", "stations": ["Hanna", "Bonar", "Alness", "Richdale", "Stanmore", "Scotfield", "Youngstown", "Dobson", "Chinook", "Cereal", "Lanfine", "Excel", "Oyen", "Benton", "Sibbald"]}
+{"line": "Hanna S branch", "stations": ["Hanna", "Rose Lynn", "Sunnynook", "Carolside", "Pollockville", "Cessford"]}
+{"line": "Aldersyde\u2192Brant", "stations": ["Aldersyde", "Mazeppa", "Blackie", "Brant"]}
+{"line": "Calgary-Edmonton mainline", "stations": ["Didsbury", "Olds", "Bowden", "Innisfail", "Penhold", "Red Deer", "Blackfalds", "Lacombe", "Morningside", "Ponoka"]}
+{"line": "RD/Lacombe\u2192Stettler via Lacombe", "stations": ["Lacombe", "Clive", "Tees", "Alix", "Nevis", "Erskine", "Stettler"]}
+{"line": "Red Deer\u2192Alix", "stations": ["Red Deer", "Joffre", "Haynes", "Alix"]}
+{"line": "Stettler\u2192Compeer", "stations": ["Stettler", "Botha", "Gadsby", "Halkirk", "Veldt", "Castor", "Fleet", "Federal", "Coronation", "Throne", "Veteran", "Loyalist", "Consort", "Monitor", "Kirriemuir", "Pemukan", "Compeer"]}
+{"line": "Coronation\u2192Bulwark", "stations": ["Coronation", "Bulwark"]}
+{"line": "Alix\u2192Three Hills", "stations": ["Alix", "Delburne", "Lousana", "Elnora", "Huxley", "Trochu", "Ghost Pine", "Three Hills"]}
+{"line": "Stettler\u2192Morrin", "stations": ["Stettler", "Fenn", "Big Valley", "Scollard", "Rumsey", "Rowley", "Morrin"]}
+{"line": "Alix\u2192Ferintosh", "stations": ["Alix", "Mirror", "Bashaw", "Dorenlee", "Meniak", "Ferintosh"]}
+{"line": "Stettler\u2192Edberg", "stations": ["Red Willow", "Donalda", "Meeting Creek", "Edberg"]}
+{"line": "Lacombe\u2192Bluffton", "stations": ["Lacombe", "Bentley", "Rimbey", "Bluffton"]}
+{"line": "Red Deer\u2192Eckville", "stations": ["Sylvan Lake", "Benalto", "Eckville"]}
+{"line": "Camrose\u2192Alliance", "stations": ["Ankerton", "Rosalind", "Heisler", "Forestburg", "Galahad", "Alliance"]}
+{"line": "Daysland\u2192Provost", "stations": ["Daysland", "Strome", "Killam", "Sedgewick", "Lougheed", "Hardisty", "Rosyth", "Amisk", "Hughenden", "Czar", "Metiskow", "Cairns", "Provost", "Cadogan"]}
+{"line": "Wainwright line", "stations": ["Fabyan", "Wainwright", "Greenshields", "Heath", "Edgerton", "Ribstone", "Chauvin"]}
+{"line": "Edmonton\u2192Vermilion N", "stations": ["Edmonton", "Oliver", "Fort Saskatchewan", "Scotford", "Bruderheim", "Lamont", "Chipman", "Hilliard", "Mundare", "Vegreville", "Lavoy", "Ranfurly", "Innisfree", "Minburn", "Manville", "Claysmore", "Vermilion", "Islay", "Borradale", "Blackfoot", "Kitscoty"]}
+{"line": "Edmonton\u2192Wainwright M", "stations": ["Edmonton", "Bremner", "Ardrossan", "Tofield", "Ryley", "Holden", "Bruce", "Viking", "Kinsella", "Jarrow", "Irma", "Fabyan", "Wainwright", "Greenshields", "Heath"]}
+{"line": "Edmonton\u2192Ponoka", "stations": ["Edmonton", "Ellerslie", "Leduc", "Millet", "Wetaskiwin", "Hobbema", "Ponoka"]}
+{"line": "Edmonton\u2192Camrose direct", "stations": ["Edmonton", "Ellerslie", "New Sarepta", "Hay Lakes", "Armena", "Bittern Lake", "Camrose"]}
+{"line": "Stony Plain line", "stations": ["Stony Plain", "Spruce Grove", "Acheson", "Edmonton"]}
+{"line": "Onoway line", "stations": ["Onoway", "Villeneuve", "St. Albert", "Edmonton"]}
+{"line": "Morinville line", "stations": ["Morinville", "Volmer", "St. Albert", "Edmonton"]}
+{"line": "Bon Accord line", "stations": ["Bon Accord", "Gibbons", "Duagh", "Oliver", "Edmonton"]}
+{"line": "Tofield\u2192Camrose", "stations": ["Tofield", "Bardo", "Kingman", "Round Hill", "Camrose"]}
+{"line": "Ryley\u2192Camrose", "stations": ["Ryley", "Poe", "Dodds", "Round Hill", "Camrose"]}
+{"line": "Ryley\u2192Vegreville", "stations": ["Ryley", "Haight", "Inland", "Vegreville"]}
+{"line": "Wetaskiwin\u2192Sedgewick", "stations": ["Wetaskiwin", "Gwynne", "Bittern Lake", "Camrose", "Ohaton", "Bawlf", "Kelsey", "Daysland", "Strome", "Killam", "Sedgewick"]}
+{"line": "Camrose\u2192Ferintosh", "stations": ["Camrose", "Duhamel", "New Norway", "Ferintosh"]}
+{"line": "Camrose\u2192Edberg", "stations": ["Camrose", "Duhamel", "Edberg"]}
+{"line": "Edmonton\u2192Westlock", "stations": ["Edmonton", "St. Albert", "Volmer", "Morinville", "Alcomdale", "Picardville", "Westlock"]}
+{"line": "Edmonton\u2192Clyde", "stations": ["Edmonton", "Oliver", "Duagh", "Bon Accord", "Legal", "Clyde"]}
+{"line": "Edmonton\u2192St. Paul", "stations": ["Edmonton", "Oliver", "Gibbons", "Redwater", "Opal", "Radway Centre", "Waskatenau", "Warspite", "Smoky Lake", "Edwand", "Bellis", "Vilna", "Ashmont", "St. Paul"]}
+{"line": "Edmonton\u2192Mundare N", "stations": ["Edmonton", "Oliver", "Fort Saskatchewan", "Scotford", "Bruderheim", "Lamont", "Chipman", "Hilliard", "Mundare"]}
+{"line": "Edmonton\u2192Vegreville S", "stations": ["Edmonton", "Bremner", "Ardrossan", "Raith", "Vegreville"]}
+{"line": "Edmonton\u2192Stony Plain", "stations": ["Edmonton", "Acheson", "Spruce Grove", "Stony Plain"]}
+{"line": "St. Albert\u2192Onoway", "stations": ["St. Albert", "Villeneuve", "Onoway"]}
+{"line": "AB-SK N (via Lloydminster)", "stations": ["Vermilion", "Islay", "Borradale", "Kitscoty", "Blackfoot", "Lloydminster", "Aberfeldy", "Marshall", "Lashburn", "Waseca", "Maidstone"]}
+{"line": "AB-SK S (via Chauvin)", "stations": ["Wainwright", "Heath", "Edgerton", "Ribstone", "Chauvin", "Butze", "Artland", "Cuthbert"]}
+{"line": "W of Lake MB (Fork\u2192Eden)", "stations": ["Fork River", "Dauphin", "Ochre River", "Makinak", "Laurier", "McCreary", "Norgate", "Kelwood", "Riding Mountain", "Birnie", "Eden"]}
+{"line": "Ste Rose spur", "stations": ["Ochre River", "Ste Rose du Lac"]}
+{"line": "Glencairn\u2192Plumas", "stations": ["Glencairn", "Glenella", "Tenby", "Plumas"]}
+{"line": "Amaranth branch", "stations": ["Amaranth", "Langruth"]}
+{"line": "Interlake W (Steeprock\u2192Lundar)", "stations": ["Steeprock", "Moosehorn", "Ashern", "Camper", "Mulvihill", "Ericksdale", "Deerhorn", "Lundar"]}
+{"line": "Interlake M (Hodgson\u2192Gunton)", "stations": ["Hodgson", "Fisher Branch", "Inwood", "Gunton"]}
+{"line": "Riverton branch", "stations": ["Riverton"]}
+{"line": "Arborg branch", "stations": ["Arborg"]}
+{"line": "Teulon\u2192Balmoral", "stations": ["Teulon", "Balmoral"]}
+{"line": "S to Selkirk", "stations": ["Petersfield", "Clandeboye", "East Selkirk"]}
+{"line": "Victoria Beach line", "stations": ["Victoria Beach"]}
+{"line": "BL corner MB", "stations": ["Sandy Lake", "Rackham", "Erickson", "Clan William"]}
+{"line": "Wpg\u2192PtlaP N track", "stations": ["Winnipeg", "Rosser", "Meadows", "Marquette", "Poplar Point", "High Bluff", "Portage la Prairie"]}
+{"line": "Wpg\u2192PtlaP S track", "stations": ["Winnipeg", "Headingly", "Cabot", "Elie", "Fortier", "Portage la Prairie"]}
+{"line": "PtlaP\u2192Minnedosa Gladstone", "stations": ["Portage la Prairie", "MacDonald", "Oakland", "Golden Stream", "Gladstone", "Keyes", "Arden", "Neepawa", "Springhill", "Franklin", "Minnedosa"]}
+{"line": "PtlaP\u2192Neepawa Beaver", "stations": ["Portage la Prairie", "Burnside", "Beaver", "Katrime", "Mayfield", "Berton", "Hallboro", "Neepawa"]}
+{"line": "Hallboro\u2192Firdale", "stations": ["Hallboro", "Wellwood", "Firdale"]}
+{"line": "W/NW Minnedosa", "stations": ["Minnedosa", "Bethany", "Clan William", "Erickson"]}
+{"line": "Neepawa\u2192Riding Mt", "stations": ["Neepawa", "Howden", "Eden", "Birnie", "Riding Mountain"]}
+{"line": "Gladstone\u2192Tenby", "stations": ["Gladstone", "Ogilvie", "Langruth", "Plumas", "Tenby"]}
+{"line": "Marquette\u2192Warren", "stations": ["Marquette", "Warren"]}
+{"line": "Minnedosa\u2192Moorepark S", "stations": ["Minnedosa", "Riverdale", "Rufford", "Cordova", "Moorepark"]}
+{"line": "Wpg NW (Interlake)", "stations": ["Winnipeg", "Grosse Isle", "Drake", "Argyle", "Balmoral", "Gunton"]}
+{"line": "Grosse Isle\u2192Stonewall", "stations": ["Grosse Isle", "Stonewall"]}
+{"line": "Wpg\u2192Clandeboye NE", "stations": ["Winnipeg", "East Selkirk", "Clandeboye"]}
+{"line": "Wpg\u2192Beausejour", "stations": ["Winnipeg", "Tyndall", "Beausejour"]}
+{"line": "Wpg\u2192Hazelridge", "stations": ["Winnipeg", "Oakbank", "Hazelridge"]}
+{"line": "Wpg\u2192Dugald", "stations": ["Winnipeg", "Transcona", "Dugald"]}
+{"line": "Brandon\u2192PtlaP mainline", "stations": ["Brandon", "Douglas", "Carberry", "Melbourne", "Sidney", "Austin", "Macgregor", "Burnside", "Portage la Prairie"]}
+{"line": "Forrest\u2192Firdale N", "stations": ["Forrest", "Ingelow", "Harte", "Gregg", "Firdale"]}
+{"line": "PtlaP\u2192Winnipeg M", "stations": ["Portage la Prairie", "Newton", "Oakville", "Dacotah", "Winnipeg"]}
+{"line": "Brandon\u2192Wpg via Glenboro", "stations": ["Brandon", "Rounthwaite", "Treesbank", "Stockton", "Glenboro", "Cypress River", "Landseer", "Holland", "Treherne", "Rathwell", "St. Claude", "Haywood", "Elm Creek", "Culross", "Fannystelle", "Starbuck", "Sanford", "La Salle", "Winnipeg"]}
+{"line": "Methven-Wawanesa spur", "stations": ["Methven", "Wawanesa", "Treesbank"]}
+{"line": "Carman\u2192Elm Creek", "stations": ["Carman", "Barnsley", "Elm Creek"]}
+{"line": "Carman\u2192Winnipeg", "stations": ["Carman", "Homewood", "Sperling", "Brunkild", "Winnipeg"]}
+{"line": "Carman\u2192Notre Dame", "stations": ["Carman", "Bradburn", "Stephenfield", "Roseisle", "Cardinal", "Notre Dame de Lourdes"]}
+{"line": "PtlaP\u2192Rossendale", "stations": ["Portage la Prairie", "Edwin", "Rossendale"]}
+{"line": "Wpg S Route 1", "stations": ["Winnipeg", "Domain", "Osborne", "McTavish", "Morris"]}
+{"line": "Wpg S Route 2", "stations": ["Winnipeg", "Ste Agathe", "Silver Plains", "Morris"]}
+{"line": "Wpg\u2192Dufrost SE", "stations": ["St. Boniface", "Niverville", "Otterburne", "Carey", "Dufrost"]}
+{"line": "Wpg\u2192Giroux SE", "stations": ["St. Boniface", "Dufresne", "Ste Anne", "Giroux"]}
+{"line": "Brandon\u2192Carroll S", "stations": ["Brandon", "Roseland", "McKelvie", "Hayfield", "Carroll"]}
+{"line": "Brandon\u2192Souris", "stations": ["Brandon", "Kemnay", "Souris"]}
