@@ -104,6 +104,14 @@ def load_stations():
     return per_station
 
 
+def sanitize(s):
+    """Strip characters that break Folium's JS template literals."""
+    if not s:
+        return s
+    # Backticks close the template literal; ${ starts an interpolation.
+    return str(s).replace("`", "'").replace("${", "$ {")
+
+
 COORD_SOURCE_COLOR = {
     "cgn_direct": "#1f77b4",
     "agent_high": "#2ca02c",
@@ -147,11 +155,11 @@ def build_folium(stations, rails):
         years_str = (f"{years[0]}-{years[-1]}" if len(years) > 1
                      else str(years[0]) if years else "")
         popup_html = (
-            f"<b>{station}</b>, {prov.title()}<br>"
+            f"<b>{sanitize(station)}</b>, {prov.title()}<br>"
             f"License years: {years_str} ({len(years)} appearances)<br>"
             f"Operators: {len(s['owners'])} ({s['rows']} elevator-row mentions)<br>"
-            f"Top operator: {top_owner}<br>"
-            f"Railway: {top_rail}<br>"
+            f"Top operator: {sanitize(top_owner)}<br>"
+            f"Railway: {sanitize(top_rail)}<br>"
             f"Max capacity: {s['max_cap']:,} bu<br>"
             f"<i>coord_source: {src}</i>"
         )
@@ -162,7 +170,7 @@ def build_folium(stations, rails):
             radius=radius,
             color=col, weight=1, fill=True, fillColor=col, fillOpacity=0.7,
             popup=folium.Popup(popup_html, max_width=300),
-            tooltip=station,
+            tooltip=sanitize(station),
         ).add_to(groups.get(src, groups["cgn_direct"]))
 
     for g in groups.values():
@@ -185,6 +193,14 @@ def build_folium(stations, rails):
         Grey lines: historical railways (1836-1922).</div>
     </div>"""
     m.get_root().html.add_child(folium.Element(legend_html))
+    # Force viewport sizing so the map fills the page regardless of host CSS
+    height_fix = """<style>
+        html, body { height: 100vh !important; width: 100vw !important;
+                     margin: 0 !important; padding: 0 !important; }
+        .folium-map { height: 100vh !important; width: 100vw !important;
+                      position: absolute !important; top: 0 !important; left: 0 !important; }
+    </style>"""
+    m.get_root().html.add_child(folium.Element(height_fix))
     return m
 
 
