@@ -2,7 +2,7 @@
 
 Geocoded inventory of grain elevators across Manitoba, Saskatchewan, Alberta, BC, ON, and QC, derived from the **Board of Grain Commissioners of Canada** annual licensing directories (1911-1944), processed via OCR and reconciled against multiple geographic authorities.
 
-![Overview map](viz/overview.png)
+![Overview map](docs/overview.png)
 
 ## Quick stats
 
@@ -17,10 +17,10 @@ Geocoded inventory of grain elevators across Manitoba, Saskatchewan, Alberta, BC
 
 ## Visualization
 
-- **`viz/overview.png`** — static prairie-wide overview (above)
-- **`viz/index.html`** — interactive Leaflet map with rail lines + clickable elevator markers (clone repo and open locally, or host via GitHub Pages)
-- **`viz/stations.geojson`** — auto-rendered by GitHub if you click it: <https://github.com/jburnford/wheat/blob/main/viz/stations.geojson>
-- **`viz/rail_lines.geojson`** — historical Canadian railway network (1836-1922) reprojected from NRCan's *HR_rails_NEW* shapefile
+- **`docs/overview.png`** — static prairie-wide overview (above)
+- **`docs/index.html`** — interactive Leaflet map with rail lines + clickable elevator markers (clone repo and open locally, or host via GitHub Pages)
+- **`docs/stations.geojson`** — auto-rendered by GitHub if you click it: <https://github.com/jburnford/wheat/blob/main/docs/stations.geojson>
+- **`docs/rail_lines.geojson`** — historical Canadian railway network (1836-1922) reprojected from NRCan's *HR_rails_NEW* shapefile
 
 ## Coordinate sources
 
@@ -58,7 +58,7 @@ Scripts in `scripts/` form a reproducible pipeline:
 - **`tables/elevators_geocoded.csv`** *(not in repo, see scripts to rebuild)* — Per-row license records
 - **`tables/rail_lines.jsonl`** — 198 ordered rail-line station sequences extracted from the 1933 Lynch elevator map
 - **`tables/ghost_towns_sk.csv`** — Wikipedia's SK ghost-town list with coords (parsed locally)
-- **`viz/elevator_ops_summary.csv`** — Per-station summary with first/last year, top operator, max capacity
+- **`docs/elevator_ops_summary.csv`** — Per-station summary with first/last year, top operator, max capacity
 
 ## Sources
 

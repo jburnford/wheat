@@ -1,0 +1,84 @@
+Found 77 identifiers in search.csv
+[1/77] RDM_1912072401
+[2/77] P010669-11
+[3/77] P010669-12
+[4/77] P010669-17
+[5/77] P010669-18
+[6/77] P010668-3
+[7/77] VR_19121112
+[8/77] P010668-5
+[9/77] WTG_1920061601
+[10/77] P010668-1
+[11/77] P010669-23
+[12/77] CNA_1925012201
+[13/77] newbreaking0000unse
+  internetarchive failed: 401 Client Error: Unauthorized for url: https://dn721907.ca.archive.org/0/items/newbreaking0000unse/newbreaking0000unse.pdf; falling back to HTTP
+  FAILED: no PDF found for newbreaking0000unse
+[14/77] CRA_1925021301
+[15/77] GPT_1934010401
+[16/77] EPE_1928020901
+[17/77] P010669-1
+[18/77] P010669-21
+[19/77] P010668-14
+[20/77] P010668-16
+[21/77] cia-readingroom-document-cia-rdp91-00403r000100900023-2
+[22/77] NPDP19280224
+[23/77] OYN_1930070201
+[24/77] P010669-14
+[25/77] P010669-13
+[26/77] P010669-16
+[27/77] CNA_1924061901
+[28/77] P010669-10
+[29/77] cia-readingroom-document-cia-rdp08s01350r000602090003-8
+[30/77] P010669-22
+[31/77] RCR_1924082801
+[32/77] CNA_1928011901
+[33/77] cia-readingroom-document-cia-rdp79-01083a000100080001-0
+[34/77] cia-readingroom-document-cia-rdp81-01043r002500060007-7
+[35/77] cia-readingroom-document-cia-rdp81-01043r001600220014-1
+[36/77] P010669-6
+[37/77] P010669-15
+[38/77] P010669-2
+[39/77] TCR_1928011901
+[40/77] P010669-20
+[41/77] WWS_1922092701
+[42/77] P010667-1
+[43/77] P010668-9
+[44/77] RCR_1925021901
+[45/77] cia-readingroom-document-cia-rdp79t00935a000300050004-3
+[46/77] GCC_1909122301
+[47/77] RMR_1928012701
+[48/77] P010668-6
+[49/77] cia-readingroom-document-cia-rdp81-01043r002300210009-0
+[50/77] P010669-9
+[51/77] cia-readingroom-document-cia-rdp81-01043r002500060005-9
+[52/77] P010668-2
+[53/77] P010669-3
+[54/77] P010669-7
+[55/77] SBS_1909122501
+[56/77] P010668-10
+[57/77] P010668-12
+[58/77] P010669-8
+[59/77] cia-readingroom-document-cia-rdp98-00500r000200180002-9
+[60/77] GCE_1929060501
+[61/77] P010668-4
+[62/77] P010668-7
+[63/77] P010668-15
+[64/77] P010668-11
+[65/77] P010668-13
+[66/77] cia-readingroom-document-cia-rdp81-01043r002500060006-8
+[67/77] EPE_1916061501
+[68/77] P010668-17
+[69/77] P010669-5
+[70/77] CRA_1928021001
+[71/77] P010668-8
+[72/77] cia-readingroom-document-cia-rdp81-01043r002200240012-4
+[73/77] CRA_1917071301
+[74/77] P010669-4
+[75/77] IMT_1928021701
+[76/77] old-lesson-for-new-wars
+  FAILED: no PDF found for old-lesson-for-new-wars
+[77/77] P010669-19
+
+Done. Success: 75  Failed: 2
+Failed identifiers written to pdfs/failed.txt
