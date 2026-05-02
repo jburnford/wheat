@@ -117,8 +117,8 @@ COORD_SOURCE_COLOR = {
 def build_folium(stations, rails):
     # Center on prairies
     m = folium.Map(
-        location=[52.0, -106.0], zoom_start=5, tiles="cartodbpositron",
-        prefer_canvas=True,
+        location=[52.0, -106.0], zoom_start=5,
+        tiles="OpenStreetMap",
     )
 
     # Add rail lines
