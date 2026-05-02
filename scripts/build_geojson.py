@@ -14,7 +14,7 @@ from pathlib import Path
 
 GRAIN = Path("/home/jic823/grain")
 ELEVATORS = GRAIN / "tables/elevators_geocoded.csv"
-VIZ = GRAIN / "viz"
+VIZ = GRAIN / "docs"
 VIZ.mkdir(exist_ok=True)
 
 

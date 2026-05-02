@@ -21,7 +21,8 @@ from pyproj import CRS, Transformer
 GRAIN = Path("/home/jic823/grain")
 HR_RAILS_SHP = GRAIN / "dataverse/HR_rails_new/HR_rails_NEW.shp"
 ELEVATORS = GRAIN / "tables/elevators_geocoded.csv"
-VIZ = GRAIN / "viz"
+VIZ = GRAIN / "docs"
+VIZ.mkdir(exist_ok=True)
 
 # HR_rails projection
 HR_CRS = CRS.from_proj4(
