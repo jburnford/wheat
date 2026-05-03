@@ -1549,7 +1549,7 @@ Brora,SASKATCHEWAN,20,HAKMG,Brora,UNP,50.5833837,-104.6838940,,,,,cgn_direct
 Notre Dame de Lourdes,MANITOBA,20,GBSKM,Notre-Dame-de-Lourdes,VILG,49.5330560,-98.5577780,49.5331,-98.5578,QC099006,Q112911709,cgn_direct
 Battleford,SASKATCHEWAN,20,HACRM,Battleford,TOWN,52.7384556,-108.3152528,52.7333,-108.3167,SK182021,Q619597,cgn_direct
 Hawthorne,SASKATCHEWAN,20,,,,,,45.3833,-75.6,,,hr_places
-Rainton,SASKATCHEWAN,20,,,,,,,,,,
+Rainton,SASKATCHEWAN,20,,Rainton (gent.name),,49.816667,-103.750556,,,,,gent_name_sask
 Clandeboye,MANITOBA,20,GAFAV,Clandeboye,UNP,50.2436110,-96.9713890,,,,,cgn_direct
 Grand View,MANITOBA,20,GAJRE,Grandview,TOWN,51.1741670,-100.6977800,,,,,cgn_direct
 Mountainside,MANITOBA,20,GASFU,Mountainside,UNP,49.1422220,-100.2880600,,,,,cgn_direct

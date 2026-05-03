@@ -69,6 +69,11 @@ MANUAL_FIXES = {
         50.8876, -109.5466, "Prussia → Leader [Q1915145]",
         "manual_historical",
     ),
+    # Rainton SK — coords from gent.name/sask:towns:rainton
+    ("Rainton", "SASKATCHEWAN"): (
+        49.816667, -103.750556, "Rainton (gent.name)",
+        "gent_name_sask",
+    ),
     # OCR variants of Mecheche AB (Munson-Watts midpoint)
     ("Mechesche", "ALBERTA"): (
         51.6126, -112.4142, "Mecheche (OCR variant)",
