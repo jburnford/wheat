@@ -92,6 +92,11 @@ MANUAL_FIXES = {
         49.12555, -99.92930, "Desford (MHS)",
         "manitoba_historical_society",
     ),
+    # Fairburn MB
+    ("Fairburn", "MANITOBA"): (
+        49.17727, -99.99619, "Fairburn (MHS)",
+        "manitoba_historical_society",
+    ),
     # Glenwoodville AB → Glenwood [Q5569424]
     ("Glenwoodville", "ALBERTA"): (
         49.3636, -113.511, "Glenwoodville → Glenwood [Q5569424]",
