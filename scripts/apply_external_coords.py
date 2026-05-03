@@ -74,6 +74,11 @@ MANUAL_FIXES = {
         49.816667, -103.750556, "Rainton (gent.name)",
         "gent_name_sask",
     ),
+    # Glenwoodville AB → Glenwood [Q5569424]
+    ("Glenwoodville", "ALBERTA"): (
+        49.3636, -113.511, "Glenwoodville → Glenwood [Q5569424]",
+        "wikidata",
+    ),
     # Leach Siding SK — on CN Elrose Sub between Wiseton and Dinsmore
     # (per Sask Pool map). Wiseton 51.3129,-107.6491; Dinsmore 51.3309,-107.4453
     ("Leach Siding", "SASKATCHEWAN"): (
