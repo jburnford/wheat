@@ -1335,6 +1335,7 @@ Silver Plains,MANITOBA,49.45861,-97.29583,25,6,23,1911,1943,Manitoba Pool Elevat
 Springhill,MANITOBA,50.28806,-99.58306,25,3,23,1911,1943,Western Canada Flour Mills Co Ltd,Canadian National Rys,45000,cgn_direct
 Stephenfield,MANITOBA,49.50278,-98.25,25,6,23,1911,1943,United Grain Growers Ltd,Canadian National Rys,32000,cgn_direct
 Undora,SASKATCHEWAN,51.56326,-105.16788,25,9,21,1911,1943,Security Elevator Co Ltd,Canadian National Rys,30000,cgn_direct
+"West St. John, N.B",QUEBEC,45.25937,-66.07776,25,3,14,1911,1943,Canadian Pacific Railway Co,Canadian Pacific,2000000,wikidata
 Wawanesa,MANITOBA,49.595,-99.68389,25,3,16,1912,1943,A W Snider,Canadian Northern Ry Co,40000,cgn_direct
 Davis,SASKATCHEWAN,53.11033,-105.65672,25,8,22,1912,1943,Saskatchewan Pool Elevators Ltd,Canadian National Rys,30000,cgn_direct
 Barnsley,MANITOBA,49.59194,-97.99,25,5,18,1916,1943,United Grain Growers Ltd,Canadian Pacific,40000,cgn_direct
@@ -1423,6 +1424,7 @@ Eastview,SASKATCHEWAN,50.46393,-104.58944,23,4,22,1912,1943,Saskatchewan Pool El
 Normanton,SASKATCHEWAN,52.02645,-107.82843,23,3,21,1912,1943,Saskatchewan Co-operative Elevator Co Ltd,Canadian National Rys,30000,lynch_map_interp
 Mirror,ALBERTA,52.46667,-113.10389,23,6,21,1912,1943,Security Elevator Co Ltd,Canadian National Rys,35000,cgn_direct
 Domain,MANITOBA,49.61417,-97.32139,23,5,15,1919,1943,Western Canada Flour Mills Co Ltd,Canadian Pacific,40000,cgn_direct
+Smith Spur,MANITOBA,49.35424,-97.5023,23,4,21,1913,1943,North Star Grain Co Ltd,Canadian National Rys,40000,manitoba_historical_society
 Kessock,SASKATCHEWAN,51.21666,-102.00047,23,5,18,1915,1943,Peaker Gibson Grain Co Ltd,Canadian National Rys,60000,cgn_direct
 Ketchen,SASKATCHEWAN,51.99372,-102.8183,23,4,13,1921,1943,N Bawlf Grain Co Ltd,Canadian National Rys,35000,cgn_direct
 Redberry,SASKATCHEWAN,52.74036,-107.23634,23,3,18,1916,1943,Saskatchewan Elevator Co Ltd,Canadian National Rys,45000,cgn_direct
@@ -1452,6 +1454,7 @@ Kirkella,MANITOBA,50.02389,-101.36528,22,7,21,1911,1943,Canadian Elevator Co Ltd
 Millwood,MANITOBA,50.69583,-101.40778,22,3,21,1911,1943,Northern Elevator Co Ltd,Canadian Pacific,30000,cgn_direct
 Naples,MANITOBA,49.80139,-100.94611,22,3,18,1911,1930,Lake Of The Woods Milling Co Ltd,Canadian Pacific,50000,agent_medium
 Wheatland,MANITOBA,50.01667,-100.29556,22,7,13,1911,1943,United Grain Growers Ltd,Canadian Pacific,35000,cgn_direct
+Enterprise,MANITOBA,49.08651,-99.55038,22,3,21,1911,1943,N M Paterson & Co Ltd,Canadian National Rys,40000,manitoba_historical_society
 Fairview,MANITOBA,49.9175,-99.39528,22,5,21,1911,1943,United Grain Growers Ltd,Canadian National Rys,30000,cgn_direct
 Glenora,MANITOBA,49.25222,-99.15444,22,4,21,1911,1943,Manitoba Pool Elevators Ltd,Canadian National Rys,40000,cgn_direct
 Ogilvie,MANITOBA,50.29833,-99.07722,22,4,17,1911,1928,Western Canada Flour Mills Co Ltd,Canadian Northern Ry Co,25000,cgn_direct
@@ -2704,6 +2707,7 @@ Cheadlo,ALBERTA,51.01444,-113.54056,2,2,1,1924,1924,National Elevator Co Ltd,Can
 Notre-Dame-de Lourdes,MANITOBA,49.53306,-98.55778,2,1,2,1925,1926,N Bawlf Grain Co Ltd,Canadian National Rys,40000,cgn_direct
 Hillard,ALBERTA,53.64,-112.48194,2,2,1,1925,1925,Gillespie Grain Co Ltd,Canadian National Rys,30000,agent_high
 Spadden,ALBERTA,54.13861,-111.72556,2,1,2,1925,1941,Gillespie Grain Co Ltd,Canadian National Rys,30000,agent_high
+"West St. John, N.B.,",QUEBEC,45.25937,-66.07776,2,1,1,1925,1925,Canadian Pacific Railway Co,Canadian Pacific,1000000,wikidata
 Graybarn,SASKATCHEWAN,50.53688,-105.83259,2,2,1,1926,1926,Standard Elevator Co Ltd,Canadian National Rys,30000,agent_high
 Leonard,SASKATCHEWAN,52.55003,-105.71722,2,2,1,1926,1926,Province Elevator Co Ltd,Canadian National Rys,30000,agent_high
 MacDowall,SASKATCHEWAN,53.0139,-106.01388,2,1,2,1926,1927,Western Elevator Co Ltd,Canadian National Rys,25000,cgn_direct

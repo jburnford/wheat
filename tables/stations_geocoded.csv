@@ -1340,7 +1340,7 @@ Silver Plains,MANITOBA,25,GAZHE,Silver Plains,UNP,49.4586110,-97.2958330,,,,,cgn
 Springhill,MANITOBA,25,GBAEF,Springhill,UNP,50.2880560,-99.5830560,45.65,-64.05,NS008034,Q1000316,cgn_direct
 Stephenfield,MANITOBA,25,GBAMQ,Stephenfield,UNP,49.5027780,-98.2500000,,,,,cgn_direct
 Undora,SASKATCHEWAN,25,HATNR,Undora,UNP,51.5632610,-105.1678830,,,,,cgn_direct
-"West St. John, N.B",QUEBEC,25,,,,,,,,,,
+"West St. John, N.B",QUEBEC,25,,Saint John West [Q112548740],,45.259374,-66.077759,,,,,wikidata
 Wawanesa,MANITOBA,25,GBDJH,Wawanesa,VILG,49.5950000,-99.6838890,49.595,-99.6839,MB161012,Q1841172,cgn_direct
 Davis,SASKATCHEWAN,25,HAFVR,Davis,UNP,53.1103330,-105.6567240,,,ON146029,Q115261244,cgn_direct
 Barnsley,MANITOBA,25,GABRE,Barnsley,UNP,49.5919440,-97.9900000,,,,,cgn_direct
@@ -1429,7 +1429,7 @@ Eastview,SASKATCHEWAN,23,HAUXV,Eastview,UNP,50.4639290,-104.5894365,,,ON105012,Q
 Normanton,SASKATCHEWAN,23,,Normanton (interp: midpoint Leney–Argo),,52.026446,-107.828428,,,,,lynch_map_interp
 Mirror,ALBERTA,23,IAKCH,Mirror,UNP,52.4666667,-113.1038889,,,AB196046,Q6874523,cgn_direct
 Domain,MANITOBA,23,GAGTC,Domain,UNP,49.6141670,-97.3213890,,,,,cgn_direct
-Smith Spur,MANITOBA,23,,,,,,,,,,
+Smith Spur,MANITOBA,23,,Smith's Spur (MHS),,49.35424,-97.5023,,,,,manitoba_historical_society
 Kessock,SASKATCHEWAN,23,HAPIF,Kessock,UNP,51.2166615,-102.0004672,,,,,cgn_direct
 Ketchen,SASKATCHEWAN,23,HAPIG,Ketchen,HAM,51.9937167,-102.8183019,,,,,cgn_direct
 Redberry,SASKATCHEWAN,23,HAILF,Redberry,UNP,52.7403640,-107.2363430,,,SK186004,Q7305465,cgn_direct
@@ -1459,7 +1459,7 @@ Kirkella,MANITOBA,22,GANNZ,Kirkella,UNP,50.0238890,-101.3652800,50.0239,-101.365
 Millwood,MANITOBA,22,GARHS,Millwood,UNP,50.6958330,-101.4077800,,,,,cgn_direct
 Naples,MANITOBA,22,GAQCQ,Maples,,49.8013890,-100.9461100,,,,,agent_medium
 Wheatland,MANITOBA,22,GBDUW,Wheatland,UNP,50.0166670,-100.2955600,45.8,-72.3667,AB195015,,cgn_direct
-Enterprise,MANITOBA,22,,,,,,,,SK178012,,
+Enterprise,MANITOBA,22,,Enterprise (MHS),,49.08651,-99.55038,,,SK178012,,manitoba_historical_society
 Fairview,MANITOBA,22,GAHYM,Fairview,UNP,49.9175000,-99.3952780,56.0667,-118.3833,SK178020,,cgn_direct
 Glenora,MANITOBA,22,GAJHY,Glenora,UNP,49.2522220,-99.1544440,,,,,cgn_direct
 Hope Farm,MANITOBA,22,,,,,,,,,,
@@ -3046,7 +3046,7 @@ Notre-Dame-de Lourdes,MANITOBA,2,GBSKM,Notre-Dame-de-Lourdes,VILG,49.5330560,-98
 Pultenay Siding,ALBERTA,2,,,,,,,,,,
 Hillard,ALBERTA,2,IAJWI,Hilliard,,53.6400000,-112.4819444,,,,,agent_high
 Spadden,ALBERTA,2,IAKOY,Spedden,,54.1386111,-111.7255556,,,,,agent_high
-"West St. John, N.B.,",QUEBEC,2,,,,,,,,,,
+"West St. John, N.B.,",QUEBEC,2,,Saint John West [Q112548740],,45.259374,-66.077759,,,,,wikidata
 St. Boniface Mfg. E,MANITOBA,2,,,,,,,,,,
 E.S,MANITOBA,2,,,,,,,,,,
 Sonnenfeld,SASKATCHEWAN,2,,,,,,,,,,

@@ -28,10 +28,30 @@ MANUAL_FIXES = {
         50.057, -99.672, "Varcoe (interpolated Moorepark-Brookdale)",
         "lynch_map_interp",
     ),
-    # Real prairie hamlets not in CGNDB (Wikipedia coords)
+    # Real prairie hamlets not in CGNDB (Wikidata coords)
     ("Leslie", "SASKATCHEWAN"): (
-        51.691, -103.712, "Leslie (Wikipedia)",
-        "wikipedia",
+        51.691, -103.712, "Leslie [Q6530572]",
+        "wikidata",
+    ),
+    # OCR captured "West St. John, N.B" as a station; this is actually
+    # Saint John West, New Brunswick (a port elevator location). The
+    # parser had it under QUEBEC because the directory was in the QC
+    # section when it ran into this NB reference.
+    ("West St. John, N.B", "QUEBEC"): (
+        45.259374, -66.077759, "Saint John West [Q112548740]",
+        "wikidata",
+    ),
+    # Smith Spur MB (railway siding; coords from Manitoba Historical Society)
+    # https://www.mhs.mb.ca/docs/sites/smithspurelevator.shtml
+    ("Smith Spur", "MANITOBA"): (
+        49.35424, -97.50230, "Smith's Spur (MHS)",
+        "manitoba_historical_society",
+    ),
+    # Enterprise MB (railway siding; coords from Manitoba Historical Society)
+    # https://www.mhs.mb.ca/docs/sites/enterpriseelevator.shtml
+    ("Enterprise", "MANITOBA"): (
+        49.08651, -99.55038, "Enterprise (MHS)",
+        "manitoba_historical_society",
     ),
     # OCR variants of Mecheche AB (Munson-Watts midpoint)
     ("Mechesche", "ALBERTA"): (
