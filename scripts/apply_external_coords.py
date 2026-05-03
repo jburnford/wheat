@@ -74,6 +74,18 @@ MANUAL_FIXES = {
         49.816667, -103.750556, "Rainton (gent.name)",
         "gent_name_sask",
     ),
+    # Alcester MB — DLS midpoint of school sites SE 18-5-19-W1 + NE 15-5-19-W1
+    # Source: https://vantagepoints.ca/stories/alcester/
+    ("Alcester", "MANITOBA"): (
+        49.3830, -99.8062, "Alcester (DLS school sites)",
+        "vantagepoints_dls",
+    ),
+    # Bannerman MB — coords from MHS Virtual Manitoba
+    # https://www.mhs.mb.ca/docs/virtualmanitoba/Places/B/bannerman.html
+    ("Bannerman", "MANITOBA"): (
+        49.039567, -99.803920, "Bannerman (MHS Virtual MB)",
+        "manitoba_historical_society",
+    ),
     # Glenwoodville AB → Glenwood [Q5569424]
     ("Glenwoodville", "ALBERTA"): (
         49.3636, -113.511, "Glenwoodville → Glenwood [Q5569424]",
