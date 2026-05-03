@@ -74,6 +74,12 @@ MANUAL_FIXES = {
         49.816667, -103.750556, "Rainton (gent.name)",
         "gent_name_sask",
     ),
+    # Leach Siding SK — on CN Elrose Sub between Wiseton and Dinsmore
+    # (per Sask Pool map). Wiseton 51.3129,-107.6491; Dinsmore 51.3309,-107.4453
+    ("Leach Siding", "SASKATCHEWAN"): (
+        51.3219, -107.5472, "Leach Siding (mid Wiseton-Dinsmore)",
+        "lynch_map_interp",
+    ),
     # OCR variants of Mecheche AB (Munson-Watts midpoint)
     ("Mechesche", "ALBERTA"): (
         51.6126, -112.4142, "Mecheche (OCR variant)",
