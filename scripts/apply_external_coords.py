@@ -97,6 +97,11 @@ MANUAL_FIXES = {
         49.17727, -99.99619, "Fairburn (MHS)",
         "manitoba_historical_society",
     ),
+    # Astum SK — DLS Section 9-33-21-W3
+    ("Astum", "SASKATCHEWAN"): (
+        51.7968, -108.7474, "Astum (DLS 9-33-21-W3)",
+        "dls_converted",
+    ),
     # Glenwoodville AB → Glenwood [Q5569424]
     ("Glenwoodville", "ALBERTA"): (
         49.3636, -113.511, "Glenwoodville → Glenwood [Q5569424]",
