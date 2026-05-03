@@ -28,6 +28,11 @@ MANUAL_FIXES = {
         50.057, -99.672, "Varcoe (interpolated Moorepark-Brookdale)",
         "lynch_map_interp",
     ),
+    # Real prairie hamlets not in CGNDB (Wikipedia coords)
+    ("Leslie", "SASKATCHEWAN"): (
+        51.691, -103.712, "Leslie (Wikipedia)",
+        "wikipedia",
+    ),
     # OCR variants of Mecheche AB (Munson-Watts midpoint)
     ("Mechesche", "ALBERTA"): (
         51.6126, -112.4142, "Mecheche (OCR variant)",
