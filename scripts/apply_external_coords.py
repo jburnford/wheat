@@ -64,6 +64,11 @@ MANUAL_FIXES = {
         49.085278, -113.091111, "Jefferson [Q6175334]",
         "wikidata",
     ),
+    # Prussia SK was renamed to Leader during WWI [Q1915145]
+    ("Prussia", "SASKATCHEWAN"): (
+        50.8876, -109.5466, "Prussia → Leader [Q1915145]",
+        "manual_historical",
+    ),
     # OCR variants of Mecheche AB (Munson-Watts midpoint)
     ("Mechesche", "ALBERTA"): (
         51.6126, -112.4142, "Mecheche (OCR variant)",
