@@ -53,6 +53,17 @@ MANUAL_FIXES = {
         49.08651, -99.55038, "Enterprise (MHS)",
         "manitoba_historical_society",
     ),
+    # Hope Farm MB (railway siding; coords from Manitoba Historical Society)
+    # https://www.mhs.mb.ca/docs/sites/hopefarmelevator.shtml
+    ("Hope Farm", "MANITOBA"): (
+        49.22100, -97.38578, "Hope Farm (MHS)",
+        "manitoba_historical_society",
+    ),
+    # Jefferson AB [Q6175334]
+    ("Jefferson", "ALBERTA"): (
+        49.085278, -113.091111, "Jefferson [Q6175334]",
+        "wikidata",
+    ),
     # OCR variants of Mecheche AB (Munson-Watts midpoint)
     ("Mechesche", "ALBERTA"): (
         51.6126, -112.4142, "Mecheche (OCR variant)",
