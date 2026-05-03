@@ -86,6 +86,12 @@ MANUAL_FIXES = {
         49.039567, -99.803920, "Bannerman (MHS Virtual MB)",
         "manitoba_historical_society",
     ),
+    # Desford MB — coords from MHS
+    # https://www.mhs.mb.ca/docs/sites/desford.shtml
+    ("Desford", "MANITOBA"): (
+        49.12555, -99.92930, "Desford (MHS)",
+        "manitoba_historical_society",
+    ),
     # Glenwoodville AB → Glenwood [Q5569424]
     ("Glenwoodville", "ALBERTA"): (
         49.3636, -113.511, "Glenwoodville → Glenwood [Q5569424]",
