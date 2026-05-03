@@ -102,6 +102,11 @@ MANUAL_FIXES = {
         51.7968, -108.7474, "Astum (DLS 9-33-21-W3)",
         "dls_converted",
     ),
+    # Gouvenour SK — OCR variant of Gouverneur (same place)
+    ("Gouvenour", "SASKATCHEWAN"): (
+        49.760502, -107.624135, "Gouvenour → Gouverneur (OCR variant)",
+        "ocr_variant",
+    ),
     # Glenwoodville AB → Glenwood [Q5569424]
     ("Glenwoodville", "ALBERTA"): (
         49.3636, -113.511, "Glenwoodville → Glenwood [Q5569424]",

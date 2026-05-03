@@ -1734,7 +1734,7 @@ Meharry,MANITOBA,16,GAQZC,Meharry,UNP,51.2194440,-100.8525000,,,,,cgn_direct
 Moosehorn,MANITOBA,16,GARXO,Moosehorn,UNP,51.2913890,-98.4227780,,,,,cgn_direct
 Sevick,MANITOBA,16,,Sevick (interp: midpoint Swan River–Minitonas),,52.095972,-101.15292,,,,,lynch_map_interp
 Glen Ewan,SASKATCHEWAN,16,HADJB,Glen Ewen,,49.2099278,-102.0177650,,,,,agent_high
-Gouvenour,SASKATCHEWAN,16,,,,,,,,,,
+Gouvenour,SASKATCHEWAN,16,,Gouvenour → Gouverneur (OCR variant),,49.760502,-107.624135,,,,,ocr_variant
 Inverlake,ALBERTA,16,IALCD,Inverlake,UNP,51.0491667,-113.6447222,,,,,cgn_direct
 Earl Gray,SASKATCHEWAN,16,HAHAJ,Earl Grey,,50.9355239,-104.7112111,,,,,agent_high
 Gunworth,SASKATCHEWAN,16,,,,,,51.3333,-108.15,,,hr_places
