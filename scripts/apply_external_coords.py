@@ -107,6 +107,17 @@ MANUAL_FIXES = {
         49.760502, -107.624135, "Gouvenour → Gouverneur (OCR variant)",
         "ocr_variant",
     ),
+    # Wassewa MB — OCR variant of Wawanesa [Q1841172]
+    ("Wassewa", "MANITOBA"): (
+        49.5167, -99.6833, "Wassewa → Wawanesa [Q1841172]",
+        "ocr_variant",
+    ),
+    # Aikens SK — DLS SW 25-29-2-W3 (school district 2304, plaque in Kenaston)
+    # Source noted "W2" but coords + CPR line + Kenaston plaque all match W3.
+    ("Aikens", "SASKATCHEWAN"): (
+        51.4900, -106.1560, "Aikens (DLS SW 25-29-2-W3, Aikins School District)",
+        "dls_converted",
+    ),
     # Glenwoodville AB → Glenwood [Q5569424]
     ("Glenwoodville", "ALBERTA"): (
         49.3636, -113.511, "Glenwoodville → Glenwood [Q5569424]",

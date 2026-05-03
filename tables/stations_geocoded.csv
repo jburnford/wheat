@@ -1755,7 +1755,7 @@ Moore Park,MANITOBA,15,GARWL,Moore Park,UNP,50.0663890,-99.7794440,,,,,cgn_direc
 Roche Percee,SASKATCHEWAN,15,HAJEZ,Roche Percee,VILG,49.0656417,-102.8014869,,,SK171043,Q2204154,cgn_direct
 Rivers,MANITOBA,15,GAXDB,Rivers,TOWN,50.0308330,-100.2394400,50.0308,-100.2394,MB162010,Q138967,cgn_direct
 "Selkirk, East",MANITOBA,15,GAYRY,Selkirk,CITY,50.1436110,-96.8838890,0.0,0.0,MB163010,Q1018239,cgn_direct
-Aikens,SASKATCHEWAN,15,,,,,,,,,,
+Aikens,SASKATCHEWAN,15,,"Aikens (DLS SW 25-29-2-W3, Aikins School District)",,51.49,-106.156,,,,,dls_converted
 Roundhill,ALBERTA,15,IAFRZ,Round Hill,UNP,53.1652778,-112.6308333,,,,,cgn_direct
 Port McNicoll,ONTARIO,15,FCIAO,Port McNicoll,UNP,44.7493300,-79.8106800,44.75,-79.8167,ON144029,Q7230787,cgn_direct
 Gunton,MANITOBA,15,GAKBI,Gunton,UNP,50.3180560,-97.2661110,,,,,cgn_direct
@@ -1767,7 +1767,7 @@ Tyndall,MANITOBA,15,GBCJY,Tyndall,UNP,50.0827780,-96.6583330,,,,,cgn_direct
 Windygates,MANITOBA,15,GBEHT,Windygates,UNP,49.0005560,-98.3647220,49.0006,-98.3647,,,cgn_direct
 Bield,MANITOBA,15,GACJF,Bield,UNP,51.2211110,-101.1538900,,,,,cgn_direct
 Roseisle,MANITOBA,15,GAXMO,Roseisle,UNP,49.5000000,-98.3441670,49.5,-98.3442,,,cgn_direct
-Wassewa,MANITOBA,15,,,,,,,,,,
+Wassewa,MANITOBA,15,,Wassewa → Wawanesa [Q1841172],,49.5167,-99.6833,,,,,ocr_variant
 Diana Siding,SASKATCHEWAN,15,HAFZL,Diana,,50.1339220,-104.7991890,,,,,agent_high
 Holder,SASKATCHEWAN,15,,Holder (interp: midpoint Kenaston–Bladworth),,51.434967,-106.205051,,,,,lynch_map_interp
 Cavendish,ALBERTA,15,IALNS,Cavendish,UNP,50.8155556,-110.4552778,,,ON138005,Q115261066,cgn_direct

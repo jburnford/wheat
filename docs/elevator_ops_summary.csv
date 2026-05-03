@@ -1740,6 +1740,7 @@ Moore Park,MANITOBA,50.06639,-99.77944,15,3,9,1911,1943,Lake Of The Woods Millin
 Roche Percee,SASKATCHEWAN,49.06564,-102.80149,15,6,14,1911,1943,Saskatchewan Pool Elevators Ltd,Canadian Pacific,35000,cgn_direct
 Rivers,MANITOBA,50.03083,-100.23944,15,6,15,1911,1926,Western Canada Flour Mills Co Ltd,Grand Trunk Pacific Ry Co,30000,cgn_direct
 "Selkirk, East",MANITOBA,50.14361,-96.88389,15,5,10,1912,1941,Lake Of The Woods Milling Co Ltd,Canadian Pacific,40000,cgn_direct
+Aikens,SASKATCHEWAN,51.49,-106.156,15,5,12,1912,1925,Lake Of The Woods Milling Co Ltd,Canadian Pacific,30000,dls_converted
 Roundhill,ALBERTA,53.16528,-112.63083,15,10,11,1912,1943,Alberta Pacific Grain Co Ltd,Canadian Northern Ry Co,41000,cgn_direct
 Port McNicoll,ONTARIO,44.74933,-79.81068,15,3,14,1912,1943,Canadian Pacific Railway Co,Canadian Pacific,6500000,cgn_direct
 Gunton,MANITOBA,50.31806,-97.26611,15,1,14,1920,1943,United Grain Growers Ltd,Canadian Pacific,32000,cgn_direct
@@ -1751,6 +1752,7 @@ Tyndall,MANITOBA,50.08278,-96.65833,15,1,14,1920,1943,Lake Of The Woods Milling 
 Windygates,MANITOBA,49.00056,-98.36472,15,3,14,1917,1943,Wiley Low & Co Ltd,Canadian Pacific,40000,cgn_direct
 Bield,MANITOBA,51.22111,-101.15389,15,2,14,1919,1943,Manitoba Pool Elevators Ltd,Canadian National Rys,30000,cgn_direct
 Roseisle,MANITOBA,49.5,-98.34417,15,1,13,1921,1943,N M Paterson & Co Ltd,Canadian National Rys,30000,cgn_direct
+Wassewa,MANITOBA,49.5167,-99.6833,15,3,14,1916,1941,Dominion Elevator Co Ltd,Canadian National Rys,30000,ocr_variant
 Diana Siding,SASKATCHEWAN,50.13392,-104.79919,15,4,10,1915,1925,Malden Elevator Co Ltd,Canadian Pacific,30000,agent_high
 Holder,SASKATCHEWAN,51.43497,-106.20505,15,2,8,1916,1924,British America Elevator Co Ltd,Canadian Northern Ry Co,30000,lynch_map_interp
 Cavendish,ALBERTA,50.81556,-110.45528,15,4,13,1917,1930,Victoria Elevator Co Ltd,Canadian Pacific,35000,cgn_direct
