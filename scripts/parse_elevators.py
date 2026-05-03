@@ -69,6 +69,12 @@ def iter_blocks(md: str):
     # Allow heading after start-of-line OR after `>` (for </table>## X cases)
     head_pat = re.compile(r"(?:^|(?<=>))(#{1,5})\s+(.+?)\s*$", re.MULTILINE)
     bold_pat = re.compile(r"\*\*([^*]+?)\*\*")
+    # OCR fused a page-number prefix onto some province headings, e.g.
+    #   "5.....# LIST OF LICENSED ELEVATORS AND WAREHOUSES IN THE PROVINCE OF SASKATCHEWAN"
+    # Detect "PROVINCE OF X" in any line as a fallback heading.
+    inline_prov_pat = re.compile(
+        r"PROVINCE OF\s+(" + "|".join(PROVINCES) + r")\b", re.I,
+    )
 
     table_spans = [(m.start(), m.end()) for m in table_pat.finditer(md)]
 
@@ -89,6 +95,11 @@ def iter_blocks(md: str):
     for m in RUNHEAD_RE.finditer(md):
         if not in_table(m.start()):
             events.append((m.start(), "runhead", (m.group(1), m.group(2))))
+    # Inline "PROVINCE OF X" fallback for OCR-mangled headings
+    for m in inline_prov_pat.finditer(md):
+        if not in_table(m.start()):
+            events.append((m.start(), "heading",
+                           f"PROVINCE OF {m.group(1).upper()}"))
 
     events.sort()
     for _, kind, text in events:
