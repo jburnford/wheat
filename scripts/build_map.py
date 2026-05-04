@@ -191,6 +191,10 @@ def build_folium(stations, rails):
         <div style="margin-top:6px;font-size:11px;color:#555">
         Marker size ∝ number of license-year appearances.<br>
         Grey lines: historical railways (1836-1922).</div>
+        <div style="margin-top:8px;padding-top:8px;border-top:1px solid #ddd;">
+            <a href="timeline.html" style="color:#1976d2;text-decoration:none;font-weight:bold;">
+                Timeline view (capacity by year) →</a>
+        </div>
     </div>"""
     m.get_root().html.add_child(folium.Element(legend_html))
     # Force viewport sizing so the map fills the page regardless of host CSS

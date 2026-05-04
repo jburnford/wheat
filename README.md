@@ -17,8 +17,9 @@ Geocoded inventory of grain elevators across Manitoba, Saskatchewan, Alberta, BC
 
 ## Visualization
 
-- **`docs/overview.png`** — static prairie-wide overview (above)
-- **`docs/index.html`** — interactive Leaflet map with rail lines + clickable elevator markers (clone repo and open locally, or host via GitHub Pages)
+- **`docs/index.html`** — interactive Leaflet map showing **all stations colored by coord-source provenance**, with rail lines and clickable elevator markers
+- **`docs/timeline.html`** — interactive timeline map with **year slider (1911-1943)** showing **total capacity at each station for the selected year**; marker size scales with capacity, color-coded by capacity tier
+- **`docs/overview.png`** — static prairie-wide overview (used in README above)
 - **`docs/stations.geojson`** — auto-rendered by GitHub if you click it: <https://github.com/jburnford/wheat/blob/main/docs/stations.geojson>
 - **`docs/rail_lines.geojson`** — historical Canadian railway network (1836-1922) reprojected from NRCan's *HR_rails_NEW* shapefile
 
