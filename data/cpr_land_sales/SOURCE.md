@@ -53,3 +53,29 @@ point per quarter-section.
 
 Re-download with `scripts/download_cpr_gis.py` (pages the service in 2,000-record
 batches).
+
+## GIS / quarter-section grid polygons
+
+`cpr_land_sales_grid.geojson` is the `CPRLandSales_GRID` polygon layer (MapServer
+layer 2) — the Dominion Land Survey **quarter-section** cells the sale points sit
+in. (Layers 3/6/7/10 are identical render-scale copies of the same data.)
+
+| | |
+|---|---|
+| Features | 67,166 quarter-section polygons |
+| CRS | EPSG:4326 (WGS84) |
+| Extent | lon -116.08 .. -96.91, lat 49.00 .. 54.24 |
+| Granularity | quarter-section (`QS` = NE/NW/SE/SW) |
+| Attributes | `OBJECTID, QS, SEC, TWP, RGE, MER, LLD, Dup, Extent, Province` |
+
+**Province coverage:** all three prairie provinces are present, but the
+`Province` attribute is only populated for SK (others are null). Province is
+derivable from the meridian (`MER`): `E1`/`W1` → Manitoba, `W2`/`W3` →
+Saskatchewan, `W4`/`W5` → Alberta.
+
+| MER | E1 | W1 | W2 | W3 | W4 | W5 |
+|---|---|---|---|---|---|---|
+| polygons | 65 | 12,918 | 13,787 | 7,889 | 28,629 | 3,878 |
+
+Re-download with `scripts/download_cpr_gis.py --layer 2 --out
+data/cpr_land_sales/cpr_land_sales_grid.geojson`.

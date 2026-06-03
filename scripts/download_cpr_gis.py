@@ -16,15 +16,17 @@ from pathlib import Path
 
 import requests
 
-LAYER = (
+SERVICE = (
     "https://sands.ucalgary.ca/arcgis/rest/services/"
-    "App_CPRLandSales/CPRLandSales_v1_Map_Public/MapServer/1"
+    "App_CPRLandSales/CPRLandSales_v1_Map_Public/MapServer"
 )
+# Layer 1 = sale points; layer 2 = quarter-section grid polygons. (Layers 3/6/7/
+# 10 are identical render-scale copies of the grid, so only layer 2 is needed.)
 
 
-def count(session: requests.Session) -> int:
+def count(session: requests.Session, layer: int) -> int:
     r = session.get(
-        f"{LAYER}/query",
+        f"{SERVICE}/{layer}/query",
         params={"where": "1=1", "returnCountOnly": "true", "f": "json"},
         timeout=60,
     )
@@ -32,7 +34,7 @@ def count(session: requests.Session) -> int:
     return r.json()["count"]
 
 
-def fetch_page(session: requests.Session, offset: int, page: int) -> list[dict]:
+def fetch_page(session: requests.Session, layer: int, offset: int, page: int) -> list[dict]:
     params = {
         "where": "1=1",
         "outFields": "*",
@@ -42,13 +44,15 @@ def fetch_page(session: requests.Session, offset: int, page: int) -> list[dict]:
         "resultRecordCount": page,
         "orderByFields": "OBJECTID",
     }
-    r = session.get(f"{LAYER}/query", params=params, timeout=120)
+    r = session.get(f"{SERVICE}/{layer}/query", params=params, timeout=120)
     r.raise_for_status()
     return r.json().get("features", [])
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--layer", type=int, default=1,
+                    help="MapServer layer id: 1=sale points, 2=quarter-section grid")
     ap.add_argument("--out", type=Path,
                     default=Path("data/cpr_land_sales/cpr_land_sales_points.geojson"))
     ap.add_argument("--page", type=int, default=2000)
@@ -56,13 +60,13 @@ def main() -> int:
     args = ap.parse_args()
 
     session = requests.Session()
-    total = count(session)
-    print(f"Service reports {total} features; paging by {args.page}", flush=True)
+    total = count(session, args.layer)
+    print(f"Layer {args.layer} reports {total} features; paging by {args.page}", flush=True)
 
     features: list[dict] = []
     offset = 0
     while offset < total:
-        page = fetch_page(session, offset, args.page)
+        page = fetch_page(session, args.layer, offset, args.page)
         if not page:
             print(f"  empty page at offset {offset}; stopping", flush=True)
             break
