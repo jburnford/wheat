@@ -17,6 +17,7 @@ cgndb/
 geonames/
 
 # Intermediate / scratch
+docs/cpr_qs_sales.geojson
 __pycache__/
 *.pyc
 *.pyo
@@ -29,3 +30,5 @@ tables/elevators_final.csv
 tables/unmatched_candidates.csv
 tables/unmatched_stations.csv
 tables/web_lookup_queue.csv
+data/cpr_land_sales/dls_anchors.csv
+docs/homesteads_qs.geojson

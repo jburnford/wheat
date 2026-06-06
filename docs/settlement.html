@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Settling the Prairies — CPR sales & homesteads, 1879–1935</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
+  <style>
+    html, body { height:100%; margin:0; font-family: system-ui, sans-serif; }
+    #map { position:absolute; top:0; left:0; right:0; bottom:88px; }
+    #controls { position:absolute; bottom:0; left:0; right:0; height:88px;
+                background:#fff; box-shadow:0 -2px 8px rgba(0,0,0,.15);
+                display:flex; align-items:center; gap:16px; padding:0 20px;
+                box-sizing:border-box; z-index:5; }
+    #year { font-size:30px; font-weight:700; color:#222; min-width:64px; }
+    #slider { flex:1; }
+    #play { padding:8px 18px; background:#2c3e50; color:#fff; border:none;
+            border-radius:5px; cursor:pointer; font-size:15px; }
+    #play:hover { background:#3b5168; }
+    #stats { font-size:12.5px; color:#444; min-width:300px; line-height:1.5; text-align:right; }
+    .panel { position:absolute; background:#fff; border:1px solid #cfcfcf;
+             border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.18); font-size:12.5px; }
+    #legend { top:12px; right:12px; padding:11px 13px; max-width:225px; }
+    #title  { top:12px; left:12px; padding:11px 14px; max-width:335px; }
+    #title h1 { margin:0 0 4px; font-size:16px; }
+    #title p  { margin:0; color:#555; font-size:12px; line-height:1.45; }
+    #title p.credits { margin-top:7px; padding-top:7px; border-top:1px solid #e3e3e3;
+                       font-size:10.5px; color:#777; }
+    .row { display:flex; align-items:center; gap:7px; margin:3px 0; }
+    .sw  { width:15px; height:13px; border-radius:2px; flex:none; }
+    label.toggle { display:flex; align-items:center; gap:6px; margin:4px 0; cursor:pointer; font-weight:600; }
+    .sub { margin-left:4px; }
+    .muted { color:#888; font-size:11px; }
+    hr { border:none; border-top:1px solid #e3e3e3; margin:8px 0; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <div id="title" class="panel">
+    <h1>Settling the prairies, 1879–1935</h1>
+    <p>The Dominion Land Survey checkerboard: <b>CPR land sales</b> (odd sections,
+       shaded by price/acre) interlock with <b>homestead entries</b> (even sections,
+       shaded by settlement year), with the <b>railway network</b> growing year by
+       year. Zoom out for township totals; zoom in for quarter sections. Scrub the
+       years to watch the prairie fill in.</p>
+    <p class="credits"><b>Data:</b> CPR land sales — University of Calgary Archives ·
+       Homestead records — David Allan, Jim Clifford &amp; Cheryl Troupe, HGIS Lab,
+       University of Saskatchewan · Railways — University of Toronto. Quarter-section
+       geometry is an open reconstruction of the public DLS survey grid.</p>
+  </div>
+
+  <div id="legend" class="panel">
+    <label class="toggle"><input type="checkbox" id="t-cpr" checked> CPR price/acre</label>
+    <div id="ramp-cpr" class="sub"></div>
+    <hr/>
+    <label class="toggle"><input type="checkbox" id="t-home" checked> Homestead entry</label>
+    <div id="ramp-home" class="sub"></div>
+    <hr/>
+    <label class="toggle"><input type="checkbox" id="t-rail" checked>
+      <span class="sw" style="background:#2b2b2b;height:3px;border-radius:1px"></span> Railways</label>
+    <div class="muted" style="margin-top:7px;">Zoom-out circle size ∝ parcels to date.
+      Open grid reconstructed from the public DLS survey fabric.</div>
+  </div>
+
+  <div id="controls">
+    <button id="play">▶ Play</button>
+    <input type="range" id="slider" min="1879" max="1935" step="1" value="1879" />
+    <div id="year">1879</div>
+    <div id="stats"></div>
+  </div>
+
+<script>
+const YEAR_MIN = 1870, YEAR_MAX = 1935;     // homestead arrays indexed from 1870
+const T_MIN = 1879, T_MAX = 1935;           // slider span
+let curYear = T_MIN;
+
+// ---- CPR price/acre ramp (reds) --------------------------------------------
+const CPR_BREAKS = [
+  {upto:2.5,c:'#fee5d9',l:'≤ $2.50'},{upto:4,c:'#fcbba1',l:'$2.50–4'},
+  {upto:6,c:'#fc9272',l:'$4–6'},{upto:10,c:'#fb6a4a',l:'$6–10'},
+  {upto:15,c:'#de2d26',l:'$10–15'},{upto:1e9,c:'#a50f15',l:'> $15'}];
+const CPR_NOPRICE = '#cccccc';
+function cprColor(input){
+  const e=['step',input,CPR_NOPRICE]; e.push(0,CPR_BREAKS[0].c);
+  for(let i=0;i<CPR_BREAKS.length-1;i++) e.push(CPR_BREAKS[i].upto,CPR_BREAKS[i+1].c);
+  return e;
+}
+// ---- homestead settlement-year ramp (blues) --------------------------------
+const HOME_BREAKS = [
+  {upto:1885,c:'#c6dbef',l:'≤ 1885'},{upto:1890,c:'#9ecae1',l:'1886–90'},
+  {upto:1895,c:'#6baed6',l:'1891–95'},{upto:1900,c:'#4292c6',l:'1896–1900'},
+  {upto:1905,c:'#2171b5',l:'1901–05'},{upto:1910,c:'#08519c',l:'1906–10'},
+  {upto:9999,c:'#08306b',l:'> 1910'}];
+const HOME_UNDATED = '#d9d9d9';
+function homeYearColor(){
+  const e=['step',['get','y'],HOME_BREAKS[0].c];
+  for(let i=0;i<HOME_BREAKS.length-1;i++) e.push(HOME_BREAKS[i].upto,HOME_BREAKS[i+1].c);
+  return ['case',['!',['has','y']],HOME_UNDATED,e];
+}
+document.getElementById('ramp-cpr').innerHTML =
+  CPR_BREAKS.map(b=>`<div class="row"><span class="sw" style="background:${b.c}"></span>${b.l}/ac</div>`).join('')+
+  `<div class="row"><span class="sw" style="background:${CPR_NOPRICE}"></span>price n/a</div>`;
+document.getElementById('ramp-home').innerHTML =
+  HOME_BREAKS.map(b=>`<div class="row"><span class="sw" style="background:${b.c}"></span>${b.l}</div>`).join('')+
+  `<div class="row"><span class="sw" style="background:${HOME_UNDATED}"></span>claimed, undated</div>`;
+
+// ---- map --------------------------------------------------------------------
+const protocol = new pmtiles.Protocol();
+maplibregl.addProtocol('pmtiles', protocol.tile);
+const map = new maplibregl.Map({
+  container:'map', center:[-104.5,52.2], zoom:4.6, maxZoom:15,
+  style:{version:8, glyphs:'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
+    sources:{basemap:{type:'raster',
+      tiles:['https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+             'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'],
+      tileSize:256, attribution:'© OpenStreetMap, © CARTO | CPR sales: U Calgary Archives · '+
+        'Homesteads: Allan, Clifford &amp; Troupe, HGIS Lab, U Saskatchewan · Railways: U Toronto'}},
+    layers:[{id:'basemap',type:'raster',source:'basemap'}]}
+});
+map.addControl(new maplibregl.NavigationControl(),'bottom-right');
+window.map = map;
+
+function radius(arrName, year){
+  const idx = year - YEAR_MIN;
+  return ['interpolate',['linear'],['at',idx,['get',arrName]],
+          0,0, 1,2.5, 10,5, 50,9, 200,14, 800,22];
+}
+// rail segment visible if built by `year` and not yet abandoned (0 = never)
+function railFilter(year){
+  const built = ['case',['<=',['get','cnstrctd'],0],1800,['get','cnstrctd']];
+  return ['all', ['<=',built,year],
+          ['any',['==',['get','abndnd'],0],['>=',['get','abndnd'],year]]];
+}
+
+map.on('load', () => {
+  // CPR quarter sections (price) + homestead quarter sections (settlement year)
+  map.addSource('qs', {type:'vector', url:'pmtiles://cpr_qs.pmtiles'});
+  map.addSource('home', {type:'vector', url:'pmtiles://homesteads.pmtiles'});
+
+  map.addLayer({id:'home-fill', type:'fill', source:'home', 'source-layer':'homesteads',
+    minzoom:8, paint:{'fill-color':homeYearColor(),'fill-opacity':0.8,'fill-outline-color':'#08306b'},
+    filter:['any',['!',['has','y']],['<=',['get','y'],curYear]]});
+
+  map.addLayer({id:'qs-fill', type:'fill', source:'qs', 'source-layer':'qs',
+    minzoom:8, paint:{'fill-color':cprColor(['coalesce',['get','price'],-1]),
+    'fill-opacity':0.82,'fill-outline-color':'#7a1f1f'},
+    filter:['<=',['get','year'],curYear]});
+
+  // railways (built/abandoned over time)
+  map.addSource('rails',{type:'geojson',data:'rail_lines.geojson'});
+  map.addLayer({id:'rails', type:'line', source:'rails',
+    paint:{'line-color':'#2b2b2b',
+           'line-width':['interpolate',['linear'],['zoom'],4,0.6,8,1.4,12,2.6],
+           'line-opacity':0.85},
+    filter:railFilter(curYear)});
+
+  // township circles (zoomed out)
+  map.addSource('home-twp',{type:'geojson',data:'homesteads_townships.geojson'});
+  map.addLayer({id:'home-twp', type:'circle', source:'home-twp', maxzoom:9,
+    paint:{'circle-radius':radius('cum',curYear),'circle-color':'#2171b5','circle-opacity':0.7,
+           'circle-stroke-color':'#08306b','circle-stroke-width':0.4}});
+
+  map.addSource('cpr-twp',{type:'geojson',data:'settlement_townships.geojson'});
+  map.addLayer({id:'cpr-twp', type:'circle', source:'cpr-twp', maxzoom:9,
+    paint:{'circle-radius':radius('cum',curYear),'circle-color':'#cb3b2e','circle-opacity':0.7,
+           'circle-stroke-color':'#7a1f1f','circle-stroke-width':0.4}});
+
+  wire();
+  update(curYear);
+});
+
+function update(year){
+  curYear = year;
+  document.getElementById('year').textContent = year;
+  if(!map.getLayer('qs-fill')) return;
+  map.setFilter('qs-fill',['<=',['get','year'],year]);
+  map.setFilter('home-fill',['any',['!',['has','y']],['<=',['get','y'],year]]);
+  map.setFilter('rails',railFilter(year));
+  map.setPaintProperty('cpr-twp','circle-radius',radius('cum',year));
+  map.setPaintProperty('home-twp','circle-radius',radius('cum',year));
+  updateStats(year);
+}
+
+let cprTwp=null, homeTwp=null, railData=null;
+function updateStats(year){
+  const idx=year-YEAR_MIN;
+  let cpr=0, home=0, rail=0;
+  if(cprTwp) for(const f of cprTwp.features) cpr+=f.properties.cum[idx]||0;
+  if(homeTwp) for(const f of homeTwp.features) home+=f.properties.cum[idx]||0;
+  if(railData) for(const f of railData.features){
+    const c=f.properties.cnstrctd, a=f.properties.abndnd;
+    if((c<=0?1800:c)<=year && (a===0||a>=year)) rail++;
+  }
+  document.getElementById('stats').innerHTML =
+    '<b>'+cpr.toLocaleString()+'</b> CPR parcels &nbsp;·&nbsp; <b>'+
+    home.toLocaleString()+'</b> homesteads &nbsp;·&nbsp; <b>'+
+    rail.toLocaleString()+'</b> rail lines <span class="muted">to date</span>';
+}
+
+function wire(){
+  fetch('settlement_townships.geojson').then(r=>r.json()).then(d=>{cprTwp=d;updateStats(curYear);});
+  fetch('homesteads_townships.geojson').then(r=>r.json()).then(d=>{homeTwp=d;updateStats(curYear);});
+  fetch('rail_lines.geojson').then(r=>r.json()).then(d=>{railData=d;updateStats(curYear);});
+
+  map.on('click','qs-fill',e=>{const p=e.features[0].properties;
+    new maplibregl.Popup().setLngLat(e.lngLat).setHTML(
+      '<b>CPR sale — '+p.lld+'</b><br/>Sold: '+p.year+
+      '<br/>Price: '+(p.price!=null?'$'+p.price+'/acre':'n/a')+
+      '<br/>Purchaser: '+(p.purchaser||'—')).addTo(map);});
+  map.on('click','home-fill',e=>{const p=e.features[0].properties;
+    let extra = p.y? ('Entry: '+p.y+(p.py?' · Patent: '+p.py:'')) : 'Date unknown';
+    if(p.amb) extra+='<br/><i>multiple claimants — patentee uncertain</i>';
+    new maplibregl.Popup().setLngLat(e.lngLat).setHTML(
+      '<b>Homestead — '+p.lld+'</b><br/>'+extra+
+      '<br/>Claimant: '+(p.nm||'—')+(p.nn>1?' (+'+(p.nn-1)+' more)':'')).addTo(map);});
+  for(const id of ['qs-fill','home-fill']){
+    map.on('mouseenter',id,()=>map.getCanvas().style.cursor='pointer');
+    map.on('mouseleave',id,()=>map.getCanvas().style.cursor='');
+  }
+}
+
+// ---- controls ---------------------------------------------------------------
+const slider=document.getElementById('slider');
+slider.addEventListener('input',e=>update(parseInt(e.target.value)));
+let timer=null;
+document.getElementById('play').addEventListener('click',()=>{
+  const b=document.getElementById('play');
+  if(timer){clearInterval(timer);timer=null;b.textContent='▶ Play';return;}
+  b.textContent='⏸ Pause';
+  timer=setInterval(()=>{let v=parseInt(slider.value);v=v>=T_MAX?T_MIN:v+1;slider.value=v;update(v);},420);
+});
+document.getElementById('t-cpr').addEventListener('change',e=>{
+  const v=e.target.checked?'visible':'none';
+  ['qs-fill','cpr-twp'].forEach(l=>map.getLayer(l)&&map.setLayoutProperty(l,'visibility',v));});
+document.getElementById('t-home').addEventListener('change',e=>{
+  const v=e.target.checked?'visible':'none';
+  ['home-fill','home-twp'].forEach(l=>map.getLayer(l)&&map.setLayoutProperty(l,'visibility',v));});
+document.getElementById('t-rail').addEventListener('change',e=>{
+  map.getLayer('rails')&&map.setLayoutProperty('rails','visibility',e.target.checked?'visible':'none');});
+</script>
+</body>
+</html>

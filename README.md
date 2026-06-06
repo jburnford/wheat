@@ -17,6 +17,7 @@ Geocoded inventory of grain elevators across Manitoba, Saskatchewan, Alberta, BC
 
 ## Visualization
 
+- **`docs/settlement.html`** — **Prairie settlement checkerboard (1879-1935)** built with MapLibre GL. A year slider drives the interlocking Dominion Land Survey checkerboard: **CPR land sales** (odd sections, shaded by **price per acre**) and **homestead entries** (even sections, shaded by **settlement year**), plus the **railway network** growing/contracting by construction & abandonment year (`docs/rail_lines.geojson`). Zoom out for township totals (sized circles); zoom in to render **individual quarter sections** as polygons. Rebuild with `scripts/build_settlement.sh`. *Requires a range-request-capable host (GitHub Pages works; locally use `npx http-server docs`) because the quarter-section layers are served as PMTiles vector tiles.*
 - **`docs/index.html`** — interactive Leaflet map showing **all stations colored by coord-source provenance**, with rail lines and clickable elevator markers
 - **`docs/timeline.html`** — interactive timeline map with **year slider (1911-1943)** showing **total capacity at each station for the selected year**; marker size scales with capacity, color-coded by capacity tier
 - **`docs/overview.png`** — static prairie-wide overview (used in README above)
@@ -60,6 +61,23 @@ Scripts in `scripts/` form a reproducible pipeline:
 - **`tables/rail_lines.jsonl`** — 198 ordered rail-line station sequences extracted from the 1933 Lynch elevator map
 - **`tables/ghost_towns_sk.csv`** — Wikipedia's SK ghost-town list with coords (parsed locally)
 - **`docs/elevator_ops_summary.csv`** — Per-station summary with first/last year, top operator, max capacity
+
+## Settlement-map data credits
+
+The **`docs/settlement.html`** map combines three datasets, with deep thanks to
+their creators:
+
+- **CPR land sales** — **University of Calgary Archives** (geocoded catalogue, via
+  Borealis `doi:10.5683/SP3/JVTACU`, CC0).
+- **Homestead records** — **David Allan, Jim Clifford & Cheryl Troupe**, *Historical
+  GIS (HGIS) Lab, University of Saskatchewan* (`W1/W2/W3` quarter-section transcriptions).
+- **Railways** — *"Historical Canadian Railroads,"* **Cartography Office, Geography
+  Department, University of Toronto** (2020), Borealis `doi:10.5683/SP2/UCCFVQ`,
+  CC BY-NC-SA 4.0.
+- **Quarter-section geometry** — an **open reconstruction** of the public Dominion
+  Land Survey grid, calibrated from sparse public anchors (see
+  [`data/homesteads/SOURCE.md`](data/homesteads/SOURCE.md)); no proprietary survey
+  polygons are redistributed.
 
 ## Sources
 
