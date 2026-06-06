@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Settling the Prairies — CPR sales & homesteads, 1879–1935</title>
+  <title>Settling Saskatchewan 1879–1935 (work in progress)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
   <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
@@ -28,6 +28,10 @@
     #title p  { margin:0; color:#555; font-size:12px; line-height:1.45; }
     #title p.credits { margin-top:7px; padding-top:7px; border-top:1px solid #e3e3e3;
                        font-size:10.5px; color:#777; }
+    .wip { font-size:10px; font-weight:700; color:#fff; background:#c0392b;
+           padding:2px 6px; border-radius:3px; vertical-align:middle; letter-spacing:.04em; }
+    #title p.wipnote { margin-top:6px; font-size:11px; color:#8a4b00; background:#fff6e6;
+                       border:1px solid #f0c277; border-radius:4px; padding:6px 8px; line-height:1.4; }
     .row { display:flex; align-items:center; gap:7px; margin:3px 0; }
     .sw  { width:15px; height:13px; border-radius:2px; flex:none; }
     label.toggle { display:flex; align-items:center; gap:6px; margin:4px 0; cursor:pointer; font-weight:600; }
@@ -40,16 +44,21 @@
   <div id="map"></div>
 
   <div id="title" class="panel">
-    <h1>Settling the prairies, 1879–1935</h1>
+    <h1>Settling Saskatchewan, 1879–1935 <span class="wip">WORK IN PROGRESS</span></h1>
     <p>The Dominion Land Survey checkerboard: <b>CPR land sales</b> (odd sections,
        shaded by price/acre) interlock with <b>homestead entries</b> (even sections,
-       shaded by settlement year), with the <b>railway network</b> growing year by
-       year. Zoom out for township totals; zoom in for quarter sections. Scrub the
-       years to watch the prairie fill in.</p>
-    <p class="credits"><b>Data:</b> CPR land sales — University of Calgary Archives ·
-       Homestead records — David Allan, Jim Clifford &amp; Cheryl Troupe, HGIS Lab,
-       University of Saskatchewan · Railways — University of Toronto. Quarter-section
-       geometry is an open reconstruction of the public DLS survey grid.</p>
+       shaded by settlement year) and surrendered <b>First Nations reserve</b> land,
+       with the <b>railway network</b> growing year by year. Zoom in for individual
+       quarter sections; scrub the years to watch the province fill in.</p>
+    <p class="wipnote">⚠ <b>Work in progress.</b> Much data entry remains — homestead,
+       reserve and Métis coverage is <b>incomplete and being added to</b>. Treat
+       gaps as "not yet transcribed," not "nothing there."</p>
+    <p class="credits"><b>Data (all work in progress):</b> CPR land sales — University
+       of Calgary Archives · Homestead records — David Allan, Jim Clifford &amp; Cheryl
+       Troupe · Reserves &amp; Métis communities — Ashley Rabbitskin, Julian Rioux,
+       Jim Clifford &amp; Cheryl Troupe (HGIS Lab, University of Saskatchewan) ·
+       Railways — University of Toronto. Quarter-section geometry is an open
+       reconstruction of the public DLS survey grid.</p>
   </div>
 
   <div id="legend" class="panel">
@@ -61,7 +70,16 @@
     <hr/>
     <label class="toggle"><input type="checkbox" id="t-rail" checked>
       <span class="sw" style="background:#2b2b2b;height:3px;border-radius:1px"></span> Railways</label>
-    <div class="muted" style="margin-top:7px;">Zoom-out circle size ∝ parcels to date.
+    <hr/>
+    <label class="toggle"><input type="checkbox" id="t-reserve" checked> Reserves</label>
+    <div class="sub">
+      <div class="row"><span class="sw" style="background:#41ab5d;opacity:.5"></span>reserve (initial)</div>
+      <div class="row"><span class="sw" style="background:#dd3497;opacity:.7"></span>surrendered (by year)</div>
+      <div class="row"><span class="sw" style="background:#f16913;height:3px;border-radius:1px"></span>1921 boundary change</div>
+    </div>
+    <label class="toggle" style="margin-top:5px;"><input type="checkbox" id="t-metis" checked>
+      <span class="dot" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#e08214;border:1px solid #5c3a0a"></span> Métis communities</label>
+    <div class="muted" style="margin-top:7px;">Quarter sections at every zoom — colour shows the settled extent zoomed out, full detail zoomed in.
       Open grid reconstructed from the public DLS survey fabric.</div>
   </div>
 
@@ -111,23 +129,20 @@ document.getElementById('ramp-home').innerHTML =
 const protocol = new pmtiles.Protocol();
 maplibregl.addProtocol('pmtiles', protocol.tile);
 const map = new maplibregl.Map({
-  container:'map', center:[-104.5,52.2], zoom:4.6, maxZoom:15,
+  container:'map', center:[-106.0,52.3], zoom:5.3, minZoom:4.5, maxZoom:15,
+  maxBounds:[[-112,48.4],[-99.5,56.8]],   // Saskatchewan
   style:{version:8, glyphs:'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
     sources:{basemap:{type:'raster',
       tiles:['https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
              'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'],
-      tileSize:256, attribution:'© OpenStreetMap, © CARTO | CPR sales: U Calgary Archives · '+
-        'Homesteads: Allan, Clifford &amp; Troupe, HGIS Lab, U Saskatchewan · Railways: U Toronto'}},
+      tileSize:256, attribution:'© OpenStreetMap, © CARTO | WORK IN PROGRESS · '+
+        'CPR: U Calgary Archives · Homesteads: Allan, Clifford &amp; Troupe · '+
+        'Reserves/Métis: Rabbitskin, Rioux, Clifford &amp; Troupe (HGIS Lab, U Sask) · Railways: U Toronto'}},
     layers:[{id:'basemap',type:'raster',source:'basemap'}]}
 });
 map.addControl(new maplibregl.NavigationControl(),'bottom-right');
 window.map = map;
 
-function radius(arrName, year){
-  const idx = year - YEAR_MIN;
-  return ['interpolate',['linear'],['at',idx,['get',arrName]],
-          0,0, 1,2.5, 10,5, 50,9, 200,14, 800,22];
-}
 // rail segment visible if built by `year` and not yet abandoned (0 = never)
 function railFilter(year){
   const built = ['case',['<=',['get','cnstrctd'],0],1800,['get','cnstrctd']];
@@ -135,18 +150,39 @@ function railFilter(year){
           ['any',['==',['get','abndnd'],0],['>=',['get','abndnd'],year]]];
 }
 
+// reserve land surrendered by `year` (YEAR_SURR < 0 = year unknown, show always)
+function surrFilter(year){
+  return ['any',['<',['get','YEAR_SURR'],0],['<=',['get','YEAR_SURR'],year]];
+}
+
 map.on('load', () => {
+  // First Nations reserves drawn first (context, beneath the land-parcel carpet)
+  map.addSource('res',{type:'geojson',data:'reserves_initial.geojson'});
+  map.addSource('reschg',{type:'geojson',data:'reserve_changes_1921.geojson'});
+  map.addSource('ressur',{type:'geojson',data:'reserve_surrenders.geojson'});
+  map.addSource('metis',{type:'geojson',data:'metis_communities.geojson'});
+
+  map.addLayer({id:'res-fill', type:'fill', source:'res',
+    paint:{'fill-color':'#41ab5d','fill-opacity':0.28,'fill-outline-color':'#006d2c'}});
+  map.addLayer({id:'res-chg', type:'line', source:'reschg',
+    paint:{'line-color':'#f16913','line-width':1.3,'line-opacity':0.9}});
+  map.addLayer({id:'res-sur', type:'fill', source:'ressur',
+    paint:{'fill-color':'#dd3497','fill-opacity':0.55,'fill-outline-color':'#7a0177'},
+    filter:surrFilter(curYear)});
+
   // CPR quarter sections (price) + homestead quarter sections (settlement year)
   map.addSource('qs', {type:'vector', url:'pmtiles://cpr_qs.pmtiles'});
   map.addSource('home', {type:'vector', url:'pmtiles://homesteads.pmtiles'});
 
+  // quarter sections at every zoom — thin/outline at overview, full detail zoomed in
   map.addLayer({id:'home-fill', type:'fill', source:'home', 'source-layer':'homesteads',
-    minzoom:8, paint:{'fill-color':homeYearColor(),'fill-opacity':0.8,'fill-outline-color':'#08306b'},
+    paint:{'fill-color':homeYearColor(),'fill-opacity':0.8,
+           'fill-outline-color':['interpolate',['linear'],['zoom'],9,'rgba(8,48,107,0)',11,'#08306b']},
     filter:['any',['!',['has','y']],['<=',['get','y'],curYear]]});
 
   map.addLayer({id:'qs-fill', type:'fill', source:'qs', 'source-layer':'qs',
-    minzoom:8, paint:{'fill-color':cprColor(['coalesce',['get','price'],-1]),
-    'fill-opacity':0.82,'fill-outline-color':'#7a1f1f'},
+    paint:{'fill-color':cprColor(['coalesce',['get','price'],-1]),'fill-opacity':0.85,
+           'fill-outline-color':['interpolate',['linear'],['zoom'],9,'rgba(122,31,31,0)',11,'#7a1f1f']},
     filter:['<=',['get','year'],curYear]});
 
   // railways (built/abandoned over time)
@@ -157,16 +193,11 @@ map.on('load', () => {
            'line-opacity':0.85},
     filter:railFilter(curYear)});
 
-  // township circles (zoomed out)
-  map.addSource('home-twp',{type:'geojson',data:'homesteads_townships.geojson'});
-  map.addLayer({id:'home-twp', type:'circle', source:'home-twp', maxzoom:9,
-    paint:{'circle-radius':radius('cum',curYear),'circle-color':'#2171b5','circle-opacity':0.7,
-           'circle-stroke-color':'#08306b','circle-stroke-width':0.4}});
-
-  map.addSource('cpr-twp',{type:'geojson',data:'settlement_townships.geojson'});
-  map.addLayer({id:'cpr-twp', type:'circle', source:'cpr-twp', maxzoom:9,
-    paint:{'circle-radius':radius('cum',curYear),'circle-color':'#cb3b2e','circle-opacity':0.7,
-           'circle-stroke-color':'#7a1f1f','circle-stroke-width':0.4}});
+  // Métis communities on top
+  map.addLayer({id:'metis', type:'circle', source:'metis',
+    paint:{'circle-radius':['interpolate',['linear'],['zoom'],5,3,11,6.5],
+           'circle-color':'#e08214','circle-stroke-color':'#5c3a0a',
+           'circle-stroke-width':1,'circle-opacity':0.95}});
 
   wire();
   update(curYear);
@@ -179,31 +210,52 @@ function update(year){
   map.setFilter('qs-fill',['<=',['get','year'],year]);
   map.setFilter('home-fill',['any',['!',['has','y']],['<=',['get','y'],year]]);
   map.setFilter('rails',railFilter(year));
-  map.setPaintProperty('cpr-twp','circle-radius',radius('cum',year));
-  map.setPaintProperty('home-twp','circle-radius',radius('cum',year));
+  map.setFilter('res-sur',surrFilter(year));
   updateStats(year);
 }
 
-let cprTwp=null, homeTwp=null, railData=null;
+let cprTwp=null, homeTwp=null, railData=null, surrData=null;
 function updateStats(year){
   const idx=year-YEAR_MIN;
-  let cpr=0, home=0, rail=0;
+  let cpr=0, home=0, rail=0, surA=0;
   if(cprTwp) for(const f of cprTwp.features) cpr+=f.properties.cum[idx]||0;
   if(homeTwp) for(const f of homeTwp.features) home+=f.properties.cum[idx]||0;
   if(railData) for(const f of railData.features){
     const c=f.properties.cnstrctd, a=f.properties.abndnd;
     if((c<=0?1800:c)<=year && (a===0||a>=year)) rail++;
   }
+  if(surrData) for(const f of surrData.features){
+    const y=f.properties.YEAR_SURR;
+    if(y<0||y<=year) surA+=f.properties.ACRES_SURR||0;
+  }
   document.getElementById('stats').innerHTML =
     '<b>'+cpr.toLocaleString()+'</b> CPR parcels &nbsp;·&nbsp; <b>'+
     home.toLocaleString()+'</b> homesteads &nbsp;·&nbsp; <b>'+
-    rail.toLocaleString()+'</b> rail lines <span class="muted">to date</span>';
+    rail.toLocaleString()+'</b> rail lines<br/><span class="muted">'+
+    Math.round(surA).toLocaleString()+' acres of reserve surrendered to date</span>';
 }
 
 function wire(){
   fetch('settlement_townships.geojson').then(r=>r.json()).then(d=>{cprTwp=d;updateStats(curYear);});
   fetch('homesteads_townships.geojson').then(r=>r.json()).then(d=>{homeTwp=d;updateStats(curYear);});
   fetch('rail_lines.geojson').then(r=>r.json()).then(d=>{railData=d;updateStats(curYear);});
+  fetch('reserve_surrenders.geojson').then(r=>r.json()).then(d=>{surrData=d;updateStats(curYear);});
+
+  map.on('click','res-sur',e=>{const p=e.features[0].properties;
+    new maplibregl.Popup().setLngLat(e.lngLat).setHTML(
+      '<b>Reserve surrender — '+(p.RSRVE_NAME||p.RSRV_NAME||'')+'</b>'+
+      (p.GRRD_CD_NA?'<br/>'+p.GRRD_CD_NA:'')+
+      '<br/>Surrendered: '+(p.YEAR_SURR>0?p.YEAR_SURR:'year unknown')+
+      (p.ACRES_SURR?' · '+Math.round(p.ACRES_SURR).toLocaleString()+' acres':'')+
+      (p.TREATY_LOC?'<br/>'+p.TREATY_LOC:'')+
+      (p.Notes?'<br/><span style="font-size:11px;color:#555">'+p.Notes+'</span>':'')).addTo(map);});
+  map.on('click','res-fill',e=>{const p=e.features[0].properties;
+    new maplibregl.Popup().setLngLat(e.lngLat).setHTML(
+      '<b>First Nations reserve</b>'+(p.UNIQUE_ID?'<br/>'+p.UNIQUE_ID:'')).addTo(map);});
+  map.on('click','metis',e=>{const p=e.features[0].properties;
+    new maplibregl.Popup().setLngLat(e.lngLat).setHTML('<b>Métis community</b><br/>'+(p.Name||'')).addTo(map);});
+  for(const id of ['res-sur','res-fill','metis'])
+    map.on('mouseenter',id,()=>map.getCanvas().style.cursor='pointer');
 
   map.on('click','qs-fill',e=>{const p=e.features[0].properties;
     new maplibregl.Popup().setLngLat(e.lngLat).setHTML(
@@ -233,11 +285,14 @@ document.getElementById('play').addEventListener('click',()=>{
   timer=setInterval(()=>{let v=parseInt(slider.value);v=v>=T_MAX?T_MIN:v+1;slider.value=v;update(v);},420);
 });
 document.getElementById('t-cpr').addEventListener('change',e=>{
-  const v=e.target.checked?'visible':'none';
-  ['qs-fill','cpr-twp'].forEach(l=>map.getLayer(l)&&map.setLayoutProperty(l,'visibility',v));});
+  map.getLayer('qs-fill')&&map.setLayoutProperty('qs-fill','visibility',e.target.checked?'visible':'none');});
 document.getElementById('t-home').addEventListener('change',e=>{
+  map.getLayer('home-fill')&&map.setLayoutProperty('home-fill','visibility',e.target.checked?'visible':'none');});
+document.getElementById('t-reserve').addEventListener('change',e=>{
   const v=e.target.checked?'visible':'none';
-  ['home-fill','home-twp'].forEach(l=>map.getLayer(l)&&map.setLayoutProperty(l,'visibility',v));});
+  ['res-fill','res-chg','res-sur'].forEach(l=>map.getLayer(l)&&map.setLayoutProperty(l,'visibility',v));});
+document.getElementById('t-metis').addEventListener('change',e=>{
+  map.getLayer('metis')&&map.setLayoutProperty('metis','visibility',e.target.checked?'visible':'none');});
 document.getElementById('t-rail').addEventListener('change',e=>{
   map.getLayer('rails')&&map.setLayoutProperty('rails','visibility',e.target.checked?'visible':'none');});
 </script>

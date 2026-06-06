@@ -85,6 +85,8 @@ def main():
 
     for f in pts:
         p = f["properties"]
+        if p.get("Province") != "SK":     # Saskatchewan-only map
+            continue
         y = sale_year(p)
         price = price_per_acre(p)
         lon, lat = f["geometry"]["coordinates"]

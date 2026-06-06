@@ -62,15 +62,20 @@ Scripts in `scripts/` form a reproducible pipeline:
 - **`tables/ghost_towns_sk.csv`** — Wikipedia's SK ghost-town list with coords (parsed locally)
 - **`docs/elevator_ops_summary.csv`** — Per-station summary with first/last year, top operator, max capacity
 
-## Settlement-map data credits
+## Settlement map (`docs/settlement.html`)
 
-The **`docs/settlement.html`** map combines three datasets, with deep thanks to
-their creators:
+> ⚠️ **Work in progress.** This is a Saskatchewan-focused settlement map under
+> active construction. Much homestead, reserve, and Métis data entry remains, so
+> coverage is **incomplete** — gaps mean "not yet transcribed," not "nothing there."
+
+Data credits, with deep thanks to their creators:
 
 - **CPR land sales** — **University of Calgary Archives** (geocoded catalogue, via
   Borealis `doi:10.5683/SP3/JVTACU`, CC0).
 - **Homestead records** — **David Allan, Jim Clifford & Cheryl Troupe**, *Historical
   GIS (HGIS) Lab, University of Saskatchewan* (`W1/W2/W3` quarter-section transcriptions).
+- **First Nations reserves, surrenders & Métis communities** — **Ashley Rabbitskin,
+  Julian Rioux, Jim Clifford & Cheryl Troupe**, *HGIS Lab, University of Saskatchewan*.
 - **Railways** — *"Historical Canadian Railroads,"* **Cartography Office, Geography
   Department, University of Toronto** (2020), Borealis `doi:10.5683/SP2/UCCFVQ`,
   CC BY-NC-SA 4.0.

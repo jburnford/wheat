@@ -10,10 +10,12 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 # ---- CPR land sales --------------------------------------------------------
-python3 scripts/build_settlement.py
+python3 scripts/build_settlement.py   # Saskatchewan only (Province==SK)
 echo "Tiling CPR quarter sections -> docs/cpr_qs.pmtiles ..."
+# minzoom 4 so quarter sections render at the SK overview too (no circles);
+# --drop-densest-as-needed thins sub-pixel cells at low zoom into a density carpet
 tippecanoe -o docs/cpr_qs.pmtiles --layer=qs \
-  --minimum-zoom=8 --maximum-zoom=14 --no-tile-size-limit --no-feature-limit \
+  --minimum-zoom=4 --maximum-zoom=13 --drop-densest-as-needed --no-feature-limit \
   --force docs/cpr_qs_sales.geojson
 rm -f docs/cpr_qs_sales.geojson   # gitignored intermediate
 
@@ -24,10 +26,10 @@ if [ ! -f data/cpr_land_sales/dls_anchors.csv ]; then
 fi
 python3 scripts/build_homesteads.py
 echo "Tiling homestead quarter sections -> docs/homesteads.pmtiles ..."
-# maxzoom 13 keeps the file well under GitHub's 100 MB cap (quarter sections are
-# still clearly visible/clickable; the map over-zooms cleanly to z15)
+# minzoom 4 (render at overview) .. maxzoom 13 (under GitHub's 100 MB cap; the map
+# over-zooms cleanly to z15); --drop-densest-as-needed thins low-zoom cells
 tippecanoe -o docs/homesteads.pmtiles --layer=homesteads \
-  --minimum-zoom=8 --maximum-zoom=13 --no-tile-size-limit --no-feature-limit \
+  --minimum-zoom=4 --maximum-zoom=13 --drop-densest-as-needed --no-feature-limit \
   --force docs/homesteads_qs.geojson
 rm -f docs/homesteads_qs.geojson   # gitignored intermediate
 
