@@ -145,6 +145,21 @@ function homeColor(){
   e.push(HOME_PRESUMED);          // no type entered yet -> presumed homestead
   return e;
 }
+// "homestead category" = confirmed homestead (grp H) or untyped register cells
+// (presumed homestead). Only these carry the green base.
+const IS_HOME = ['any',['!',['has','grp']],['==',['get','grp'],'H']];
+
+// Homestead cells are base register data: light green until their patent/entry
+// date arrives, then their homestead colour. Other tenure types (sale, school,
+// railway, CPR, HBC, scrip) keep their own colour and only appear at their date.
+function homeColorByYear(year){
+  return ['case',
+    ['all',IS_HOME,['has','y'],['>',['get','y'],year]], HOME_PRESUMED,
+    homeColor()];
+}
+function homeFilter(year){
+  return ['any', IS_HOME, ['!',['has','y']], ['<=',['get','y'],year]];
+}
 document.getElementById('ramp-cpr').innerHTML =
   CPR_BREAKS.map(b=>`<div class="row"><span class="sw" style="background:${b.c}"></span>${b.l}/ac</div>`).join('')+
   `<div class="row"><span class="sw" style="background:${CPR_NOPRICE}"></span>price n/a</div>`;
@@ -213,9 +228,9 @@ map.on('load', () => {
 
   // quarter sections at every zoom — thin/outline at overview, full detail zoomed in
   map.addLayer({id:'home-fill', type:'fill', source:'home', 'source-layer':'homesteads',
-    paint:{'fill-color':homeColor(),'fill-opacity':0.8,
+    paint:{'fill-color':homeColorByYear(curYear),'fill-opacity':0.8,
            'fill-outline-color':['interpolate',['linear'],['zoom'],9,'rgba(40,40,40,0)',11,'#33485e']},
-    filter:['any',['!',['has','y']],['<=',['get','y'],curYear]]});
+    filter:homeFilter(curYear)});
 
   map.addLayer({id:'qs-fill', type:'fill', source:'qs', 'source-layer':'qs',
     paint:{'fill-color':cprColor(['coalesce',['get','price'],-1]),'fill-opacity':0.85,
@@ -255,7 +270,8 @@ function update(year){
   document.getElementById('year').textContent = year;
   if(!map.getLayer('qs-fill')) return;
   map.setFilter('qs-fill',['<=',['get','year'],year]);
-  map.setFilter('home-fill',['any',['!',['has','y']],['<=',['get','y'],year]]);
+  map.setFilter('home-fill',homeFilter(year));
+  map.setPaintProperty('home-fill','fill-color',homeColorByYear(year));
   map.setFilter('rails',railFilter(year));
   map.setFilter('res-sur',surrFilter(year));
   map.setFilter('towns',['<=',['get','fy'],year]);
