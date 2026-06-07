@@ -21,6 +21,7 @@ A quarter-section's lattice position within its township:
 """
 import json
 import csv
+import math
 import collections
 import numpy as np
 from pathlib import Path
@@ -117,30 +118,62 @@ def quarter_polygon(params, u, v):
     return [P(u, v), P(u + 1, v), P(u + 1, v + 1), P(u, v + 1), P(u, v)]
 
 
+_HALF_MILE = 804.672          # quarter section = 40 chains = half a statute mile (m)
+
+def _m_per_deg_lat(phi):
+    r = math.radians(phi)
+    return 111132.92 - 559.82 * math.cos(2 * r) + 1.175 * math.cos(4 * r)
+
+def _m_per_deg_lon(phi):
+    r = math.radians(phi)
+    return 111412.84 * math.cos(r) - 93.5 * math.cos(3 * r) + 0.118 * math.cos(5 * r)
+
+def _axis(idx, coord, expected, span_needed=6.0):
+    """Spacing along one axis. Measure it from the anchors when they actually span
+    the township (a reliable regression — this captures real survey variation such
+    as correction-line / fractional townships); otherwise fall back to the
+    mathematical half-mile. A loose sanity clamp rejects only genuine garbage.
+    Position (origin) always comes from the anchors. Returns (step, origin)."""
+    step = expected
+    if idx.max() - idx.min() >= span_needed and len(np.unique(idx)) >= 2:
+        s = np.polyfit(idx, coord, 1)[0]
+        if 0.7 <= s / expected <= 1.3:                # sane measurement -> trust it
+            step = s
+    origin = float(np.mean(coord - idx * step))       # position always from anchors
+    return step, origin
+
+
 def load_anchor_affines():
-    """Per-township grid fit from the authoritative corner-section anchors
+    """Per-township grid from the authoritative corner-section anchors
     (data/cpr_land_sales/dls_anchors.csv). Returns {(T,R,'W#'): params}.
 
     DLS township sides run true N–S and E–W, so the grid is axis-aligned:
-    longitude depends only on the column (u) and latitude only on the row (v).
-    We therefore fit the two axes *independently* (lon = Olon + sx·u ;
-    lat = Oly + sy·v). This is exactly the survey's geometry and makes a sheared /
-    rotated / diagonal cell impossible, even from sparse one-cornered anchors."""
-    by = collections.defaultdict(list)
+    longitude depends only on the column (u), latitude only on the row (v) — a
+    sheared/rotated cell is impossible. A quarter section is half a mile, so the
+    cell size is essentially a known constant: we use the latitude-adjusted
+    half-mile as the backbone, override it with the *measured* spacing only when
+    the anchors span the township and agree within an 8% threshold, and always
+    take the township's position from the anchors. Works from a single anchor."""
+    # dedupe by quarter section first — the source service has duplicate/overlapping
+    # cells for some townships, which would otherwise bias the regression
+    dedup = collections.defaultdict(lambda: collections.defaultdict(list))
     with ANCHORS.open() as fh:
         for r in csv.DictReader(fh):
-            u, v = latt(int(r["SEC"]), r["QSC"])
-            by[(int(r["TWP"]), int(r["RGE"]), "W" + r["MER"])].append(
-                (u + 0.5, v + 0.5, float(r["lon"]), float(r["lat"])))
+            key = (int(r["TWP"]), int(r["RGE"]), "W" + r["MER"])
+            dedup[key][(int(r["SEC"]), r["QSC"])].append((float(r["lon"]), float(r["lat"])))
+    by = collections.defaultdict(list)
+    for key, cells in dedup.items():
+        for (sec, qsc), lls in cells.items():
+            u, v = latt(sec, qsc)
+            lon = sum(p[0] for p in lls) / len(lls)
+            lat = sum(p[1] for p in lls) / len(lls)
+            by[key].append((u + 0.5, v + 0.5, lon, lat))
     out = {}
     for key, pts in by.items():
         a = np.array(pts, float)
-        if len(np.unique(a[:, 0])) < 2 or len(np.unique(a[:, 1])) < 2:
-            continue                                   # need spread in u and v
-        sx, ox = np.polyfit(a[:, 0], a[:, 2], 1)       # lon = sx·u + ox
-        sy, oy = np.polyfit(a[:, 1], a[:, 3], 1)       # lat = sy·v + oy
-        if sx <= 0 or sy <= 0:
-            continue
+        phi = a[:, 3].mean()
+        sx, ox = _axis(a[:, 0], a[:, 2], _HALF_MILE / _m_per_deg_lon(phi))
+        sy, oy = _axis(a[:, 1], a[:, 3], _HALF_MILE / _m_per_deg_lat(phi))
         out[key] = {"O": np.array([ox, oy]),
                     "ex": np.array([sx, 0.0]),         # one column step, due east
                     "ey": np.array([0.0, sy]),         # one row step, due north

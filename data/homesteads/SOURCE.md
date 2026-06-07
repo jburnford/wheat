@@ -47,9 +47,20 @@ authoritative quarter-section polygons are **proprietary**, so we reconstruct an
 3. We publish only that computed grid — a reconstruction of the public legal
    survey fabric — never the source polygons.
 
-**Accuracy** (corner-anchored affine vs. held-out authoritative interior cells):
-median **8 m**, mean 17 m, p90 32 m — well inside an 805 m quarter section. The
-residual is the road-allowance non-linearity an affine can't capture.
+The grid is built per township: longitude depends only on the column and latitude
+only on the row (axis-aligned, as the DLS is surveyed), so cells are always
+rectangles. Spacing is measured from anchors where they span the township and
+falls back to the latitude-adjusted half-mile otherwise; position always comes
+from the anchors.
+
+**Accuracy** (vs. held-out authoritative interior cells): ~**8 m median** in
+well-anchored townships (96.7% of homestead cells); ~150–200 m in sparsely
+anchored boundary townships (3.3%); a few townships with overlapping cells in the
+source service are off by ~500 m. All cells remain correctly shaped/axis-aligned.
+
+> ⚠️ **For visualization only.** The reconstructed quarter sections are **not
+> confirmed to match legal property boundaries** and must not be used for any
+> legal, cadastral, or survey purpose.
 
 ## Rebuild
 

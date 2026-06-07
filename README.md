@@ -82,7 +82,8 @@ Data credits, with deep thanks to their creators:
 - **Quarter-section geometry** — an **open reconstruction** of the public Dominion
   Land Survey grid, calibrated from sparse public anchors (see
   [`data/homesteads/SOURCE.md`](data/homesteads/SOURCE.md)); no proprietary survey
-  polygons are redistributed.
+  polygons are redistributed. **For visualization only — the reconstructed cells
+  are not confirmed to match legal property boundaries.**
 
 ## Sources
 
