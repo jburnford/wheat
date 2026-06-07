@@ -49,8 +49,9 @@
        price/acre) interlock with <b>Crown→private land transitions</b> from the
        homestead registers (shaded by tenure type — homestead, sale, scrip, railway
        grant, …) and surrendered <b>First Nations reserve</b> land, with the
-       <b>railway network</b> growing year by year. Zoom in for individual quarter
-       sections; scrub the years to watch the province fill in.</p>
+       <b>railway network</b> and <b>incorporated towns</b> appearing year by year.
+       Zoom in for individual quarter sections; scrub the years to watch the
+       province fill in.</p>
     <p class="wipnote">⚠ <b>Work in progress.</b> Much data entry remains — homestead,
        reserve and Métis coverage is <b>incomplete and being added to</b>. Treat
        gaps as "not yet transcribed," not "nothing there."</p>
@@ -58,9 +59,11 @@
        of Calgary Archives · Homestead records — David Allan, Jim Clifford &amp; Cheryl
        Troupe · Reserves &amp; Métis communities — Ashley Rabbitskin, Julian Rioux,
        Jim Clifford &amp; Cheryl Troupe (HGIS Lab, University of Saskatchewan) ·
-       Railways — University of Toronto. Quarter-section geometry is an open
-       reconstruction of the public DLS survey grid, <b>for visualization only — it
-       is not confirmed to match legal property boundaries.</b></p>
+       Towns &amp; cities (1921) — Jessica Jack, part of the <i>Mapping Settler
+       Colonialism in Saskatchewan</i> project (Clifford &amp; Troupe), University of
+       Saskatchewan · Railways — University of Toronto. Quarter-section geometry is an open reconstruction of the public
+       DLS survey grid, <b>for visualization only — it is not confirmed to match
+       legal property boundaries.</b></p>
   </div>
 
   <div id="legend" class="panel">
@@ -81,6 +84,10 @@
     </div>
     <label class="toggle" style="margin-top:5px;"><input type="checkbox" id="t-metis" checked>
       <span class="dot" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#e08214;border:1px solid #5c3a0a"></span> Métis communities</label>
+    <hr/>
+    <label class="toggle"><input type="checkbox" id="t-town" checked>
+      <span class="dot" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1a1a1a;border:1px solid #fff;box-shadow:0 0 0 1px #888"></span> Towns &amp; cities (1921)</label>
+    <div class="muted sub">appear at founding year · size by tier (city → small centre)</div>
     <div class="muted" style="margin-top:7px;">Quarter sections at every zoom — colour shows the settled extent zoomed out, full detail zoomed in.
       Grid is an open reconstruction of the DLS survey fabric, <b>for visualization only — not confirmed to match legal property boundaries.</b></div>
   </div>
@@ -119,9 +126,9 @@ const HOME_GROUPS = [
   {k:'K',c:'#cb3b2e',l:'CPR (red layer)'},
   {k:'O',c:'#b0b0b0',l:'Other / reserved'}];
 // untyped register cells are Saskatchewan homestead records — presumed homestead
-// (possibly some pre-emption), so they default to the homestead colour, shown a
-// touch lighter so confirmed homesteads remain distinguishable.
-const HOME_PRESUMED = '#2c5aa0';
+// (possibly some pre-emption); shown in light green so they're clearly distinct
+// from the confirmed (blue) tenure types.
+const HOME_PRESUMED = '#a1d99b';
 const HOME_NAME = Object.fromEntries(HOME_GROUPS.map(g=>[g.k,g.l]));
 function homeColor(){
   const e=['match',['get','grp']];
@@ -137,6 +144,12 @@ document.getElementById('ramp-home').innerHTML =
   HOME_GROUPS.map(b=>`<div class="row"><span class="sw" style="background:${b.c}"></span>${b.l}</div>`).join('')+
   `<div class="muted" style="margin-top:3px">*register cell, tenure type not yet entered</div>`;
 
+// ---- towns (1921 incorporated municipalities) ------------------------------
+// size by commercial tier (City largest → SSC smallest), kept small so the
+// rural land data stays the focus
+const TIER_SIZE = ['match',['get','tier'],'City',7,'RSC',5,'LSC',4,'SSC',2.6, 2.6];
+const TIER_NAME = {City:'City',RSC:'Regional Service Centre',LSC:'Local Service Centre',SSC:'Small Service Centre'};
+
 // ---- map --------------------------------------------------------------------
 const protocol = new pmtiles.Protocol();
 maplibregl.addProtocol('pmtiles', protocol.tile);
@@ -149,7 +162,8 @@ const map = new maplibregl.Map({
              'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'],
       tileSize:256, attribution:'© OpenStreetMap, © CARTO | WORK IN PROGRESS · '+
         'CPR: U Calgary Archives · Homesteads: Allan, Clifford &amp; Troupe · '+
-        'Reserves/Métis: Rabbitskin, Rioux, Clifford &amp; Troupe (HGIS Lab, U Sask) · Railways: U Toronto'}},
+        'Reserves/Métis: Rabbitskin, Rioux, Clifford &amp; Troupe (HGIS Lab, U Sask) · '+
+        'Towns: Jessica Jack (U Sask) · Railways: U Toronto'}},
     layers:[{id:'basemap',type:'raster',source:'basemap'}]}
 });
 map.addControl(new maplibregl.NavigationControl(),'bottom-right');
@@ -213,6 +227,16 @@ map.on('load', () => {
            'circle-color':'#e08214','circle-stroke-color':'#5c3a0a',
            'circle-stroke-width':1,'circle-opacity':0.95}});
 
+  // incorporated towns/cities (1921), appearing at their founding year.
+  // small dots sized by commercial tier so they don't overwhelm the rural data.
+  map.addSource('towns',{type:'geojson',data:'townsites.geojson'});
+  map.addLayer({id:'towns', type:'circle', source:'towns',
+    paint:{'circle-radius':['interpolate',['linear'],['zoom'],
+             5,['*',TIER_SIZE,0.8], 11,['*',TIER_SIZE,1.6]],
+           'circle-color':'#1a1a1a','circle-opacity':0.85,
+           'circle-stroke-color':'#ffffff','circle-stroke-width':0.8},
+    filter:['<=',['get','fy'],curYear]});
+
   wire();
   update(curYear);
 });
@@ -225,13 +249,15 @@ function update(year){
   map.setFilter('home-fill',['any',['!',['has','y']],['<=',['get','y'],year]]);
   map.setFilter('rails',railFilter(year));
   map.setFilter('res-sur',surrFilter(year));
+  map.setFilter('towns',['<=',['get','fy'],year]);
   updateStats(year);
 }
 
-let cprTwp=null, homeTwp=null, railData=null, surrData=null;
+let cprTwp=null, homeTwp=null, railData=null, surrData=null, townData=null;
 function updateStats(year){
   const idx=year-YEAR_MIN;
-  let cpr=0, home=0, rail=0, surA=0;
+  let cpr=0, home=0, rail=0, surA=0, towns=0;
+  if(townData) for(const f of townData.features) if((f.properties.fy||9999)<=year) towns++;
   if(cprTwp) for(const f of cprTwp.features) cpr+=f.properties.cum[idx]||0;
   if(homeTwp) for(const f of homeTwp.features) home+=f.properties.cum[idx]||0;
   if(railData) for(const f of railData.features){
@@ -245,7 +271,8 @@ function updateStats(year){
   document.getElementById('stats').innerHTML =
     '<b>'+cpr.toLocaleString()+'</b> CPR parcels &nbsp;·&nbsp; <b>'+
     home.toLocaleString()+'</b> land transitions &nbsp;·&nbsp; <b>'+
-    rail.toLocaleString()+'</b> rail lines<br/><span class="muted">'+
+    rail.toLocaleString()+'</b> rail lines &nbsp;·&nbsp; <b>'+
+    towns.toLocaleString()+'</b> towns<br/><span class="muted">'+
     Math.round(surA).toLocaleString()+' acres of reserve surrendered to date</span>';
 }
 
@@ -254,10 +281,11 @@ function wire(){
   fetch('homesteads_townships.geojson').then(r=>r.json()).then(d=>{homeTwp=d;updateStats(curYear);});
   fetch('rail_lines.geojson').then(r=>r.json()).then(d=>{railData=d;updateStats(curYear);});
   fetch('reserve_surrenders.geojson').then(r=>r.json()).then(d=>{surrData=d;updateStats(curYear);});
+  fetch('townsites.geojson').then(r=>r.json()).then(d=>{townData=d;updateStats(curYear);});
 
   // one combined popup — gathers every layer under the click so an overlapping
   // CPR sale + register record + reserve show together
-  const CLICK_LAYERS=['qs-fill','home-fill','res-sur','res-chg','res-fill','metis'];
+  const CLICK_LAYERS=['towns','qs-fill','home-fill','res-sur','res-chg','res-fill','metis'];
   map.on('click',e=>{
     const feats=map.queryRenderedFeatures(e.point,{layers:CLICK_LAYERS.filter(l=>map.getLayer(l))});
     if(!feats.length) return;
@@ -286,6 +314,13 @@ function wire(){
         (r.Notes?'<br/><span style="font-size:11px;color:#555">'+r.Notes+'</span>':''));}
     if(by['res-fill']&&!by['res-sur']&&!by['res-chg']) sec.push('<b>First Nations reserve</b>');
     if(by['metis']) sec.push('<b>Métis community</b><br/>'+(by['metis'].Name||''));
+    if(by['towns']){const t=by['towns'];
+      let ind=''; try{ind=(JSON.parse(t.ind||'[]')).slice(0,5).map(x=>'• '+x).join('<br/>');}catch(_){}
+      sec.push('<b>'+t.nm+'</b>'+(t.ty?' — '+t.ty:'')+
+        '<br/>Founded: <b>'+(t.fy||'?')+'</b>'+(t.iy?' · Incorporated '+t.iy:'')+(t.ry?' · Rail '+t.ry:'')+
+        (t.pop?'<br/>Population (1921): '+t.pop.toLocaleString():'')+
+        (t.ct?'<br/>Tier: '+t.ct:'')+(t.rws?'<br/>Railways: '+t.rws:'')+
+        (ind?'<br/><span style="font-size:11px;color:#555">Top industries:<br/>'+ind+'</span>':''));}
     new maplibregl.Popup().setLngLat(e.lngLat).setHTML(
       (lld?'<div style="font-size:11px;color:#888">'+lld+'</div>':'')+
       sec.join('<hr style="margin:6px 0;border:none;border-top:1px solid #ddd">')).addTo(map);
@@ -315,6 +350,8 @@ document.getElementById('t-reserve').addEventListener('change',e=>{
   ['res-fill','res-chg','res-sur'].forEach(l=>map.getLayer(l)&&map.setLayoutProperty(l,'visibility',v));});
 document.getElementById('t-metis').addEventListener('change',e=>{
   map.getLayer('metis')&&map.setLayoutProperty('metis','visibility',e.target.checked?'visible':'none');});
+document.getElementById('t-town').addEventListener('change',e=>{
+  map.getLayer('towns')&&map.setLayoutProperty('towns','visibility',e.target.checked?'visible':'none');});
 document.getElementById('t-rail').addEventListener('change',e=>{
   map.getLayer('rails')&&map.setLayoutProperty('rails','visibility',e.target.checked?'visible':'none');});
 </script>

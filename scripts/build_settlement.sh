@@ -33,4 +33,7 @@ tippecanoe -o docs/homesteads.pmtiles --layer=homesteads \
   --force docs/homesteads_qs.geojson
 rm -f docs/homesteads_qs.geojson   # gitignored intermediate
 
+# ---- incorporated towns (1921 urban knowledge graph) -----------------------
+python3 scripts/build_townsites.py
+
 echo "Done. Open docs/settlement.html via a range-capable server (GitHub Pages, or 'npx http-server docs')."

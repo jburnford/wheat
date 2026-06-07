@@ -76,6 +76,10 @@ Data credits, with deep thanks to their creators:
   GIS (HGIS) Lab, University of Saskatchewan* (`W1/W2/W3` quarter-section transcriptions).
 - **First Nations reserves, surrenders & Métis communities** — **Ashley Rabbitskin,
   Julian Rioux, Jim Clifford & Cheryl Troupe**, *HGIS Lab, University of Saskatchewan*.
+- **Incorporated towns & cities (1921)** — **Jessica Jack**, part of the *Mapping
+  Settler Colonialism in Saskatchewan* project (Clifford & Troupe), University of
+  Saskatchewan (towns appear at their founding year; see
+  [`data/townsites/SOURCE.md`](data/townsites/SOURCE.md)).
 - **Railways** — *"Historical Canadian Railroads,"* **Cartography Office, Geography
   Department, University of Toronto** (2020), Borealis `doi:10.5683/SP2/UCCFVQ`,
   CC BY-NC-SA 4.0.
