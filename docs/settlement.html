@@ -24,7 +24,13 @@
              border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.18); font-size:12.5px; }
     #legend { top:12px; right:12px; padding:11px 13px; max-width:225px; }
     #title  { top:12px; left:12px; padding:11px 14px; max-width:335px; }
-    #title h1 { margin:0 0 4px; font-size:16px; }
+    #title h1 { margin:0 4px 4px 0; font-size:16px; padding-right:22px; }
+    #title-toggle { position:absolute; top:9px; right:9px; width:21px; height:21px;
+                    border:1px solid #ccc; background:#f4f4f4; border-radius:4px;
+                    cursor:pointer; font-size:15px; line-height:1; color:#444; padding:0; }
+    #title-toggle:hover { background:#e6e6e6; }
+    #title.collapsed p { display:none; }
+    #title.collapsed h1 { margin-bottom:0; }
     #title p  { margin:0; color:#555; font-size:12px; line-height:1.45; }
     #title p.credits { margin-top:7px; padding-top:7px; border-top:1px solid #e3e3e3;
                        font-size:10.5px; color:#777; }
@@ -44,6 +50,7 @@
   <div id="map"></div>
 
   <div id="title" class="panel">
+    <button id="title-toggle" title="Minimize">–</button>
     <h1>Settling Saskatchewan, 1879–1935 <span class="wip">WORK IN PROGRESS</span></h1>
     <p>The Dominion Land Survey checkerboard: <b>CPR land sales</b> (shaded by
        price/acre) interlock with <b>Crown→private land transitions</b> from the
@@ -52,9 +59,11 @@
        <b>railway network</b> and <b>incorporated towns</b> appearing year by year.
        Zoom in for individual quarter sections; scrub the years to watch the
        province fill in.</p>
-    <p class="wipnote">⚠ <b>Work in progress.</b> Much data entry remains — homestead,
-       reserve and Métis coverage is <b>incomplete and being added to</b>. Treat
-       gaps as "not yet transcribed," not "nothing there."</p>
+    <p class="wipnote">⚠ <b>Work in progress.</b> The <b>land-register layer is still
+       being transcribed</b> — most quarter sections aren't entered yet, and many
+       lack a tenure type or date; the <b>Métis communities</b> layer is also being
+       added to. Treat gaps as "not yet transcribed," not "nothing there." (The CPR,
+       reserve and town layers are complete.)</p>
     <p class="credits"><b>Data (all work in progress):</b> CPR land sales — University
        of Calgary Archives · Homestead records — David Allan, Jim Clifford &amp; Cheryl
        Troupe · Reserves &amp; Métis communities — Ashley Rabbitskin, Julian Rioux,
@@ -352,6 +361,10 @@ document.getElementById('t-metis').addEventListener('change',e=>{
   map.getLayer('metis')&&map.setLayoutProperty('metis','visibility',e.target.checked?'visible':'none');});
 document.getElementById('t-town').addEventListener('change',e=>{
   map.getLayer('towns')&&map.setLayoutProperty('towns','visibility',e.target.checked?'visible':'none');});
+document.getElementById('title-toggle').addEventListener('click',()=>{
+  const t=document.getElementById('title'), c=t.classList.toggle('collapsed');
+  const btn=document.getElementById('title-toggle');
+  btn.textContent=c?'+':'–'; btn.title=c?'Show details':'Minimize';});
 document.getElementById('t-rail').addEventListener('change',e=>{
   map.getLayer('rails')&&map.setLayoutProperty('rails','visibility',e.target.checked?'visible':'none');});
 </script>
