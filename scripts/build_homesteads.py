@@ -38,6 +38,38 @@ INSTITUTION = re.compile(r"railway|railroad|colonization|school district|church|
                          r"hudson|pacific|government|crown|department", re.I)
 
 
+def tenure_group(t):
+    """Map a register `Type` to a tenure group for the map's blue ramp.
+    H homestead · P pre-emption · S sale/grant · C Métis scrip · B Hudson's Bay
+    · R railway (non-CPR) · K CPR (shown red) · O other/reserved · None unspecified."""
+    if t is None:
+        return None
+    s = str(t).strip().lower()
+    if not s or s == "nan":
+        return None
+    if "half" in s or "n.s.h.b" in s or "nshb" in s:
+        return "C"
+    if "hudson" in s:
+        return "B"
+    if "canadian pacific" in s or "cpr" in s or "c.p.r" in s:
+        return "K"
+    if "railway" in s or "railroad" in s or s in ("gnwory", "gtpry-r. of w"):
+        return "R"
+    if "pre-emption" in s or "preemption" in s:
+        return "P"
+    if any(w in s for w in ("homestead", "soldier", "military", "settlement",
+                            "p.h", "pur. h", "p. h")):
+        return "H"
+    if any(w in s for w in ("forest", "reserve", "graz", "pasture", "past.", "lease",
+                            "ranch", "vacant", "water", "easement", "permit",
+                            "open for", "collateral", "cult")):
+        return "O"
+    if any(w in s for w in ("sale", "grant", "exchange", "assignment", "transfer",
+                            "company", "quit claim")):
+        return "S"
+    return "O"
+
+
 def year_of(v):
     if v is None or (isinstance(v, float) and math.isnan(v)):
         return None
@@ -117,7 +149,13 @@ def main():
                     stats["affine_fallback"] += 1
                 ring = grid.polygon(T, R, M, sec, qs)
 
+                grp = tenure_group(r.Type)
                 props = {"lld": f"{qs}-{sec:02d}-{T:03d}-{R:02d}-{M}", "st": st, "nn": nn}
+                if grp:
+                    props["grp"] = grp
+                rawty = "" if (r.Type is None or (isinstance(r.Type, float) and math.isnan(r.Type))) else str(r.Type).strip()
+                if rawty and rawty.lower() != "nan":
+                    props["ty"] = rawty[:40]
                 if my is not None:
                     props["y"] = my
                     yhist[my] += 1

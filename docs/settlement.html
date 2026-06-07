@@ -45,11 +45,12 @@
 
   <div id="title" class="panel">
     <h1>Settling Saskatchewan, 1879–1935 <span class="wip">WORK IN PROGRESS</span></h1>
-    <p>The Dominion Land Survey checkerboard: <b>CPR land sales</b> (odd sections,
-       shaded by price/acre) interlock with <b>homestead entries</b> (even sections,
-       shaded by settlement year) and surrendered <b>First Nations reserve</b> land,
-       with the <b>railway network</b> growing year by year. Zoom in for individual
-       quarter sections; scrub the years to watch the province fill in.</p>
+    <p>The Dominion Land Survey checkerboard: <b>CPR land sales</b> (shaded by
+       price/acre) interlock with <b>Crown→private land transitions</b> from the
+       homestead registers (shaded by tenure type — homestead, sale, scrip, railway
+       grant, …) and surrendered <b>First Nations reserve</b> land, with the
+       <b>railway network</b> growing year by year. Zoom in for individual quarter
+       sections; scrub the years to watch the province fill in.</p>
     <p class="wipnote">⚠ <b>Work in progress.</b> Much data entry remains — homestead,
        reserve and Métis coverage is <b>incomplete and being added to</b>. Treat
        gaps as "not yet transcribed," not "nothing there."</p>
@@ -66,7 +67,7 @@
     <label class="toggle"><input type="checkbox" id="t-cpr" checked> CPR price/acre</label>
     <div id="ramp-cpr" class="sub"></div>
     <hr/>
-    <label class="toggle"><input type="checkbox" id="t-home" checked> Homestead entry</label>
+    <label class="toggle"><input type="checkbox" id="t-home" checked> Crown land transitions</label>
     <div id="ramp-home" class="sub"></div>
     <hr/>
     <label class="toggle"><input type="checkbox" id="t-rail" checked>
@@ -76,7 +77,7 @@
     <div class="sub">
       <div class="row"><span class="sw" style="background:#41ab5d;opacity:.5"></span>reserve (initial)</div>
       <div class="row"><span class="sw" style="background:#dd3497;opacity:.7"></span>surrendered (by year)</div>
-      <div class="row"><span class="sw" style="background:#f16913;height:3px;border-radius:1px"></span>1921 boundary change</div>
+      <div class="row"><span class="sw" style="background:#f16913;height:3px;border-radius:1px"></span>boundary change/correction</div>
     </div>
     <label class="toggle" style="margin-top:5px;"><input type="checkbox" id="t-metis" checked>
       <span class="dot" style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#e08214;border:1px solid #5c3a0a"></span> Métis communities</label>
@@ -107,24 +108,34 @@ function cprColor(input){
   for(let i=0;i<CPR_BREAKS.length-1;i++) e.push(CPR_BREAKS[i].upto,CPR_BREAKS[i+1].c);
   return e;
 }
-// ---- homestead settlement-year ramp (blues) --------------------------------
-const HOME_BREAKS = [
-  {upto:1885,c:'#c6dbef',l:'≤ 1885'},{upto:1890,c:'#9ecae1',l:'1886–90'},
-  {upto:1895,c:'#6baed6',l:'1891–95'},{upto:1900,c:'#4292c6',l:'1896–1900'},
-  {upto:1905,c:'#2171b5',l:'1901–05'},{upto:1910,c:'#08519c',l:'1906–10'},
-  {upto:9999,c:'#08306b',l:'> 1910'}];
-const HOME_UNDATED = '#d9d9d9';
-function homeYearColor(){
-  const e=['step',['get','y'],HOME_BREAKS[0].c];
-  for(let i=0;i<HOME_BREAKS.length-1;i++) e.push(HOME_BREAKS[i].upto,HOME_BREAKS[i+1].c);
-  return ['case',['!',['has','y']],HOME_UNDATED,e];
+// ---- land-register tenure groups (blue ramp: homestead dark → railway light) -
+const HOME_GROUPS = [
+  {k:'H',c:'#08306b',l:'Homestead'},
+  {k:'P',c:'#08519c',l:'Pre-emption'},
+  {k:'C',c:'#2171b5',l:'Métis scrip'},
+  {k:'S',c:'#4292c6',l:'Sale / grant'},
+  {k:'B',c:'#6baed6',l:'Hudson’s Bay Co.'},
+  {k:'R',c:'#c6dbef',l:'Railway grant'},
+  {k:'K',c:'#cb3b2e',l:'CPR (red layer)'},
+  {k:'O',c:'#b0b0b0',l:'Other / reserved'}];
+// untyped register cells are Saskatchewan homestead records — presumed homestead
+// (possibly some pre-emption), so they default to the homestead colour, shown a
+// touch lighter so confirmed homesteads remain distinguishable.
+const HOME_PRESUMED = '#2c5aa0';
+const HOME_NAME = Object.fromEntries(HOME_GROUPS.map(g=>[g.k,g.l]));
+function homeColor(){
+  const e=['match',['get','grp']];
+  for(const g of HOME_GROUPS) e.push(g.k,g.c);
+  e.push(HOME_PRESUMED);          // no type entered yet -> presumed homestead
+  return e;
 }
 document.getElementById('ramp-cpr').innerHTML =
   CPR_BREAKS.map(b=>`<div class="row"><span class="sw" style="background:${b.c}"></span>${b.l}/ac</div>`).join('')+
   `<div class="row"><span class="sw" style="background:${CPR_NOPRICE}"></span>price n/a</div>`;
 document.getElementById('ramp-home').innerHTML =
-  HOME_BREAKS.map(b=>`<div class="row"><span class="sw" style="background:${b.c}"></span>${b.l}</div>`).join('')+
-  `<div class="row"><span class="sw" style="background:${HOME_UNDATED}"></span>claimed, undated</div>`;
+  `<div class="row"><span class="sw" style="background:${HOME_PRESUMED}"></span>homestead (presumed)*</div>`+
+  HOME_GROUPS.map(b=>`<div class="row"><span class="sw" style="background:${b.c}"></span>${b.l}</div>`).join('')+
+  `<div class="muted" style="margin-top:3px">*register cell, tenure type not yet entered</div>`;
 
 // ---- map --------------------------------------------------------------------
 const protocol = new pmtiles.Protocol();
@@ -144,10 +155,12 @@ const map = new maplibregl.Map({
 map.addControl(new maplibregl.NavigationControl(),'bottom-right');
 window.map = map;
 
-// rail segment visible if built by `year` and not yet abandoned (0 = never)
+// rail segment visible if it has a known construction year that has arrived and
+// it is not yet abandoned (abndnd 0 = never). Segments with an unknown build date
+// (cnstrctd <= 0, e.g. the -99 sentinel) are omitted rather than shown
+// anachronistically from the start of the timeline.
 function railFilter(year){
-  const built = ['case',['<=',['get','cnstrctd'],0],1800,['get','cnstrctd']];
-  return ['all', ['<=',built,year],
+  return ['all', ['>',['get','cnstrctd'],0], ['<=',['get','cnstrctd'],year],
           ['any',['==',['get','abndnd'],0],['>=',['get','abndnd'],year]]];
 }
 
@@ -177,8 +190,8 @@ map.on('load', () => {
 
   // quarter sections at every zoom — thin/outline at overview, full detail zoomed in
   map.addLayer({id:'home-fill', type:'fill', source:'home', 'source-layer':'homesteads',
-    paint:{'fill-color':homeYearColor(),'fill-opacity':0.8,
-           'fill-outline-color':['interpolate',['linear'],['zoom'],9,'rgba(8,48,107,0)',11,'#08306b']},
+    paint:{'fill-color':homeColor(),'fill-opacity':0.8,
+           'fill-outline-color':['interpolate',['linear'],['zoom'],9,'rgba(40,40,40,0)',11,'#33485e']},
     filter:['any',['!',['has','y']],['<=',['get','y'],curYear]]});
 
   map.addLayer({id:'qs-fill', type:'fill', source:'qs', 'source-layer':'qs',
@@ -223,7 +236,7 @@ function updateStats(year){
   if(homeTwp) for(const f of homeTwp.features) home+=f.properties.cum[idx]||0;
   if(railData) for(const f of railData.features){
     const c=f.properties.cnstrctd, a=f.properties.abndnd;
-    if((c<=0?1800:c)<=year && (a===0||a>=year)) rail++;
+    if(c>0 && c<=year && (a===0||a>=year)) rail++;
   }
   if(surrData) for(const f of surrData.features){
     const y=f.properties.YEAR_SURR;
@@ -231,7 +244,7 @@ function updateStats(year){
   }
   document.getElementById('stats').innerHTML =
     '<b>'+cpr.toLocaleString()+'</b> CPR parcels &nbsp;·&nbsp; <b>'+
-    home.toLocaleString()+'</b> homesteads &nbsp;·&nbsp; <b>'+
+    home.toLocaleString()+'</b> land transitions &nbsp;·&nbsp; <b>'+
     rail.toLocaleString()+'</b> rail lines<br/><span class="muted">'+
     Math.round(surA).toLocaleString()+' acres of reserve surrendered to date</span>';
 }
@@ -242,37 +255,45 @@ function wire(){
   fetch('rail_lines.geojson').then(r=>r.json()).then(d=>{railData=d;updateStats(curYear);});
   fetch('reserve_surrenders.geojson').then(r=>r.json()).then(d=>{surrData=d;updateStats(curYear);});
 
-  map.on('click','res-sur',e=>{const p=e.features[0].properties;
+  // one combined popup — gathers every layer under the click so an overlapping
+  // CPR sale + register record + reserve show together
+  const CLICK_LAYERS=['qs-fill','home-fill','res-sur','res-chg','res-fill','metis'];
+  map.on('click',e=>{
+    const feats=map.queryRenderedFeatures(e.point,{layers:CLICK_LAYERS.filter(l=>map.getLayer(l))});
+    if(!feats.length) return;
+    const by={}; for(const f of feats) if(!by[f.layer.id]) by[f.layer.id]=f.properties;
+    const sec=[]; const p=by['home-fill']||by['qs-fill'];
+    const lld=p&&p.lld?p.lld:'';
+    if(by['home-fill']){const h=by['home-fill'];
+      const grp=h.grp?(HOME_NAME[h.grp]||h.grp):'Homestead (presumed — type not yet entered)';
+      let s='<b>Crown→private transition</b><br/>Tenure: <b>'+grp+'</b>'+(h.ty?' ('+h.ty+')':'');
+      s+= h.y? '<br/>Entry: '+h.y+(h.py?' · Patent: '+h.py:'') : '<br/>Date unknown';
+      if(h.amb) s+='<br/><i>multiple claimants — patentee uncertain</i>';
+      s+='<br/>Claimant: '+(h.nm||'—')+(h.nn>1?' (+'+(h.nn-1)+' more)':'');
+      sec.push(s);}
+    if(by['qs-fill']){const c=by['qs-fill'];
+      sec.push('<b>CPR land sale</b><br/>Sold: '+c.year+
+        '<br/>Price: '+(c.price!=null?'$'+c.price+'/acre':'n/a')+
+        '<br/>Purchaser: '+(c.purchaser||'—'));}
+    if(by['res-sur']){const r=by['res-sur'];
+      sec.push('<b>Reserve surrender — '+(r.RSRVE_NAME||r.RSRV_NAME||'')+'</b>'+
+        (r.GRRD_CD_NA?'<br/>'+r.GRRD_CD_NA:'')+
+        '<br/>Surrendered: '+(r.YEAR_SURR>0?r.YEAR_SURR:'year unknown')+
+        (r.ACRES_SURR?' · '+Math.round(r.ACRES_SURR).toLocaleString()+' acres':'')+
+        (r.Notes?'<br/><span style="font-size:11px;color:#555">'+r.Notes+'</span>':''));}
+    if(by['res-chg']){const r=by['res-chg'];
+      sec.push('<b>Reserve boundary change — '+(r.RSRVE_NAME||'')+'</b>'+(r.YEAR?'<br/>'+r.YEAR:'')+
+        (r.Notes?'<br/><span style="font-size:11px;color:#555">'+r.Notes+'</span>':''));}
+    if(by['res-fill']&&!by['res-sur']&&!by['res-chg']) sec.push('<b>First Nations reserve</b>');
+    if(by['metis']) sec.push('<b>Métis community</b><br/>'+(by['metis'].Name||''));
     new maplibregl.Popup().setLngLat(e.lngLat).setHTML(
-      '<b>Reserve surrender — '+(p.RSRVE_NAME||p.RSRV_NAME||'')+'</b>'+
-      (p.GRRD_CD_NA?'<br/>'+p.GRRD_CD_NA:'')+
-      '<br/>Surrendered: '+(p.YEAR_SURR>0?p.YEAR_SURR:'year unknown')+
-      (p.ACRES_SURR?' · '+Math.round(p.ACRES_SURR).toLocaleString()+' acres':'')+
-      (p.TREATY_LOC?'<br/>'+p.TREATY_LOC:'')+
-      (p.Notes?'<br/><span style="font-size:11px;color:#555">'+p.Notes+'</span>':'')).addTo(map);});
-  map.on('click','res-fill',e=>{const p=e.features[0].properties;
-    new maplibregl.Popup().setLngLat(e.lngLat).setHTML(
-      '<b>First Nations reserve</b>'+(p.UNIQUE_ID?'<br/>'+p.UNIQUE_ID:'')).addTo(map);});
-  map.on('click','metis',e=>{const p=e.features[0].properties;
-    new maplibregl.Popup().setLngLat(e.lngLat).setHTML('<b>Métis community</b><br/>'+(p.Name||'')).addTo(map);});
-  for(const id of ['res-sur','res-fill','metis'])
-    map.on('mouseenter',id,()=>map.getCanvas().style.cursor='pointer');
-
-  map.on('click','qs-fill',e=>{const p=e.features[0].properties;
-    new maplibregl.Popup().setLngLat(e.lngLat).setHTML(
-      '<b>CPR sale — '+p.lld+'</b><br/>Sold: '+p.year+
-      '<br/>Price: '+(p.price!=null?'$'+p.price+'/acre':'n/a')+
-      '<br/>Purchaser: '+(p.purchaser||'—')).addTo(map);});
-  map.on('click','home-fill',e=>{const p=e.features[0].properties;
-    let extra = p.y? ('Entry: '+p.y+(p.py?' · Patent: '+p.py:'')) : 'Date unknown';
-    if(p.amb) extra+='<br/><i>multiple claimants — patentee uncertain</i>';
-    new maplibregl.Popup().setLngLat(e.lngLat).setHTML(
-      '<b>Homestead — '+p.lld+'</b><br/>'+extra+
-      '<br/>Claimant: '+(p.nm||'—')+(p.nn>1?' (+'+(p.nn-1)+' more)':'')).addTo(map);});
-  for(const id of ['qs-fill','home-fill']){
-    map.on('mouseenter',id,()=>map.getCanvas().style.cursor='pointer');
-    map.on('mouseleave',id,()=>map.getCanvas().style.cursor='');
-  }
+      (lld?'<div style="font-size:11px;color:#888">'+lld+'</div>':'')+
+      sec.join('<hr style="margin:6px 0;border:none;border-top:1px solid #ddd">')).addTo(map);
+  });
+  map.on('mousemove',e=>{
+    const hit=map.queryRenderedFeatures(e.point,{layers:CLICK_LAYERS.filter(l=>map.getLayer(l))}).length;
+    map.getCanvas().style.cursor=hit?'pointer':'';
+  });
 }
 
 // ---- controls ---------------------------------------------------------------
