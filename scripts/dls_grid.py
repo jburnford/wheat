@@ -118,8 +118,14 @@ def quarter_polygon(params, u, v):
 
 
 def load_anchor_affines():
-    """Fit a per-township affine from the authoritative corner-section anchors
-    (data/cpr_land_sales/dls_anchors.csv). Returns {(T,R,'W#'): params}."""
+    """Per-township grid fit from the authoritative corner-section anchors
+    (data/cpr_land_sales/dls_anchors.csv). Returns {(T,R,'W#'): params}.
+
+    DLS township sides run true N–S and E–W, so the grid is axis-aligned:
+    longitude depends only on the column (u) and latitude only on the row (v).
+    We therefore fit the two axes *independently* (lon = Olon + sx·u ;
+    lat = Oly + sy·v). This is exactly the survey's geometry and makes a sheared /
+    rotated / diagonal cell impossible, even from sparse one-cornered anchors."""
     by = collections.defaultdict(list)
     with ANCHORS.open() as fh:
         for r in csv.DictReader(fh):
@@ -128,15 +134,17 @@ def load_anchor_affines():
                 (u + 0.5, v + 0.5, float(r["lon"]), float(r["lat"])))
     out = {}
     for key, pts in by.items():
-        if len(pts) < 3:
-            continue
         a = np.array(pts, float)
-        X = np.column_stack([a[:, 0], a[:, 1], np.ones(len(a))])
-        clon, *_ = np.linalg.lstsq(X, a[:, 2], rcond=None)
-        clat, *_ = np.linalg.lstsq(X, a[:, 3], rcond=None)
-        out[key] = {"O": np.array([clon[2], clat[2]]),
-                    "ex": np.array([clon[0], clat[0]]),
-                    "ey": np.array([clon[1], clat[1]]), "n": len(pts)}
+        if len(np.unique(a[:, 0])) < 2 or len(np.unique(a[:, 1])) < 2:
+            continue                                   # need spread in u and v
+        sx, ox = np.polyfit(a[:, 0], a[:, 2], 1)       # lon = sx·u + ox
+        sy, oy = np.polyfit(a[:, 1], a[:, 3], 1)       # lat = sy·v + oy
+        if sx <= 0 or sy <= 0:
+            continue
+        out[key] = {"O": np.array([ox, oy]),
+                    "ex": np.array([sx, 0.0]),         # one column step, due east
+                    "ey": np.array([0.0, sy]),         # one row step, due north
+                    "n": len(pts)}
     return out
 
 
