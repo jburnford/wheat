@@ -310,7 +310,7 @@ function updateStats(year){
     home.toLocaleString()+'</b> land transitions &nbsp;·&nbsp; <b>'+
     rail.toLocaleString()+'</b> rail lines &nbsp;·&nbsp; <b>'+
     towns.toLocaleString()+'</b> towns<br/><span class="resstat">'+
-    'Reserve land <b>'+Math.round(resTotalAc).toLocaleString()+'</b> ac &nbsp;·&nbsp; '+
+    'Reserve land <b>'+Math.round(Math.max(0,resTotalAc-surA)).toLocaleString()+'</b> ac &nbsp;·&nbsp; '+
     'surrendered <b>'+Math.round(surA).toLocaleString()+'</b> ac to date</span>';
 }
 
