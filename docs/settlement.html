@@ -19,7 +19,10 @@
     #play { padding:8px 18px; background:#2c3e50; color:#fff; border:none;
             border-radius:5px; cursor:pointer; font-size:15px; }
     #play:hover { background:#3b5168; }
-    #stats { font-size:12.5px; color:#444; min-width:300px; line-height:1.5; text-align:right; }
+    #stats { font-size:12.5px; color:#444; min-width:300px; line-height:1.55; text-align:right; }
+    #stats .resstat { display:inline-block; margin-top:2px; font-size:14.5px; font-weight:600;
+                      color:#7a0177; }
+    #stats .resstat b { font-size:15.5px; }
     .panel { position:absolute; background:#fff; border:1px solid #cfcfcf;
              border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.18); font-size:12.5px; }
     #legend { top:12px; right:12px; padding:11px 13px; max-width:225px; }
@@ -278,7 +281,16 @@ function update(year){
   updateStats(year);
 }
 
-let cprTwp=null, homeTwp=null, railData=null, surrData=null, townData=null;
+// geodesic polygon area (m²) for the reserve acreage totals
+const M2_ACRE=0.000247105, ER=6378137;
+function ringArea(r){let s=0;for(let i=0;i<r.length;i++){const a=r[i],b=r[(i+1)%r.length];
+  s+=(b[0]-a[0])*Math.PI/180*(2+Math.sin(a[1]*Math.PI/180)+Math.sin(b[1]*Math.PI/180));}
+  return Math.abs(s*ER*ER/2);}
+function geomArea(g){const polys=g.type==='Polygon'?[g.coordinates]:g.coordinates;let a=0;
+  for(const poly of polys){if(!poly.length)continue;a+=ringArea(poly[0]);
+    for(let h=1;h<poly.length;h++)a-=ringArea(poly[h]);}return a;}
+
+let cprTwp=null, homeTwp=null, railData=null, surrData=null, townData=null, resTotalAc=0;
 function updateStats(year){
   const idx=year-YEAR_MIN;
   let cpr=0, home=0, rail=0, surA=0, towns=0;
@@ -297,8 +309,9 @@ function updateStats(year){
     '<b>'+cpr.toLocaleString()+'</b> CPR parcels &nbsp;·&nbsp; <b>'+
     home.toLocaleString()+'</b> land transitions &nbsp;·&nbsp; <b>'+
     rail.toLocaleString()+'</b> rail lines &nbsp;·&nbsp; <b>'+
-    towns.toLocaleString()+'</b> towns<br/><span class="muted">'+
-    Math.round(surA).toLocaleString()+' acres of reserve surrendered to date</span>';
+    towns.toLocaleString()+'</b> towns<br/><span class="resstat">'+
+    'Reserve land <b>'+Math.round(resTotalAc).toLocaleString()+'</b> ac &nbsp;·&nbsp; '+
+    'surrendered <b>'+Math.round(surA).toLocaleString()+'</b> ac to date</span>';
 }
 
 function wire(){
@@ -306,6 +319,8 @@ function wire(){
   fetch('homesteads_townships.geojson').then(r=>r.json()).then(d=>{homeTwp=d;updateStats(curYear);});
   fetch('rail_lines.geojson').then(r=>r.json()).then(d=>{railData=d;updateStats(curYear);});
   fetch('reserve_surrenders.geojson').then(r=>r.json()).then(d=>{surrData=d;updateStats(curYear);});
+  fetch('reserves_initial.geojson').then(r=>r.json()).then(d=>{
+    resTotalAc=d.features.reduce((s,f)=>s+geomArea(f.geometry)*M2_ACRE,0);updateStats(curYear);});
   fetch('townsites.geojson').then(r=>r.json()).then(d=>{townData=d;updateStats(curYear);});
 
   // one combined popup — gathers every layer under the click so an overlapping
