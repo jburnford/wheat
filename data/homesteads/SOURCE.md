@@ -14,8 +14,8 @@ Failed_Claims, Patent_Date, Number_of_claims, Notes`.
 | | |
 |---|---|
 | Total quarter-section rows | 484,876 |
-| Rows with any data | ~256,000 |
-| Rows with a settlement **date** | ~59,000 (span 1879–1935) |
+| Rows with any data | ~267,000 |
+| Rows with a settlement **date** | ~78,000 (span 1879–1935) |
 | Meridians | W1 (ranges 30-34), W2, W3 |
 
 ### Known data-quality notes (it is a WIP transcription)
