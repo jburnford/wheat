@@ -13,6 +13,7 @@ python3 scripts/analysis/analyze_cpr.py   # CPR land sales (SK): price, purchase
 
 # transcription sampling plan (docs/analysis/transcription_priorities.html)
 python3 scripts/analysis/coverage_frame.py        # township frame: status + province-wide covariates (~3 min)
+python3 scripts/analysis/index_names.py           # province-wide index covariates: files per quarter, multi-name (churn) share
 python3 scripts/analysis/coverage_priority.py     # stratum coverage, post-stratification weights, greedy plan, spine
 python3 scripts/analysis/coverage_report_data.py  # zones A-G + SVG township maps -> coverage_report_data.json
 ```
@@ -39,6 +40,12 @@ python3 scripts/analysis/coverage_report_data.py  # zones A-G + SVG township map
   era x band x meridian cell) to `township_frame_scored.parquet` for
   post-stratified estimates, and defines the 1-in-9 spine
   (`rge % 3 == 1 and twp % 3 == 1`). Re-run all three after each refresh.
+- `index_names.py` counts the scraped Provincial Archives homestead-index names
+  per quarter (in untranscribed sheets they spill across Successful_Claims,
+  Failed_Claims, Patent_Date, Number_of_claims, Notes) and writes
+  `index_township.parquet` (files, multi-name share). The index has a file for
+  ~95% of register-typed homestead/pre-emption quarters and reads ~10 points
+  low on churn vs the register (calibrated on the 8 sheets typed Jun–Aug 2026).
 - `data/homesteads/analysis/` is gitignored — rebuild it after each W1–W3 refresh.
 
 Key definitions: settlement year = first of FirstDate → FirstDateSuccess →

@@ -5,16 +5,32 @@ University of Saskatchewan.**
 
 ## Source records (work in progress)
 
-`W1.xlsx`, `W2.xlsx`, `W3.xlsx` (repo root) — homestead claim transcriptions for
-the 1st / 2nd / 3rd meridians west, one worksheet per range, one row per quarter
-section. Columns: `QSECT, PSECT, PTWP, PRGE, PMER` (the Dominion Land Survey
-description) plus `Type, FirstDate, FirstDateSuccess, Successful_Claims,
-Failed_Claims, Patent_Date, Number_of_claims, Notes`.
+`W1.xlsx`, `W2.xlsx`, `W3.xlsx` (repo root) — one worksheet per range, one row per
+quarter section, for the 1st / 2nd / 3rd meridians west. Columns: `QSECT, PSECT,
+PTWP, PRGE, PMER` (the Dominion Land Survey description) plus `Type, FirstDate,
+FirstDateSuccess, Successful_Claims, Failed_Claims, Patent_Date, Number_of_claims,
+Notes`.
+
+The rows carry **two layers of data**:
+
+1. **Scraped homestead index (province-wide).** Claimant names scraped from the
+   Provincial Archives of Saskatchewan homestead index for every quarter section
+   with a homestead file (~282k quarters). Several names on one quarter mean an
+   earlier entry was cancelled or abandoned. In sheets that have not yet been
+   transcribed the names spill across the register columns (`Successful_Claims`,
+   `Failed_Claims`, `Patent_Date`, `Number_of_claims`, `Notes`, …) and there is
+   **no `Type`, no date, and no record of sales**, railway/HBC/school land, or the
+   homestead vs pre-emption distinction.
+2. **Register transcription (in progress, by range sheet).** The township
+   general registers add `Type`, entry/success/patent dates, the successful vs
+   failed split, sales and grants on the non-homestead quarters. A sheet is
+   "typed" once this pass is done; `Type` non-null is the marker.
 
 | | |
 |---|---|
 | Total quarter-section rows | 484,876 |
-| Rows with any data | ~283,000 |
+| Rows with any data (index names or register) | ~283,000 |
+| Rows with a register `Type` | ~122,000 (882 townships) |
 | Rows with a settlement **date** | ~108,000 (span 1879–1935) |
 | Meridians | W1 (ranges 30-34), W2, W3 |
 
@@ -28,7 +44,9 @@ Failed_Claims, Patent_Date, Number_of_claims, Notes`.
   are kept but flagged `inst` — they are not homesteaders.
 
 Settlement year used for the map = first available of FirstDate → FirstDateSuccess
-→ Patent_Date. Rows with a name but no date are shown as **"claimed, undated."**
+→ Patent_Date. Rows with index names but no register transcription are shown in
+the map's light-green "homestead (presumed)" class: a homestead file exists for
+the quarter, but its type and date have not been transcribed yet.
 
 ## Open DLS grid (how homesteads get geometry)
 
