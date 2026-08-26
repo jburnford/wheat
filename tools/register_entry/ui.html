@@ -241,18 +241,18 @@ function useCpr(){ const r = rows[cur]; const parts = (r.cpr_hint || "").split("
   const d = parseDate(parts[1] || ""); if (d && !$("#FirstDate").value) $("#FirstDate").value = d; toast("CPR catalogue values filled — check against the register"); }
 
 // ---------------- dates
-const MON = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,sept:9,oct:10,nov:11,dec:12};
+const MON = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
 function yy(y){ y = parseInt(y); return y < 100 ? (y >= 70 ? 1800 + y : 1900 + y) : y; }
 function parseDate(s){
   s = (s || "").trim().replace(/^(pat'?d|patd|pat\.?|can\.?|cancelled|entered|entry)\s*/i, "").replace(/(\d)(st|nd|rd|th)\b/gi, "$1").replace(/\s+/g, " ").trim(); if (!s) return "";
   let m;
-  if ((m = s.match(/^(\d{1,2}) ([a-z]+)\.?,? (\d{2})$/i)) && MON[m[2].toLowerCase().slice(0,4)]) return `${yy(m[3])}-${String(MON[m[2].toLowerCase().slice(0,4)]).padStart(2,"0")}-${m[1].padStart(2,"0")}`;
-  if ((m = s.match(/^([a-z]+)\.? (\d{1,2}),? (\d{2})$/i)) && MON[m[1].toLowerCase().slice(0,4)]) return `${yy(m[3])}-${String(MON[m[1].toLowerCase().slice(0,4)]).padStart(2,"0")}-${m[2].padStart(2,"0")}`;
+  if ((m = s.match(/^(\d{1,2}) ([a-z]+)\.?,? (\d{2})$/i)) && MON[m[2].toLowerCase().slice(0,3)]) return `${yy(m[3])}-${String(MON[m[2].toLowerCase().slice(0,3)]).padStart(2,"0")}-${m[1].padStart(2,"0")}`;
+  if ((m = s.match(/^([a-z]+)\.? (\d{1,2}),? (\d{2})$/i)) && MON[m[1].toLowerCase().slice(0,3)]) return `${yy(m[3])}-${String(MON[m[1].toLowerCase().slice(0,3)]).padStart(2,"0")}-${m[2].padStart(2,"0")}`;
   if ((m = s.match(/^(\d{1,2})[-\/.](\d{1,2})[-\/.](\d{2})$/))) return `${yy(m[3])}-${m[2].padStart(2,"0")}-${m[1].padStart(2,"0")}`;   // 1/11/31 as written in the register: d/m/yy
   if ((m = s.match(/^(1[89]\d\d)(?:[-\/.](\d{1,2})(?:[-\/.](\d{1,2}))?)?$/))) return m[1] + (m[2] ? "-" + m[2].padStart(2,"0") + (m[3] ? "-" + m[3].padStart(2,"0") : "") : "");
-  if ((m = s.match(/^(\d{1,2})\s+([a-z]+)\.?,?\s+(1[89]\d\d)$/i)) && MON[m[2].toLowerCase().slice(0,4)] ) return `${m[3]}-${String(MON[m[2].toLowerCase().slice(0,4)]).padStart(2,"0")}-${m[1].padStart(2,"0")}`;
-  if ((m = s.match(/^([a-z]+)\.?\s+(\d{1,2}),?\s+(1[89]\d\d)$/i)) && MON[m[1].toLowerCase().slice(0,4)]) return `${m[3]}-${String(MON[m[1].toLowerCase().slice(0,4)]).padStart(2,"0")}-${m[2].padStart(2,"0")}`;
-  if ((m = s.match(/^(1[89]\d\d),?\s+([a-z]+)\.?\s+(\d{1,2})$/i)) && MON[m[2].toLowerCase().slice(0,4)]) return `${m[1]}-${String(MON[m[2].toLowerCase().slice(0,4)]).padStart(2,"0")}-${m[3].padStart(2,"0")}`;
+  if ((m = s.match(/^(\d{1,2})\s+([a-z]+)\.?,?\s+(1[89]\d\d)$/i)) && MON[m[2].toLowerCase().slice(0,3)] ) return `${m[3]}-${String(MON[m[2].toLowerCase().slice(0,3)]).padStart(2,"0")}-${m[1].padStart(2,"0")}`;
+  if ((m = s.match(/^([a-z]+)\.?\s+(\d{1,2}),?\s+(1[89]\d\d)$/i)) && MON[m[1].toLowerCase().slice(0,3)]) return `${m[3]}-${String(MON[m[1].toLowerCase().slice(0,3)]).padStart(2,"0")}-${m[2].padStart(2,"0")}`;
+  if ((m = s.match(/^(1[89]\d\d),?\s+([a-z]+)\.?\s+(\d{1,2})$/i)) && MON[m[2].toLowerCase().slice(0,3)]) return `${m[1]}-${String(MON[m[2].toLowerCase().slice(0,3)]).padStart(2,"0")}-${m[3].padStart(2,"0")}`;
   if ((m = s.match(/^(\d{1,2})[-\/](\d{1,2})[-\/](1[89]\d\d)$/))) return `${m[3]}-${m[2].padStart(2,"0")}-${m[1].padStart(2,"0")}`;
   return null;
 }
