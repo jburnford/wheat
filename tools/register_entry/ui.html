@@ -134,7 +134,7 @@ kbd{font:inherit}
     <b>Enter</b> save &amp; next · <b>Ctrl+→ / Ctrl+←</b> next / previous quarter without saving · <b>Ctrl+D</b> copy previous quarter<br>
     <b>1–9</b> pick a common type (when not in a text box) · <b>0</b> Other · <b>Alt+H</b> Homestead · <b>Alt+C</b> CPR prefill<br>
     <b>PageUp / PageDown</b> previous / next image · <b>mouse wheel</b> zoom (over the image) · <b>drag</b> pan · <b>F</b> fit width<br>
-    Dates accept <code>1903</code>, <code>1903-04</code>, <code>1903-04-17</code>, <code>17 Apr 1903</code>, <code>Apr 17 1903</code>. Number of claims fills itself from the names.<br>
+    Dates accept <code>1903</code>, <code>1903-04-17</code>, <code>17 Apr 1903</code>, <code>16th Nov 25</code>, <code>1/11/31</code> (day/month/yy as the register writes it); two-digit years become 19xx (18xx for 70–99). Number of claims fills itself from the names.<br>
     Every save rewrites <code>data/register/&lt;sheet&gt;.csv</code>; press <b>Commit</b> when you stop for the day.
   </div>
   <form method="dialog"><div class="btns"><button class="p">Close</button></div></form>
@@ -242,9 +242,13 @@ function useCpr(){ const r = rows[cur]; const parts = (r.cpr_hint || "").split("
 
 // ---------------- dates
 const MON = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,sept:9,oct:10,nov:11,dec:12};
+function yy(y){ y = parseInt(y); return y < 100 ? (y >= 70 ? 1800 + y : 1900 + y) : y; }
 function parseDate(s){
-  s = (s || "").trim(); if (!s) return "";
+  s = (s || "").trim().replace(/^(pat'?d|patd|pat\.?|can\.?|cancelled|entered|entry)\s*/i, "").replace(/(\d)(st|nd|rd|th)\b/gi, "$1").replace(/\s+/g, " ").trim(); if (!s) return "";
   let m;
+  if ((m = s.match(/^(\d{1,2}) ([a-z]+)\.?,? (\d{2})$/i)) && MON[m[2].toLowerCase().slice(0,4)]) return `${yy(m[3])}-${String(MON[m[2].toLowerCase().slice(0,4)]).padStart(2,"0")}-${m[1].padStart(2,"0")}`;
+  if ((m = s.match(/^([a-z]+)\.? (\d{1,2}),? (\d{2})$/i)) && MON[m[1].toLowerCase().slice(0,4)]) return `${yy(m[3])}-${String(MON[m[1].toLowerCase().slice(0,4)]).padStart(2,"0")}-${m[2].padStart(2,"0")}`;
+  if ((m = s.match(/^(\d{1,2})[-\/.](\d{1,2})[-\/.](\d{2})$/))) return `${yy(m[3])}-${m[2].padStart(2,"0")}-${m[1].padStart(2,"0")}`;   // 1/11/31 as written in the register: d/m/yy
   if ((m = s.match(/^(1[89]\d\d)(?:[-\/.](\d{1,2})(?:[-\/.](\d{1,2}))?)?$/))) return m[1] + (m[2] ? "-" + m[2].padStart(2,"0") + (m[3] ? "-" + m[3].padStart(2,"0") : "") : "");
   if ((m = s.match(/^(\d{1,2})\s+([a-z]+)\.?,?\s+(1[89]\d\d)$/i)) && MON[m[2].toLowerCase().slice(0,4)] ) return `${m[3]}-${String(MON[m[2].toLowerCase().slice(0,4)]).padStart(2,"0")}-${m[1].padStart(2,"0")}`;
   if ((m = s.match(/^([a-z]+)\.?\s+(\d{1,2}),?\s+(1[89]\d\d)$/i)) && MON[m[1].toLowerCase().slice(0,4)]) return `${m[3]}-${String(MON[m[1].toLowerCase().slice(0,4)]).padStart(2,"0")}-${m[2].padStart(2,"0")}`;
@@ -258,17 +262,19 @@ for (const c of ["FirstDate","FirstDateSuccess","Patent_Date"]) $("#" + c).addEv
 function collect(){
   const r = rows[cur]; const out = Object.assign({}, r);
   out.Type = $("#type").value.trim();
-  for (const c of ["FirstDate","FirstDateSuccess","Patent_Date"]) { const v = $("#" + c).value.trim(); const d = v ? parseDate(v) : ""; if (d === null) { $("#" + c).classList.add("bad"); throw new Error("bad date in " + c); } out[c] = d; }
+  for (const c of ["FirstDate","FirstDateSuccess","Patent_Date"]) { const v = $("#" + c).value.trim(); const d = v ? parseDate(v) : ""; if (d === null) { const err = new Error(`could not read the date "${v}" — try 1913-10-21 or 21 Oct 1913`); err.el = $("#" + c); throw err; } out[c] = d; }
   out.Successful_Claims = $("#Successful_Claims").value.trim(); out.Failed_Claims = $("#Failed_Claims").value.trim();
   out.Number_of_claims = $("#Number_of_claims").value.trim() || String(split(out.Successful_Claims).length + split(out.Failed_Claims).length || "");
   out.Notes = $("#Notes").value.trim();
   out.image = images[imgIdx] ? images[imgIdx].path : (r.image || "");
-  if (out.FirstDate && out.Patent_Date && out.Patent_Date < out.FirstDate) { if (!confirm("Patent date is before first date — save anyway?")) throw new Error("cancelled"); }
+  if (out.FirstDate && out.Patent_Date && out.Patent_Date < out.FirstDate) { if (!confirm("Patent date is before first date — save anyway?")) throw new Error("cancelled (patent before first date)"); }
   return out;
 }
+function refuse(msg, el){ const m = $("#savedmsg"); m.textContent = "Not saved — " + msg; m.style.color = "var(--warn)"; toast("Not saved — " + msg); if (el) { el.classList.add("bad"); el.focus(); } }
 async function save(advance = true){
-  let row; try { row = collect(); } catch (e) { toast(e.message); return; }
-  if (!row.Type) { toast("choose a Type"); $("#type").focus(); return; }
+  $("#savedmsg").style.color = "";
+  let row; try { row = collect(); } catch (e) { refuse(e.message, e.el); return; }
+  if (!row.Type) { refuse("choose a Type (use \"Blank (no entry)\" for an empty line)", $("#type")); return; }
   const res = await api("/api/save", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({sheet, row})});
   if (!res.ok) { toast("save failed: " + res.error); return; }
   Object.assign(rows[cur], row, {entered_at: res.entered_at}); prevRow = rows[cur];
