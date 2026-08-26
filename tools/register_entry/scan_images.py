@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[2]; OUT = ROOT / "data" / "register" / "
 IMG = {".jpg": 1, ".jpeg": 1, ".png": 1, ".tif": 0, ".tiff": 0, ".heic": 0, ".pdf": 0}
 RANGE = re.compile(r"^range\s*0*(\d+)([a-z]?)$", re.I)
 TWP = re.compile(r"^township\s*0*(\d+)", re.I)
-PAGE = re.compile(r"(\d+)\s*\)?\s*$")
+PAGE = re.compile(r"(\d+)\s*([A-Za-z])?\s*\)?\s*$")   # "6", "(6)", "12A" (supplementary page after 12)
 
 def parse(rel):
     parts = PureWindowsPath(rel.replace("/", "\\")).parts
@@ -40,7 +40,7 @@ def parse(rel):
     if ext not in IMG: return None
     stem = Path(parts[-1]).stem
     pm = PAGE.search(stem.replace("(", " ").replace(")", " "))
-    page = int(pm.group(1)) if pm else 0
+    page = (int(pm.group(1)) + (0.5 if pm.group(2) else 0)) if pm else 0
     return dict(mer=mer, rge=rge, twp_from=twp, twp_to=twp, page=page, path=rel.replace("/", "\\"), ext=ext, viewable=IMG[ext])
 
 def main():

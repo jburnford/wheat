@@ -70,14 +70,14 @@ def load_manifest():
     if m.exists():
         with open(m, newline="", encoding="utf-8") as f:
             for r in csv.DictReader(f):
-                try: MANIFEST.append(dict(mer=r["mer"].upper(), rge=str(r["rge"]).upper().lstrip("0"), t0=int(r.get("twp_from") or 0), t1=int(r.get("twp_to") or 99), path=r["path"], page=int(r.get("page") or 0), viewable=str(r.get("viewable", "1")) != "0"))
+                try: MANIFEST.append(dict(mer=r["mer"].upper(), rge=str(r["rge"]).upper().lstrip("0"), t0=int(r.get("twp_from") or 0), t1=int(r.get("twp_to") or 99), path=r["path"], page=float(r.get("page") or 0), viewable=str(r.get("viewable", "1")) != "0"))
                 except (ValueError, KeyError): pass
 
 def images_for(mer, rge, twp):
     rge = str(rge).upper().lstrip("0")
     hits = [x for x in MANIFEST if x["mer"] == mer and x["rge"] == rge and x["t0"] <= twp <= x["t1"]]
     hits.sort(key=lambda x: (x["page"], x["path"]))
-    hits = [dict(path=x["path"], page=f"p{x['page']} · {x['path'].split(chr(92))[-1]}" if x["page"] else x["path"].split(chr(92))[-1], viewable=x["viewable"]) for x in hits]
+    hits = [dict(path=x["path"], page=f"p{x['page']:g} · {x['path'].split(chr(92))[-1]}" if x["page"] else x["path"].split(chr(92))[-1], viewable=x["viewable"]) for x in hits]
     if not hits and IMAGE_ROOT:   # fallback: any file whose path mentions the range
         pat = re.compile(rf"(^|[^0-9]){rge}([^0-9]|$)")
         for p in sorted(IMAGE_ROOT.rglob("*")):
