@@ -10,6 +10,11 @@ python3 scripts/analysis/build_table.py   # W1-W3 -> data/homesteads/analysis/ho
 python3 scripts/analysis/analyze.py       # type / timing / geography, rail proximity, CPR, reserve surrenders
 python3 scripts/analysis/analyze2.py      # homestead-only lag, scrip, corporate holders, pre-emption, churn, fill speed
 python3 scripts/analysis/analyze_cpr.py   # CPR land sales (SK): price, purchaser type/residence, outcomes, concentration, link to homesteads
+
+# transcription sampling plan (docs/analysis/transcription_priorities.html)
+python3 scripts/analysis/coverage_frame.py        # township frame: status + province-wide covariates (~3 min)
+python3 scripts/analysis/coverage_priority.py     # stratum coverage, post-stratification weights, greedy plan, spine
+python3 scripts/analysis/coverage_report_data.py  # zones A-G + SVG township maps -> coverage_report_data.json
 ```
 
 - `build_table.py` reuses the parsers in `scripts/build_homesteads.py` (`year_of`,
@@ -26,6 +31,14 @@ python3 scripts/analysis/analyze_cpr.py   # CPR land sales (SK): price, purchase
 - `analysis_out.txt` / `analysis2_out.txt` / `analysis_cpr_out.txt` are the
   console output from the Aug 2026 runs; `chart_data.json` and
   `chart_data_cpr.json` are the extracts embedded in the report page.
+- `coverage_frame.py` treats every township in W1–W3 as the sampling frame and
+  classifies it done (>=50% of rows typed) / names-only (>=30% populated) /
+  empty, with a settlement-era proxy (earliest of rail <=16 km, 1921 town
+  <=25 km, elevator <=15 km), CPR-belt and reserve-proximity strata.
+  `coverage_priority.py` writes `priority_w` (frame share / done share of the
+  era x band x meridian cell) to `township_frame_scored.parquet` for
+  post-stratified estimates, and defines the 1-in-9 spine
+  (`rge % 3 == 1 and twp % 3 == 1`). Re-run all three after each refresh.
 - `data/homesteads/analysis/` is gitignored — rebuild it after each W1–W3 refresh.
 
 Key definitions: settlement year = first of FirstDate → FirstDateSuccess →

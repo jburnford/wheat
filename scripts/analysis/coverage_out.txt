@@ -1,0 +1,147 @@
+frame 3455 townships; done 882 (25.5%)
+
+== era ==  (ratio <1 under-represented; deficit = townships needed to reach proportional)
+          frame  done  frame_%  done_%  coverage_%  ratio  deficit_twps
+era                                                                    
+1890s       368   141    10.65   15.99       38.32   1.50         -47.0
+1901-05     627   172    18.15   19.50       27.43   1.07         -12.0
+1906-10     492    69    14.24    7.82       14.02   0.55          57.0
+1911+       494    19    14.30    2.15        3.85   0.15         107.0
+no proxy    392    29    11.35    3.29        7.40   0.29          71.0
+pre-1890   1082   452    31.32   51.25       41.77   1.64        -176.0
+
+== band ==  (ratio <1 under-represented; deficit = townships needed to reach proportional)
+                      frame  done  frame_%  done_%  coverage_%  ratio  deficit_twps
+band                                                                               
+T1-12 (south)           781   187    22.60   21.20       23.94   0.94          12.0
+T13-24                  758   183    21.94   20.75       24.14   0.95          11.0
+T25-36                  742   216    21.48   24.49       29.11   1.14         -27.0
+T37-48 (parkland)       712   246    20.61   27.89       34.55   1.35         -64.0
+T49+ (forest fringe)    462    50    13.37    5.67       10.82   0.42          68.0
+
+== merid ==  (ratio <1 under-represented; deficit = townships needed to reach proportional)
+       frame  done  frame_%  done_%  coverage_%  ratio  deficit_twps
+merid                                                               
+W1       210   105     6.08   11.90       50.00   1.96         -51.0
+W2      1623   404    46.98   45.80       24.89   0.98          10.0
+W3      1622   373    46.95   42.29       23.00   0.90          41.0
+
+== cpr_belt ==  (ratio <1 under-represented; deficit = townships needed to reach proportional)
+             frame  done  frame_%  done_%  coverage_%  ratio  deficit_twps
+cpr_belt                                                                  
+CPR belt       621   327    17.97   37.07       52.66   2.06        -168.0
+no CPR land   2527   467    73.14   52.95       18.48   0.72         178.0
+some CPR       307    88     8.89    9.98       28.66   1.12         -10.0
+
+== near_reserve ==  (ratio <1 under-represented; deficit = townships needed to reach proportional)
+              frame  done  frame_%  done_%  coverage_%  ratio  deficit_twps
+near_reserve                                                               
+False          2997   687    86.74   77.89       22.92   0.90          78.0
+True            458   195    13.26   22.11       42.58   1.67         -78.0
+
+== era x band ==  coverage % (done/frame)
+era                   1890s  1901-05  1906-10  1911+  no proxy  pre-1890
+band                                                                    
+T1-12 (south)            45       31        3      6         0        48
+T13-24                   49        7        0      0         0        33
+T25-36                   24       39       22      0        -1        27
+T37-48 (parkland)        40       22       33      5        20        73
+T49+ (forest fringe)      0        0       48      4         6        78
+frame counts:
+era                   1890s  1901-05  1906-10  1911+  no proxy  pre-1890
+band                                                                    
+T1-12 (south)            89       75      171    142        74       230
+T13-24                   61       59       88     72        24       454
+T25-36                   95      257      156     18         0       216
+T37-48 (parkland)       121      200       52    106        74       159
+T49+ (forest fringe)      2       36       25    156       220        23
+
+== era x merid == coverage %
+era    1890s  1901-05  1906-10  1911+  no proxy  pre-1890
+merid                                                    
+W1        48        0       59     -1        52        48
+W2        30       12        1      3         4        47
+W3        57       40       15      4         2        31
+
+== candidate blocks (sheet x 12-township band), ranked by mean under-representation weight ==
+    merid  rge  tband  twps  rows  names_only  score  mean_w  t_min  t_max       era   cpr   res   proxy  score_per_row
+14     W2    1      4     8  1197           0   24.0     3.0     49     56  no proxy  0.00  0.50  1910.0          20.05
+13     W2    1      3    12  1738           1   36.0     3.0     37     48  no proxy  0.00  0.00  1900.0          20.71
+18     W2    2      4     8  1168           0   24.0     3.0     49     56  no proxy  0.00  0.12  1910.0          20.55
+17     W2    2      3    12  1754           0   36.0     3.0     37     48  no proxy  0.00  0.00  1903.0          20.52
+23     W2    3      4     8  1167           0   24.0     3.0     49     56  no proxy  0.00  0.00     NaN          20.57
+28     W2    4      4     8  1176           0   24.0     3.0     49     56  no proxy  0.00  0.25     NaN          20.41
+38     W2    7      4     8  1152           0   24.0     3.0     49     56  no proxy  0.00  0.38     NaN          20.83
+43     W2    8      4     8  1152           0   24.0     3.0     49     56  no proxy  0.00  0.00     NaN          20.83
+34     W2    6      4     8  1184           0   24.0     3.0     49     56  no proxy  0.00  0.38     NaN          20.27
+30     W2    5      4     8  1192           0   24.0     3.0     49     56  no proxy  0.00  0.38     NaN          20.13
+53     W2   10      4     8  1152           0   24.0     3.0     49     56  no proxy  0.00  0.00  1937.0          20.83
+56     W2   11      2    12  1680          12   36.0     3.0     25     36  pre-1890  0.08  0.17  1892.0          21.43
+58     W2   11      4     8  1152           1   24.0     3.0     49     56  no proxy  0.00  0.00  1937.0          20.83
+48     W2    9      4     8  1152           0   24.0     3.0     49     56  no proxy  0.00  0.00     NaN          20.83
+66     W2   13      2    12  1680          12   36.0     3.0     25     36   1901-05  0.08  0.33  1903.0          21.43
+68     W2   13      4     8  1152           3   24.0     3.0     49     56  no proxy  0.00  0.00  1924.0          20.83
+63     W2   12      4     8  1152           1   24.0     3.0     49     56  no proxy  0.00  0.00  1933.0          20.83
+61     W2   12      2    12  1680          11   36.0     3.0     25     36   1901-05  0.08  0.25  1892.0          21.43
+83     W2   16      4     8  1152           3   24.0     3.0     49     56  no proxy  0.00  0.00  1931.0          20.83
+84     W2   17      0     6   864           6   18.0     3.0      1      6     1911+  0.00  0.00  1917.0          20.83
+88     W2   17      4     8  1152           1   24.0     3.0     49     56     1911+  0.00  0.00  1932.0          20.83
+79     W2   16      0     5   720           5   15.0     3.0      1      5   1906-10  0.00  0.00  1908.0          20.83
+78     W2   15      4     8  1152           4   24.0     3.0     49     56     1911+  0.00  0.00  1924.0          20.83
+76     W2   15      2    12  1680          10   36.0     3.0     25     36   1901-05  0.08  0.33  1903.0          21.43
+73     W2   14      4     8  1152           4   24.0     3.0     49     56     1911+  0.00  0.00  1924.0          20.83
+71     W2   14      2    12  1680          11   36.0     3.0     25     36   1901-05  0.17  0.25  1903.0          21.43
+106    W2   21      2    12  1728          12   36.0     3.0     25     36   1901-05  0.00  0.00  1903.0          20.83
+108    W2   21      4     6   864           1   18.0     3.0     51     56     1911+  0.00  0.00  1932.0          20.83
+113    W2   22      4     6   864           1   18.0     3.0     51     56     1911+  0.00  0.00  1932.0          20.83
+111    W2   22      2    12  1728          12   36.0     3.0     25     36   1901-05  0.00  0.00  1903.0          20.83
+
+== greedy plan to reach proportional coverage (era x band x meridian) ==
+   merid  rge  t_min  t_max  twps  rows  names_only       era                  band  cpr_belt  near_res  gain
+0     W2   28     51     54     4    96           0  no proxy  T49+ (forest fringe)      0.00      0.75   4.0
+1     W3   30     13     18     6   192           6     1911+                T13-24      0.00      0.00   6.0
+2     W3   28     49     54     6   216           2   1901-05  T49+ (forest fringe)      0.17      0.33   6.0
+3     W2   29     25     36    12   648           6  pre-1890                T25-36      0.00      0.00  12.0
+4     W2   30     13     18     6   168           1  pre-1890                T13-24      0.00      0.00   1.8
+5     W2   30      1     12    12  1152          12   1906-10         T1-12 (south)      0.00      0.00  12.0
+6     W3   30      1     12    12  1152           3  no proxy         T1-12 (south)      0.17      0.00  12.0
+7     W2   28     37     41     5   648           5   1901-05     T37-48 (parkland)      0.00      0.00   5.0
+8     W3   29     13     24    12  1608          12     1911+                T13-24      0.00      0.00  12.0
+9     W2    1     25     36    12  1680          11  pre-1890                T25-36      0.00      0.33  12.0
+10    W2    2     25     36    12  1680          11  pre-1890                T25-36      0.17      0.25  12.0
+11    W2   10     25     36    12  1680          11   1901-05                T25-36      0.00      0.00  12.0
+12    W2   27     51     56     6   840           1  no proxy  T49+ (forest fringe)      0.00      0.50   6.0
+13    W3   27     49     56     8  1126           5   1901-05  T49+ (forest fringe)      0.12      0.50   8.0
+14    W2    4     37     48    12  1728           2     1911+     T37-48 (parkland)      0.00      0.00  12.0
+15    W2    6     37     48    12  1728           1     1911+     T37-48 (parkland)      0.00      0.00  12.0
+16    W2    7     49     56     8  1152           0  no proxy  T49+ (forest fringe)      0.00      0.38   8.0
+17    W2    8     49     56     8  1152           0  no proxy  T49+ (forest fringe)      0.00      0.00   8.0
+18    W2   11     49     56     8  1152           1  no proxy  T49+ (forest fringe)      0.00      0.00   8.0
+19    W2   16      1      5     5   720           5   1906-10         T1-12 (south)      0.00      0.00   5.0
+20    W2   17      1      6     6   864           6     1911+         T1-12 (south)      0.00      0.00   6.0
+21    W2   19     37     41     5   720           5     1890s     T37-48 (parkland)      0.00      0.00   5.0
+22    W3    1      1     12    12  1728          12   1906-10         T1-12 (south)      0.00      0.00  12.0
+23    W3    1     51     56     6   864           0  no proxy  T49+ (forest fringe)      0.00      0.50   6.0
+24    W3    2      1     12    12  1728          11   1906-10         T1-12 (south)      0.00      0.00  12.0
+25    W3    3     13     24    12  1728          12  pre-1890                T13-24      0.08      0.00  12.0
+26    W3    4     13     24    12  1728          11   1901-05                T13-24      0.00      0.00  12.0
+27    W3    5      1     12    12  1728          11   1901-05         T1-12 (south)      0.00      0.17  12.0
+28    W3    5     13     24    12  1728          12  pre-1890                T13-24      0.00      0.00  12.0
+29    W3    8      1     12    12  1728          12   1906-10         T1-12 (south)      0.00      0.00  12.0
+30    W3    8     13     24    12  1728          11   1906-10                T13-24      0.00      0.00  12.0
+31    W3    8     49     56     8  1152           4     1911+  T49+ (forest fringe)      0.00      0.75   8.0
+32    W3   11     49     56     8  1152           2     1911+  T49+ (forest fringe)      0.00      0.50   8.0
+33    W3   14     45     48     4   576           4     1911+     T37-48 (parkland)      0.00      0.00   4.0
+34    W3   16     15     24    10  1440           9     1911+                T13-24      0.10      0.00  10.0
+35    W2   15     37     48    12  1728          12     1890s     T37-48 (parkland)      0.00      0.33  11.9
+36    W2   14     25     36    12  1680          11   1901-05                T25-36      0.17      0.25  11.2
+37    W2   20     25     36    12  1728          12   1901-05                T25-36      0.00      0.00  10.5
+38    W3   24     49     56     8  1152           5     1911+  T49+ (forest fringe)      0.00      0.00   7.0
+39    W3   22      1     12    12  1728          11  pre-1890         T1-12 (south)      0.08      0.00  10.3
+total rows in plan: 49126  townships: 377
+remaining need after plan: 52.8
+
+== systematic spine (rge%3==1, twp%3==1, not done): 289 townships, 40394 rows
+{'1890s': 28, '1901-05': 52, '1906-10': 47, '1911+': 56, 'no proxy': 41, 'pre-1890': 65}
+{'T1-12 (south)': 68, 'T13-24': 61, 'T25-36': 59, 'T37-48 (parkland)': 49, 'T49+ (forest fringe)': 52}
+wrote coverage_data.json
