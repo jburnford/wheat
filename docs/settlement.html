@@ -73,7 +73,7 @@
        Jim Clifford &amp; Cheryl Troupe (HGIS Lab, University of Saskatchewan) ·
        Towns &amp; cities (1921) — Jessica Jack, part of the <i>Mapping Settler
        Colonialism in Saskatchewan</i> project (Clifford &amp; Troupe), University of
-       Saskatchewan · Railways — University of Toronto. Quarter-section geometry is an open reconstruction of the public
+       Saskatchewan · Railways — University of Toronto. Register data refreshed 25 Aug 2026 (58% of quarter sections transcribed). Quarter-section geometry is an open reconstruction of the public
        DLS survey grid, <b>for visualization only — it is not confirmed to match
        legal property boundaries.</b></p>
   </div>
@@ -224,8 +224,12 @@ map.on('load', () => {
     filter:surrFilter(curYear)});
 
   // CPR quarter sections (price) + homestead quarter sections (settlement year)
-  map.addSource('qs', {type:'vector', url:'pmtiles://cpr_qs.pmtiles'});
-  map.addSource('home', {type:'vector', url:'pmtiles://homesteads.pmtiles'});
+  // Version the tile URLs: PMTiles is fetched by byte range, and a browser or CDN
+  // holding ranges of an older build at the same URL mixes stale directory/tile
+  // bytes with the new file. Bump TILE_BUILD whenever the .pmtiles are rebuilt.
+  const TILE_BUILD='20260826';
+  map.addSource('qs', {type:'vector', url:'pmtiles://cpr_qs.pmtiles?v='+TILE_BUILD});
+  map.addSource('home', {type:'vector', url:'pmtiles://homesteads.pmtiles?v='+TILE_BUILD});
 
   // quarter sections at every zoom — thin/outline at overview, full detail zoomed in
   map.addLayer({id:'home-fill', type:'fill', source:'home', 'source-layer':'homesteads',
