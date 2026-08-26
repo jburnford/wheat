@@ -16,6 +16,7 @@ python3 scripts/analysis/coverage_frame.py        # township frame: status + pro
 python3 scripts/analysis/index_names.py           # province-wide index covariates: files per quarter, multi-name (churn) share
 python3 scripts/analysis/coverage_priority.py     # stratum coverage, post-stratification weights, greedy plan, spine
 python3 scripts/analysis/coverage_report_data.py  # zones A-G + SVG township maps -> coverage_report_data.json
+python3 scripts/analysis/transcription_plan.py    # -> data/homesteads/transcription_plan_2026.csv (spine townships still to do)
 ```
 
 - `build_table.py` reuses the parsers in `scripts/build_homesteads.py` (`year_of`,
