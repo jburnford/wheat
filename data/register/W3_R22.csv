@@ -1,12 +1,12 @@
 QSECT,PSECT,PTWP,PRGE,PMER,Type,FirstDate,FirstDateSuccess,Successful_Claims,Failed_Claims,Patent_Date,Number_of_claims,Notes,index_names,cpr_hint,entered_at,image
-NE,1,1,22,3,,,,,,,,,,,,
-NW,1,1,22,3,,,,,,,,,,,,
-SE,1,1,22,3,,,,,,,,,,,,
-SW,1,1,22,3,,,,,,,,,,,,
-NE,2,1,22,3,,,,,,,,,,,,
-NW,2,1,22,3,,,,,,,,,,,,
-SE,2,1,22,3,,,,,,,,,"Adams, Benjamin C.; Sheetz, Joseph H.; Thomas, Arthur L.",,,
-SW,2,1,22,3,,,,,,,,,"Gow, Alexander; Sheetz, Joseph H.",,,
+NE,1,1,22,3,Ranche,1931-11-01,,Claydon Dist (Co-op. Ass.),,,1,,,,2026-08-26 11:41,W3\Range 22\Township 01\R22 - T01 - (1).JPG
+NW,1,1,22,3,Ranche,1931-11-01,,Claydon Dist (Co-op. Ass.),,,1,,,,2026-08-26 11:41,W3\Range 22\Township 01\R22 - T01 - (1).JPG
+SE,1,1,22,3,Ranche,1931-11-01,,Claydon Dist (Co-op. Ass.),,,1,,,,2026-08-26 11:41,W3\Range 22\Township 01\R22 - T01 - (1).JPG
+SW,1,1,22,3,Ranche,1931-11-01,,Claydon Dist (Co-op. Ass.),,,1,,,,2026-08-26 11:41,W3\Range 22\Township 01\R22 - T01 - (1).JPG
+NE,2,1,22,3,Ranche,1931-11-01,,Claydon Dist (Co-op. Ass.),,,1,,,,2026-08-26 11:41,W3\Range 22\Township 01\R22 - T01 - (1).JPG
+NW,2,1,22,3,Ranche,1931-11-01,,Claydon Dist (Co-op. Ass.),,,1,,,,2026-08-26 11:41,W3\Range 22\Township 01\R22 - T01 - (1).JPG
+SE,2,1,22,3,Ranche,1931-11-01,,Claydon Dist (Co-op. Ass.),"Adams, Benjamin C.; Sheetz, Joseph H.; Thomas, Arthur L.",,4,,"Adams, Benjamin C.; Sheetz, Joseph H.; Thomas, Arthur L.",,2026-08-26 11:42,W3\Range 22\Township 01\R22 - T01 - (1).JPG
+SW,2,1,22,3,Purchased Homestead,1911-08-17,1913-10-21,"Gow, Alexander","Sheetz, Joseph H.",1916-11-25,2,Type is Pitt,"Gow, Alexander; Sheetz, Joseph H.",,2026-08-26 11:56,W3\Range 22\Township 01\R22 - T01 - (1).JPG
 NE,3,1,22,3,,,,,,,,,,,,
 NW,3,1,22,3,,,,,,,,,,,,
 SE,3,1,22,3,,,,,,,,,,,,

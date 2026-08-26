@@ -1,12 +1,12 @@
 QSECT,PSECT,PTWP,PRGE,PMER,Type,FirstDate,FirstDateSuccess,Successful_Claims,Failed_Claims,Patent_Date,Number_of_claims,Notes,index_names,cpr_hint,entered_at,image
-NE,1,1,4,3,,,,,,,,,"Johannessen, Julius R.",,,
-NW,1,1,4,3,,,,,,,,,"Artemenko, Stefan; Efimenko, Peter",,,
-SE,1,1,4,3,,,,,,,,,"Johannessen, Julius R.",,,
-SW,1,1,4,3,,,,,,,,,"Maloney, James Walter; Rasmussen, Neils Peter; Soldier Settlement Board of Canada",,,
-NE,2,1,4,3,,,,,,,,,"Artemenko, Stefan; Dubois, Ben; Eustice, Wilfrid J.; Van Camp, Harry",,,
-NW,2,1,4,3,,,,,,,,,"Cloakey, Solomon; Stockton, Richard",,,
-SE,2,1,4,3,,,,,,,,,,,,
-SW,2,1,4,3,,,,,,,,,"Cloakey, Solomon; Stockton, Richard",,,
+NE,1,1,4,3,Homestead,,1912-07-17,"Johannessen, Julius R.",,1917-02-06,1,,"Johannessen, Julius R.",,2026-08-26 12:00,W3\Range 04\Township 01\R04 - T01 - (1).JPG
+NW,1,1,4,3,Pre-emption,,,"Artemenko, Stefan","Efimenko, Peter",1926-12-14,2,,"Artemenko, Stefan; Efimenko, Peter",,2026-08-26 12:06,W3\Range 04\Township 01\R04 - T01 - (1).JPG
+SE,1,1,4,3,Pre-emption,,,"Johannessen, Julius R.",,1920-02-25,1,,"Johannessen, Julius R.",,2026-08-26 12:07,W3\Range 04\Township 01\R04 - T01 - (1).JPG
+SW,1,1,4,3,Homestead,,,,"Maloney, James Walter; Rasmussen, Neils Peter; Soldier Settlement Board of Canada",,3,"Recommeded as crown on Sept 25, 1939","Maloney, James Walter; Rasmussen, Neils Peter; Soldier Settlement Board of Canada",,2026-08-26 12:09,W3\Range 04\Township 01\R04 - T01 - (1).JPG
+NE,2,1,4,3,Other,,1917-09-27,"Artemenko, Stefan","Dubois, Ben; Eustice, Wilfrid J.; Van Camp, Harry",1921-06-14,4,year of patent very hard to read,"Artemenko, Stefan; Dubois, Ben; Eustice, Wilfrid J.; Van Camp, Harry",,2026-08-26 12:11,W3\Range 04\Township 01\R04 - T01 - (1).JPG
+NW,2,1,4,3,Homestead,1916-12-29,1919-11-01,"Stockton, Richard","Cloakey, Solomon",1920-04-14,2,,"Cloakey, Solomon; Stockton, Richard",,2026-08-26 12:13,W3\Range 04\Township 01\R04 - T01 - (1).JPG
+SE,2,1,4,3,Homestead,1930-03-05,,John Whyte,,,1,Can't read the patent year; it is behind tape,,,2026-08-26 12:17,W3\Range 04\Township 01\R04 - T01 - (1).JPG
+SW,2,1,4,3,Ranche,1926-07-01,,John Whyte,,,1,,"Cloakey, Solomon; Stockton, Richard",,2026-08-26 12:15,W3\Range 04\Township 01\R04 - T01 - (1).JPG
 NE,3,1,4,3,,,,,,,,,"Stockton, Sidney",,,
 NW,3,1,4,3,,,,,,,,,"Cail, Fred; Pituley, John",,,
 SE,3,1,4,3,,,,,,,,,,,,
