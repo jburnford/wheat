@@ -9,7 +9,9 @@ Expected layout (as on the HGIS Lab share):
     W3\\Range 14\\Township 35\\R14 - T35 - (6).jpg
     W1\\Range 30\\Township 38\\R30 - T38 - 6.JPG
     W2\\Range 21A\\...                       (ranges with a letter suffix are kept as e.g. 21A)
-    W1\\Range 30\\Townships 57-76 (does not exist)\\Township 67\\...   (kept, flagged; not in the registers)
+    W1\\Range 30\\Townships 57-76 (does not exist)\\Township 67\\...   (kept; not in the registers)
+    W3\\Range 20\\HEIC files\\IMG_8495.HEIC                       (raw originals, no township folder -> ignored)
+    W1\\Range 30\\Blank & Cover Pages\\...                         (ignored)
 
 Columns: mer, rge, twp_from, twp_to, page, path, ext, viewable (0 for HEIC —
 browsers cannot show HEIC; convert those folders to JPG). Standard library only.

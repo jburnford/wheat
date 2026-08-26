@@ -30,10 +30,11 @@ range / township to page images on the shared drive (layout
 Scanning the share takes ~10 minutes; a manifest is committed in the repo, so
 only re-run it when new townships have been photographed.
 
-**HEIC images.** About a fifth of the pages on the share are iPhone `.HEIC`
-files, which browsers cannot display. The manifest flags them (`viewable = 0`)
-and the app says so when it reaches one. Convert those township folders to JPG
-(Windows Photos, or `magick mogrify -format jpg *.HEIC`) and re-run the scan.
+The share also holds the raw iPhone `.HEIC` originals in a `HEIC files` folder
+under each range; the township folders contain the JPG conversions, so the
+manifest ignores the originals. Townships that have not been photographed yet
+(for example W2 R13 T16–31, as of Aug 2026) have no images, and the plan CSV's
+`pages` column shows 0 for them.
 
 ## Daily use
 

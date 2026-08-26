@@ -16,12 +16,19 @@ sp["even_quarters_with_file_pct"] = (sp.even_file_share * 100).round(0)
 sp["rail_arrival"] = sp.rail_yr.replace(9999, np.nan)
 sp["settlement_era_proxy"] = sp.era
 sp["infill_zone"] = sp.zone.replace("", "")
-sp["note"] = np.where(sp.index_files == 0, "no homestead files in index — likely reserve/forest/lease; low yield, keep for completeness",
-             np.where(sp.index_files < 20, "few homestead files — quick township", ""))
+img = ROOT / "data" / "register" / "images.csv"
+if img.exists():
+    m = pd.read_csv(img, dtype=str); m = m[m.viewable == "1"]
+    pages = m.groupby(["mer", m.rge.str.lstrip("0"), m.twp_from.astype(int)]).size()
+    sp["pages"] = [int(pages.get((r.meridian, str(int(r.rge)), int(r.twp)), 0)) for r in sp.itertuples()]
+else:
+    sp["pages"] = np.nan
+sp["note"] = np.where(sp.pages == 0, "NOT PHOTOGRAPHED YET — no page images on the share", np.where(sp.index_files == 0, "no homestead files in index — likely reserve/forest/lease; low yield, keep for completeness",
+             np.where(sp.index_files < 20, "few homestead files — quick township", "")))
 sp = sp.sort_values(["mer", "rge", "twp"]); sp["sequence"] = range(1, len(sp) + 1)
 sp = sp.rename(columns={"rge": "range", "twp": "township"})
 cols = ["sequence", "meridian", "range", "township", "sheet", "status", "rows", "index_files", "index_multi_name_pct", "even_quarters_with_file_pct",
-        "settlement_era_proxy", "rail_arrival", "cpr_belt", "near_reserve", "band", "infill_zone", "lon", "lat", "note"]
+        "pages", "settlement_era_proxy", "rail_arrival", "cpr_belt", "near_reserve", "band", "infill_zone", "lon", "lat", "note"]
 out = sp[cols].copy(); out["lon"] = out.lon.round(4); out["lat"] = out.lat.round(4)
 out.to_csv(ROOT / "data" / "homesteads" / "transcription_plan_2026.csv", index=False)
 print("townships:", len(out), "rows:", int(out.rows.sum()))
