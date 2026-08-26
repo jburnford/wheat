@@ -1,0 +1,493 @@
+======================================================================
+A. TYPE
+======================================================================
+rows: 281850  dated: 108023  typed: 120859
+
+raw Type values (top 40):
+type_raw
+<blank>                                                                   160991
+Homestead                                                                  49522
+Canadian Pacific Railway                                                   19273
+Provincial Forest                                                           6702
+Canadian Northern Railway                                                   5260
+Hudson Bay Company                                                          5167
+Indian Reserve                                                              4807
+School Land Sale                                                            4500
+Pre-emption                                                                 3831
+Qu’Appelle, Long Lake, and Saskatchewan Railroad and Steamboat Company      3488
+Sale                                                                        3158
+Canadian Pacific Railway Souris Branch                                      3100
+Manitoba South-Western Colonization Railway                                 1849
+North West Half-Breed Scrip                                                 1767
+Manitoba and North Western Railway                                          1720
+Manitoba and Southeastern Railway                                            958
+Time Sale                                                                    862
+Canadian Pacific Railway Grant                                               568
+South African Volunteer Homestead                                            565
+Special Grant                                                                521
+Great North-West Central Railway                                             486
+Ranche                                                                       451
+Soldier                                                                      356
+Pasture Lease                                                                301
+Settlement                                                                   297
+Military Homestead                                                           245
+Transferred                                                                  242
+Grazing Permit                                                               229
+Northwest Colonization Company                                               103
+North West Half-Breed Grant                                                   80
+Open for Grazing                                                              71
+Canadian Pacific Railway Sale                                                 68
+Cultivation Lease                                                             58
+Pasture Sale                                                                  37
+Exchange                                                                      36
+Open for Grazing or Lease                                                     29
+Grand Trunk Pacific Railway Townsites                                         22
+Cultivation + Grazing Lease                                                   21
+Drainage Sale                                                                 10
+Free Grant                                                                     9
+Name: count, dtype: int64
+
+tenure group counts (all / dated):
+         all  dated
+grp                
+none  160991    304
+H      50998  50312
+K      23014  22629
+R      13794  13445
+O      12747   1489
+S       9458   9090
+B       5169   5095
+P       3831   3813
+C       1848   1846
+
+tenure group by decade (dated rows, % within decade):
+grp        B     C      H      K    O     P      R     S  none
+decade                                                        
+1870.0     7     0      0      0    0     0      0     0     0
+1880.0  3528   121   7918   1182  101   285    225  1746    17
+1890.0   133    65   3369    929   26    20    572   960    16
+1900.0  1176  1647  30569  20410  186  2190  11788  1703    92
+1910.0   203     4   7386     83  430  1317    825  3309   170
+1920.0    47     9    942     25   97     1     16  1159     9
+1930.0     1     0    128      0  649     0     19   213     0
+grp         B    C     H     K     O    P     R     S  none
+decade                                                     
+1870.0  100.0  0.0   0.0   0.0   0.0  0.0   0.0   0.0   0.0
+1880.0   23.3  0.8  52.4   7.8   0.7  1.9   1.5  11.5   0.1
+1890.0    2.2  1.1  55.3  15.3   0.4  0.3   9.4  15.8   0.3
+1900.0    1.7  2.4  43.8  29.3   0.3  3.1  16.9   2.4   0.1
+1910.0    1.5  0.0  53.8   0.6   3.1  9.6   6.0  24.1   1.2
+1920.0    2.0  0.4  40.9   1.1   4.2  0.0   0.7  50.3   0.4
+1930.0    0.1  0.0  12.7   0.0  64.3  0.0   1.9  21.1   0.0
+
+tenure group by section parity (odd=railway half):
+odd    False  True 
+grp                
+B       5113     56
+C       1815     33
+H      42785   8213
+K        449  22565
+O       6087   6660
+P       1874   1957
+R        102  13692
+S       2691   6767
+none  107596  53395
+
+HBC sections 8/26 and school sections 11/29 — tenure mix:
+grp               B     C      H      K     O     P      R     S    none
+secclass                                                                
+HBC(8,26)      4995    27   1068      2   621    17      4    91    2330
+School(11,29)     1     0     28      6  1251     0      5  4512      86
+even            118  1788  41717    447  5466  1857     98  2600  105266
+odd(rail)        55    33   8185  22559  5409  1957  13687  2255   53309
+
+institutional claimants: 37168
+first_name
+CANADIAN PACIFIC RAILWAY                            22222
+CANADIAN NORTHERN RAILWAY                            5731
+HUDSON BAY COMPANY                                   5114
+MANITOBA SOUTHWESTERN COLONIZATION RAILWAY           1076
+TEMPERANCE COLONIZATION SOCIETY                       614
+GREAT NORTHWEST CENTRAL RAILWAY                       491
+NORTHWEST COLONIZATION COMPANY                        333
+PRIMITIVE METHODIST COLONIZATION COMPANY              217
+DEPARTMENT OF NATIONAL DEFENCE                        187
+DOMINION LANDS COLONIZATION COMPANY                   124
+MANITOBA AND NORTH WESTERN RAILWAY                    114
+FERTILE BELT COLONIZATION COMPANY                     103
+IMPERIAL COLONIZATION BOARD                            42
+GRAND TRUNK PACIFIC TOWN AND DEVELOPMENT COMPANY       40
+GRAND TRUNK PACIFIC RAILWAY COMPANY                    35
+Name: count, dtype: int64
+
+======================================================================
+B. TIMING
+======================================================================
+
+settlement year by year (all meridians):
+mer      1      2     3    all
+year                          
+1879     0      7     0      7
+1880     1      2     0      3
+1881   154     76    10    240
+1882   822   2551    90   3463
+1883   421   2719    39   3179
+1884   412   2156   421   2989
+1885   147    928   353   1428
+1886   191    908   543   1642
+1887   158    854    85   1097
+1888   115    231    45    391
+1889   140    471    80    691
+1890   138    496    50    684
+1891   115    209   608    932
+1892    77    672    70    819
+1893    31    282    88    401
+1894    26    487    61    574
+1895    14    158    39    211
+1896    27    182    20    229
+1897    70    107    25    202
+1898    70    417   136    623
+1899   148    849   418   1415
+1900   155   1108   256   1519
+1901   236  11501  2345  14082
+1902  2735   8207  2035  12977
+1903   976   3472  3203   7651
+1904   251    681  3168   4100
+1905   788    900  5792   7480
+1906   247    801  4915   5963
+1907   190    403  2333   2926
+1908   417   1796  7194   9407
+1909    43    405  3208   3656
+1910    72   1166  3082   4320
+1911    75    329  1766   2170
+1912    45    401  1520   1966
+1913    22    329   837   1188
+1914    33    305   548    886
+1915    57    181   338    576
+1916   171    146   349    666
+1917    31    196   235    462
+1918    56    246   710   1012
+1919     1     80   400    481
+1920     6     59   145    210
+1921    20    105   199    324
+1922     5     25    84    114
+1923     5     44    49     98
+1924     3     44    49     96
+1925    14     44    53    111
+1926    11     46    67    124
+1927    17     57    91    165
+1928     1     55   165    221
+1929    31    369   442    842
+1930     4     27    68     99
+1931    18    587    10    615
+1932     5     12   150    167
+1933     3     11    40     54
+1934     2     10    38     50
+1935     1     14    10     25
+
+patent year histogram by 5-yr bin:
+patent
+1875        7
+1880     2962
+1885     4140
+1890     2872
+1895     2822
+1900    26034
+1905    32374
+1910    14816
+1915     8699
+1920     3852
+1925     2509
+1930     1852
+1935      190
+Name: count, dtype: int64
+
+entry->patent lag: n= 101470  negative: 259
+count    101211.000000
+mean          4.717669
+std           6.480060
+min           0.000000
+25%           0.000000
+50%           4.000000
+75%           6.000000
+max          51.000000
+Name: lag, dtype: float64
+lag distribution (years):
+lag
+0.0     42861
+1.0      1276
+2.0       761
+3.0      5014
+4.0     11262
+5.0      8843
+6.0      6210
+7.0      4357
+8.0      3323
+9.0      2747
+10.0     2054
+11.0     1465
+12.0     1094
+13.0      996
+14.0     1043
+15.0     7905
+Name: count, dtype: int64
+
+lag by entry cohort (median / mean / n / %<=3yr / %>=6yr):
+        median  mean      n    le3   ge6
+cohort                                  
+1875.0     0.0   0.0      7  100.0   0.0
+1880.0     7.0  10.6   9707   34.0  55.3
+1885.0     5.0  10.1   5084   46.7  49.5
+1890.0     5.0   7.3   3354   45.3  48.7
+1895.0     4.0   4.7   2614   36.7  36.0
+1900.0     0.0   2.8  39369   59.0  19.0
+1905.0     3.0   3.4  28391   53.8  23.1
+1910.0     6.0   7.3   9022   15.5  57.8
+1915.0     6.0   6.1   1904   37.9  52.6
+1920.0     6.0   5.7    582   31.6  56.4
+1925.0     4.0   3.5    398   44.0  32.7
+1930.0     0.0   0.1    772   99.1   0.0
+1935.0     0.0   0.0      7  100.0   0.0
+
+lag by tenure group:
+      median  mean   size
+grp                      
+B        0.0   4.2   5040
+C        1.0   1.6   1780
+H        5.0   7.6  48484
+K        0.0   0.1  22002
+O        0.0   5.9    951
+P        9.0  10.0   3508
+R        0.0   0.3  13053
+S        3.0   6.3   6369
+none     0.5   6.1     24
+
+CHURN: Number_of_claims distribution (where recorded):
+n_claims
+1    86412
+2    22319
+3     7778
+4     2255
+5      615
+6      242
+Name: count, dtype: int64
+share of populated quarters with >1 claim or any failed claim: 35.2 %
+  among dated: 31.5 %
+
+churn by decade of first entry (% of dated rows; mean claims where recorded):
+            n  churn_pct  mean_claims  failed_pct
+decade                                           
+1870.0      7        0.0         1.00         0.0
+1880.0  15123       45.7         1.66        44.3
+1890.0   6090       30.4         1.43        27.8
+1900.0  69761       24.8         1.36        22.9
+1910.0  13727       48.9         1.67        45.2
+1920.0   2305       44.3         1.46        37.8
+1930.0   1010       21.0         1.21         4.1
+
+churn by tenure group:
+           n  churn_pct  failed_pct
+grp                                
+B       5169        9.9         9.3
+C       1848       44.9        18.5
+H      50998       50.1        48.6
+K      23014        1.9         1.0
+O      12747        7.7         6.0
+P       3831       53.1        51.0
+R      13794        3.6         2.0
+S       9458       38.9        30.4
+none  160991       40.1        40.1
+
+failed-only quarters (no successful claimant): 1855
+undated but named quarters: 173404
+
+names appearing on >1 quarter: 34852 of 169025  quarters held by such names: 108229
+names on >=3 quarters: 7849  >=5: 2025
+first_name
+SASKATCHEWAN VALLEY LAND COMPANY            2099
+NISBET PROVINCIAL FOREST                    1257
+PORCUPINE PROVINCIAL FOREST RESERVE         1154
+FORT A LA CORNE FOREST RESERVE              1113
+CANADA SASKATCHEWAN LAND COMPANY             825
+MANITOBA AND NORTH-WEST LAND CORPORATION     789
+WINNIPEG WESTERN LAND CORPORATION            604
+SOLDIER SETTLEMENT BOARD OF CANADA           590
+MOOSE MOUNTAIN PROVINCIAL PARK               547
+PROVINCIAL FOREST NORTHERN                   539
+CANADA NORTH WEST LAND COMPANY               491
+PASQUIA FOREST RESERVE                       477
+CHIEF "KAKEESHEWAY"                          432
+NANTON, AUGUSTUS MEREDITH                    428
+NATIONAL TRUST COMPANY                       413
+PROVINCIAL FOREST - CAP 15                   359
+PORCUPINE DOMINION FOREST RESERVE NO. 2      328
+PORCUPINE DOMINION FOREST RESERVE NO. 1      316
+STURGEON FOREST RESERVE                      315
+CHIEF "MISTOWASIS"                           311
+Name: count, dtype: int64
+
+======================================================================
+C. GEOGRAPHY
+======================================================================
+
+by meridian:
+       rows  dated  med_year      q1      q3  churn_pct
+mer                                                    
+1     15257  10024    1902.0  1889.0  1904.0       27.6
+2    125401  48924    1901.0  1892.0  1903.0       33.1
+3    141192  49075    1906.0  1904.0  1909.0       37.8
+
+by township band (lat), dated rows:
+            n     med      q1      q3  pre1900  post1910
+band                                                    
+T1-10   18619  1902.0  1901.0  1903.0     20.9      10.5
+T11-20  24584  1901.0  1885.0  1902.0     37.0       5.8
+T21-30  17523  1905.0  1902.0  1908.0     18.6      15.8
+T31-40  26549  1906.0  1903.0  1909.0      6.4      20.5
+T41-50  19692  1905.0  1902.0  1909.0     16.5      22.4
+T51-56   1056  1920.0  1913.0  1926.0      0.0      97.1
+
+median settlement year by band x meridian:
+mer          1       2       3
+band                          
+T1-10   1902.0  1902.0  1910.0
+T11-20  1900.0  1901.0  1909.0
+T21-30  1902.0  1900.0  1908.0
+T31-40  1906.0  1906.0  1906.0
+T41-50  1915.0  1906.0  1905.0
+T51-56  1925.0     NaN  1920.0
+
+tenure mix by band (%):
+grp       B    C     H     K    O    P     R     S  none
+band                                                    
+T1-10   4.9  2.8  39.7  30.9  3.3  2.3   8.7   7.4   0.1
+T11-20  5.0  2.7  39.8  41.7  0.7  1.8   1.1   7.2   0.1
+T21-30  5.2  0.4  43.8   6.8  1.1  4.2  26.6  11.7   0.3
+T31-40  4.9  1.1  49.0  12.9  1.5  7.3  14.4   8.2   0.7
+T41-50  3.7  1.6  58.4  10.2  0.6  1.3  15.6   8.4   0.2
+T51-56  2.2  1.0  89.3   0.0  0.5  0.0   0.1   6.3   0.6
+
+RAIL: townships with rail within 16 km by 1935: 2811 of 3138
+dated quarters: entry relative to rail arrival (<=16 km):
+  no rail by 1935: 3338
+  before rail (rel<0): 63401 (60.6%)  same year: 5247  after: 36037
+  rel distribution (years, clipped -15..15):
+rel
+-15    11469
+-14      470
+-13      353
+-12      578
+-11     1037
+-10     2105
+-9      2062
+-8      2795
+-7      2552
+-6      4184
+-5      5691
+-4      6609
+-3     11591
+-2      7781
+-1      4124
+ 0      5247
+ 1      4025
+ 2      3649
+ 3      1958
+ 4      1354
+ 5       921
+ 6      1049
+ 7       744
+ 8      1998
+ 9      2348
+ 10     1137
+ 11      760
+ 12     1175
+ 13      852
+ 14     1423
+ 15    12644
+
+by decade of entry, % settled before rail reached 16 km:
+              n  no_rail_ever  before_rail  after_rail
+decade                                                
+1870.0      7.0           0.0        100.0         0.0
+1880.0  15123.0           1.4         67.1        22.7
+1890.0   6090.0           0.7         54.7        40.6
+1900.0  69761.0           2.4         65.6        28.1
+1910.0  13727.0           6.1         28.5        59.1
+1920.0   2305.0           8.9         11.4        78.9
+1930.0   1010.0          35.1          0.9        63.5
+
+entry->patent lag and churn by rail timing at entry:
+                     median  mean   size
+relband                                 
+rail 6+ yrs later       4.0   6.5  26778
+rail 1-5 yrs later      3.0   3.5  34647
+same year               4.0   6.0   4986
+rail 1-5 yrs before     4.0   6.3  10933
+rail 6+ yrs before      0.0   3.1  17789
+relband
+rail 6+ yrs later      35.8
+rail 1-5 yrs later     27.1
+same year              37.2
+rail 1-5 yrs before    39.5
+rail 6+ yrs before     26.8
+Name: churn, dtype: float64
+
+CPR: townships with both CPR sales and dated homesteads: 415
+homestead median entry − first CPR sale (years):
+count    415.0
+mean      -1.3
+std        5.8
+min      -25.0
+25%       -2.0
+50%        0.0
+75%        1.0
+max       21.0
+dtype: float64
+share where first homestead precedes first CPR sale: 83.4 %
+share where median homestead precedes first CPR sale: 35.7 %
+
+RESERVE SURRENDERS: populated quarters inside surrendered reserve polygons: 1774
+                                           n  dated  med_year  min_year                     grp_mix
+reserve                          yr_sur                                                            
+Birch River                      1918      9      0       NaN       NaN                    {'-': 9}
+Carry The Kettle                 1905     36      0       NaN       NaN                   {'O': 36}
+Chakastaypasin                   1897      6      6    1882.0    1882.0            {'S': 5, 'H': 1}
+Cote                             1906    101     11    1906.0    1904.0   {'O': 94, 'H': 5, 'S': 1}
+Cowessess                        1907    146     17    1886.0    1882.0  {'O': 133, 'H': 9, 'K': 4}
+Cumberland                       1902    138      0       NaN       NaN          {'O': 137, 'S': 1}
+Fishing Lake                     1907      6      0       NaN       NaN                    {'-': 6}
+Grizzly Bear's Head and Lean Man 1910      2      0       NaN       NaN                    {'O': 2}
+Grizzly Bear's Head/Lean Man     1905     90      0       NaN       NaN                   {'O': 90}
+Kahkewistahaw                    1907    204      0       NaN       NaN                  {'O': 204}
+Keeseekoose                      1909     48     12    1911.5    1904.0   {'O': 37, 'R': 4, 'S': 3}
+Little Black Bear                1928     40      2    1902.0    1902.0   {'O': 36, 'R': 2, '-': 2}
+Mistawasis                       1911      9      3    1906.0    1904.0    {'O': 6, 'H': 2, 'R': 1}
+                                 1917     27      1    1905.0    1905.0                   {'O': 27}
+                                 1919     72      6    1909.0    1908.0   {'O': 66, 'R': 4, 'S': 2}
+Moosomin                         1909     25      3    1903.0    1903.0   {'O': 20, 'S': 2, 'C': 2}
+Mosquito                         1910      3      0       NaN       NaN                    {'O': 3}
+Muscowpetung                     1909     98      0       NaN       NaN                   {'O': 98}
+Muskeg Lake                      1919     54      7    1914.0    1906.0           {'O': 47, 'H': 7}
+Muskowekwan                      1920      3      0       NaN       NaN                    {'-': 3}
+Ocean Man                        1901    140      0       NaN       NaN                  {'O': 140}
+Ochapowace                       1919    114      0       NaN       NaN                  {'O': 114}
+Pasqua                           1906     96      0       NaN       NaN                   {'O': 96}
+                                 1910      1      0       NaN       NaN                    {'O': 1}
+Pheasant's Rump                  1901    140     10    1904.0    1902.0         {'O': 130, 'K': 10}
+Poor Man's                       1919      1      0       NaN       NaN                    {'-': 1}
+Standing Buffalo                 1925      1      1    1883.0    1883.0                    {'H': 1}
+Stoney Knoll                     1897    120    120    1902.0    1890.0  {'H': 64, 'R': 38, 'S': 9}
+The Key                          1909      1      0       NaN       NaN                    {'-': 1}
+Thunderchild                     1908     15      1    1901.0    1901.0           {'O': 14, 'K': 1}
+Wood Mountain                    1919     28      0       NaN       NaN                   {'-': 28}
+dated entries relative to surrender year: before: 54  same/after: 146
+lag surrender->entry (years):
+count    200.0
+mean       0.8
+std       10.1
+min      -42.0
+25%       -1.2
+50%        2.0
+75%        5.0
+max       28.0
+dtype: float64

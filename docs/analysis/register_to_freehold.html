@@ -1,0 +1,282 @@
+<!doctype html><html><head><meta charset=utf-8><title>Register to Freehold</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#f7f8f5; --paper:#ffffff; --ink:#1c2320; --ink-2:#58625c; --ink-3:#8a938d;
+  --rule:#d9ded9; --rule-soft:#e9ece8; --accent:#1f3f66; --accent-soft:#e4ebf3;
+  --flag:#8a4b1f; --flag-soft:#f6ece3;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --sn:#b9bfba;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#161917; --paper:#1e2220; --ink:#eef1ec; --ink-2:#b4bcb5; --ink-3:#7f8882;
+    --rule:#343a36; --rule-soft:#2a2f2c; --accent:#8fb4e0; --accent-soft:#213247;
+    --flag:#e0a06c; --flag-soft:#3a2a1c;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --sn:#4a514c;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#161917; --paper:#1e2220; --ink:#eef1ec; --ink-2:#b4bcb5; --ink-3:#7f8882;
+  --rule:#343a36; --rule-soft:#2a2f2c; --accent:#8fb4e0; --accent-soft:#213247;
+  --flag:#e0a06c; --flag-soft:#3a2a1c;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --sn:#4a514c;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Source Sans 3","Segoe UI",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.page{max-width:900px;margin:0 auto;padding:56px 24px 96px}
+h1,h2,h3{font-family:"Libre Caslon Text",Georgia,"Times New Roman",serif;font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:2.6rem;letter-spacing:-.01em}
+h2{font-size:1.65rem;margin-top:3.2rem;padding-top:1.4rem;border-top:1px solid var(--rule)}
+h3{font-size:1.2rem;margin-top:2rem;font-style:italic}
+p{max-width:68ch;margin:.9rem 0}
+.lede{font-size:1.2rem;line-height:1.45;color:var(--ink-2);max-width:62ch;margin-top:1rem}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;margin-top:1.4rem;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.8rem;color:var(--ink-2)}
+.meta b{color:var(--ink);font-weight:500}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:2.4rem 0 0}
+.fig{background:var(--paper);padding:16px 18px 14px}
+.fig .v{font-family:"Source Sans 3",sans-serif;font-weight:600;font-size:1.9rem;line-height:1.05;letter-spacing:-.01em}
+.fig .l{font-size:.86rem;color:var(--ink-2);margin-top:.35rem;line-height:1.3}
+.fig .sub{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;color:var(--ink-3);margin-top:.35rem}
+table{border-collapse:collapse;font-size:.92rem;margin:1.2rem 0;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+th,td{padding:.42rem .8rem .42rem 0;text-align:left;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+th{font-weight:600;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);border-bottom:1px solid var(--rule)}
+td.n,th.n{text-align:right;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.85rem}
+td.note{color:var(--ink-2);font-size:.88rem}
+.chart{background:var(--paper);border:1px solid var(--rule);padding:18px 20px 14px;margin:1.6rem 0}
+.chart .ct{font-weight:600;font-size:1rem;margin:0}
+.chart .cs{color:var(--ink-2);font-size:.88rem;margin:.15rem 0 .6rem}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;font-size:.82rem;color:var(--ink-2);margin:.5rem 0 .3rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.axis text{fill:var(--ink-3);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px}
+.axis line{stroke:var(--rule-soft);stroke-width:1}
+.axis .base{stroke:var(--rule)}
+.dl{fill:var(--ink-2);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--ground);font-size:.8rem;line-height:1.35;padding:6px 9px;border-radius:3px;opacity:0;transition:opacity .08s;z-index:9;max-width:260px;font-family:"IBM Plex Mono",ui-monospace,monospace}
+.tbtn{background:none;border:1px solid var(--rule);color:var(--ink-2);font:inherit;font-size:.78rem;padding:.2rem .6rem;border-radius:3px;cursor:pointer;margin-top:.5rem}
+.tbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chart .tbl{display:none;margin-top:.6rem}
+.chart .tbl.open{display:block}
+.chart .tbl table{margin:0;font-size:.82rem}
+.callout{border-left:3px solid var(--accent);background:var(--accent-soft);padding:.8rem 1.1rem;margin:1.4rem 0;max-width:70ch}
+.callout p{margin:.3rem 0}
+.caveat{border-left:3px solid var(--flag);background:var(--flag-soft);padding:.8rem 1.1rem;margin:1.4rem 0;max-width:70ch}
+.caveat p{margin:.3rem 0}
+ul,ol{max-width:68ch;padding-left:1.3rem}
+li{margin:.35rem 0}
+li::marker{color:var(--ink-3)}
+.k{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em;background:var(--rule-soft);padding:.05em .35em;border-radius:2px}
+a{color:var(--accent)}
+.hyp{counter-reset:h}
+.hyp li{list-style:none;position:relative;padding-left:2.2rem;margin:1rem 0}
+.hyp li::before{counter-increment:h;content:"H" counter(h);position:absolute;left:0;top:.15rem;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.78rem;color:var(--accent);letter-spacing:.04em}
+.hyp li b{font-weight:600}
+@media (prefers-reduced-motion: reduce){.tip{transition:none}}
+@media (max-width:600px){h1{font-size:2rem}.page{padding:36px 16px 72px}body{font-size:16px}}
+</style>
+
+<div class="page">
+  <div class="eyebrow">HGIS Lab · Saskatchewan homestead registers · preliminary analysis</div>
+  <h1 style="margin-top:.5rem">Register to Freehold</h1>
+  <p class="lede">A first pass over the W1–W3 homestead registers — what kinds of tenure they record, when land moved, and where — read against the liberal order framework and the idea of primitive accumulation as an ongoing process.</p>
+  <div class="meta">
+    <span>Data as of <b>25 Aug 2026</b></span>
+    <span>Transcribed <b>58.4%</b> of 484,876 quarter sections</span>
+    <span>Dated entries <b>108,023</b></span>
+    <span>Span <b>1879–1935</b></span>
+  </div>
+
+  <div class="figs">
+    <div class="fig"><div class="v">48.6%</div><div class="l">of homestead quarters carry at least one failed claimant before the successful one</div><div class="sub">50,998 typed "Homestead" rows</div></div>
+    <div class="fig"><div class="v">5 yrs</div><div class="l">median entry-to-patent for homesteads — but <b>15 yrs</b> for the 1880–84 cohort</div><div class="sub">48,484 with both dates</div></div>
+    <div class="fig"><div class="v">60.6%</div><div class="l">of dated entries were filed before a railway reached within 16 km of the township</div><div class="sub">flips to 59% after rail in the 1910s</div></div>
+    <div class="fig"><div class="v">~5.9M ac</div><div class="l">registered to railways (36.8k quarters), plus 5.2k to the HBC and 8.5k to land companies</div><div class="sub">of 120,859 typed rows</div></div>
+  </div>
+
+  <h2>What the register is</h2>
+  <p>Each row is one quarter section — the 160-acre unit the Dominion Lands Act made the atom of prairie property. The register records a <span class="k">Type</span> (the legal channel by which the quarter left the Crown), a first entry date, a success date, a patent date, the names of successful and failed claimants, and a count of claims. Read as a whole it is less a list of farms than a ledger of <em>conversions</em>: the moment each parcel changed from surveyed Crown land into something an individual or a corporation could hold, mortgage, and sell.</p>
+  <p>Of the 281,850 populated rows, 120,859 carry a <span class="k">Type</span>. Grouping the 72 raw labels:</p>
+  <div class="tw"><table>
+    <tr><th>Channel</th><th class="n">Quarters</th><th class="n">Share of typed</th><th>What it is</th></tr>
+    <tr><td>Homestead (incl. soldier &amp; military)</td><td class="n">50,998</td><td class="n">42%</td><td class="note">Free grant to an individual on proving-up; almost all on even sections</td></tr>
+    <tr><td>Railway grant — CPR</td><td class="n">23,014</td><td class="n">19%</td><td class="note">Odd-section subsidy land; 22,565 of 23,014 on odd sections</td></tr>
+    <tr><td>Railway grant — other lines</td><td class="n">13,794</td><td class="n">11%</td><td class="note">Canadian Northern, QLSRSC, Manitoba South-Western, M&amp;NW, Great North-West Central…</td></tr>
+    <tr><td>Other / reserved</td><td class="n">12,747</td><td class="n">11%</td><td class="note">Provincial forest (6,702), Indian Reserve (4,807), grazing leases, ranches</td></tr>
+    <tr><td>Sale</td><td class="n">9,458</td><td class="n">8%</td><td class="note">School land sales (4,500), time sales, special grants, transfers</td></tr>
+    <tr><td>Hudson's Bay Company</td><td class="n">5,169</td><td class="n">4%</td><td class="note">Sections 8 and 26 — 4,995 of 5,169 sit exactly there</td></tr>
+    <tr><td>Pre-emption</td><td class="n">3,831</td><td class="n">3%</td><td class="note">Adjacent quarter bought at a fixed price after homestead entry; 92% in W3</td></tr>
+    <tr><td>Métis scrip</td><td class="n">1,848</td><td class="n">2%</td><td class="note">North West Half-Breed Scrip / Grant</td></tr>
+  </table></div>
+  <div class="chart" id="c-tenure"><p class="ct">Channel of alienation by decade of settlement year</p><p class="cs">Share of dated, typed rows. The 1900s are the railway-grant decade: 32,198 subsidy quarters were dated in it, almost all CPR and Canadian Northern.</p></div>
+  <p>Two things stand out before any dates are read. First, the free-grant homestead is the <em>plurality</em> channel but not the majority: railways, the HBC, school lands and outright sales together account for a larger share of the typed rows than homesteads do. The checkerboard was designed so that roughly half of every township was never available for free entry. Second, the register only knows how to record <em>a holder</em>. Reserves appear in it as claimants — <span class="k">CHIEF "KAKEESHEWAY"</span> (432 quarters), <span class="k">AHTAHKAHKOOP</span> (132), <span class="k">MUSKODAY</span> (102) — and Doukhobor communal villages show up in the notes as half-section holdings under individual names. Collective tenure is already being re-described in the vocabulary of individual title at the moment of transcription.</p>
+
+  <h2>Timing</h2>
+  <h3>Three waves, one long trough</h3>
+  <p>Dated entries fall into three distinct surges: 1882–84 (the CPR main-line belt in W1/W2), 1901–03 (the Sifton-era boom, overwhelmingly W2), and 1905–10 (W3, peaking in 1908 with the pre-emption reopening). Between 1888 and 1898 the province barely moved — fewer than 1,000 entries a year across all three meridians. Post-war soldier settlement (1919–21) and a small northern-fringe wave in 1929–31 close the series.</p>
+  <div class="chart" id="c-year"><p class="ct">Dated entries per year, by meridian</p><p class="cs">Settlement year = first of entry → success → patent date. 108,023 rows.</p></div>
+
+  <h3>The legal lag: occupation ran far ahead of title</h3>
+  <p>For homesteads with both an entry and a patent date, the median wait was 5 years — roughly the statutory three-year proving-up plus administration. But that median hides a sharp cohort effect. Settlers who entered in 1880–89 waited a median of <b>14–15 years</b> for patent, and two-thirds waited ten or more. The 1900s cohorts got title in five. The lag lengthens again for those who entered during and after the war.</p>
+  <div class="chart" id="c-lag"><p class="ct">Homestead entry → patent, median years by entry cohort</p><p class="cs">Typed "Homestead" rows with both dates, negative lags dropped. Cohorts with fewer than 100 rows omitted.</p></div>
+  <p>The 1880s figure is the more historically interesting one. For the first decade of the liberal property regime on the prairie, the fact of occupation and the legal fact of freehold were separated by a generation-length gap — through the 1885 Resistance, the drought years, and the departure of many of the original entrants. Whether that gap reflects settlers' inability to prove up, administrative backlog in the Dominion Lands branch, or transcription (the W1 registers are the oldest and most heavily overwritten) needs checking against a sample of the original files.</p>
+
+  <h3>Churn: half of all homestead quarters failed at least once</h3>
+  <p>The register lists 110,764 failed-claim names against 283,863 successful ones. Across typed homestead rows, <b>48.6%</b> show at least one failed claimant and 15.8% show two or more; 22% of quarters with a claim count record two claims and 7% record three. The failure rate is highest in the 1880s cohort (63%) and in W1 (60%).</p>
+  <div class="chart" id="c-fail"><p class="ct">Share of homestead quarters with at least one failed claimant, by decade of first entry</p><p class="cs">Typed "Homestead" rows with a settlement year.</p></div>
+  <p>Township-level "fill" tells the same story from the other side. Among 770 townships with 40 or more dated even-section entries, the interval between the 10th and 90th percentile entry is a median of <b>17 years</b> for townships opened in the 1880s and <b>4 years</b> for those opened in the 1900s. The early prairie was enclosed slowly, by trial and error; the Edwardian prairie was enclosed almost at once.</p>
+
+  <h2>Geography</h2>
+  <p>The frontier moved south-east to north-west, but not smoothly. Median settlement year by township band and meridian:</p>
+  <div class="tw"><table id="t-bands">
+    <tr><th>Township band</th><th class="n">W1</th><th class="n">W2</th><th class="n">W3</th><th class="n">Dated rows</th><th>Reading</th></tr>
+    <tr><td>T1–10 (US border)</td><td class="n">1902</td><td class="n">1902</td><td class="n">1910</td><td class="n">18,619</td><td class="note">Dry south-west settled last, in the 1908–12 pre-emption rush</td></tr>
+    <tr><td>T11–20</td><td class="n">1900</td><td class="n">1901</td><td class="n">1909</td><td class="n">24,584</td><td class="note">CPR main line belt; 37% of entries here pre-date 1900</td></tr>
+    <tr><td>T21–30</td><td class="n">1902</td><td class="n">1900</td><td class="n">1908</td><td class="n">17,523</td><td class="note">Qu'Appelle / Yorkton; 27% of typed rows are non-CPR railway grants</td></tr>
+    <tr><td>T31–40</td><td class="n">1906</td><td class="n">1906</td><td class="n">1906</td><td class="n">26,549</td><td class="note">Saskatoon–Battleford parkland; the one band where all three meridians move together</td></tr>
+    <tr><td>T41–50</td><td class="n">1915</td><td class="n">1906</td><td class="n">1905</td><td class="n">19,692</td><td class="note">W3 (Prince Albert) earlier than W1 (Hudson Bay Jct forest fringe)</td></tr>
+    <tr><td>T51–56</td><td class="n">1925</td><td class="n">—</td><td class="n">1920</td><td class="n">1,056</td><td class="note">89% homestead; the last free land</td></tr>
+  </table></div>
+
+  <h3>Settlers ran ahead of the railway — until 1910</h3>
+  <p>Comparing each dated entry with the year a line was first built within 16 km of the township centre (from <span class="k">rail_lines.geojson</span>): across the whole series 60.6% of entries pre-date the railway's arrival. In the 1880s and 1900s two-thirds of settlers took up land before a line reached them; branch lines were built <em>into</em> settled townships, not ahead of them. After 1910 the pattern inverts — 59% of 1910s entries and 79% of 1920s entries were on land the railway already served.</p>
+  <div class="chart" id="c-rail"><p class="ct">Dated entries relative to railway arrival within 16 km, by decade</p><p class="cs">"Before" = entry year earlier than first line within 16 km; "none" = no line by 1935.</p></div>
+  <p>The CPR's own sales confirm the sequence from the odd-section side. In the 415 townships with both CPR sales and dated homesteads, the first homestead entry precedes the first CPR sale in <b>83%</b> of cases, and the CPR's first sale lands on average within a year of the township's median homestead entry. The company waited for the free-grant settlers to arrive and then sold into the value they had created.</p>
+
+  <h3>Reserves, surrenders, scrip</h3>
+  <p>1,774 populated quarters fall inside the polygons of the 54 reserve surrenders in <span class="k">reserve_surrenders.geojson</span>. Almost all are typed "Indian Reserve" and undated — the transcribed registers mostly have not (yet) recorded the post-surrender disposition. The exception is <b>Stoney Knoll</b> (Young Chippewayan IR 107, surrendered 1897): 120 dated quarters, 64 homestead, 38 railway grant, 9 sale, with entries beginning in <b>1890</b>, seven years before the paper surrender. Occupation and grant preceded the legal extinguishment of the reserve, which then ratified what had already happened.</p>
+  <p>Métis scrip is small in the register (1,848 quarters) but concentrated in time and space: 89% of dated scrip entries fall in 1900–02, and 260 townships hold any, with the densest cluster in T5–14, R10–16 W2 — the Qu'Appelle valley around Lebret. Scrip land patented fast (median one year from entry) and churned hard: 34% of scrip quarters list more than one successful name and 45% show a failed claim or multiple claims, consistent with the well-documented rapid transfer of scrip land to buyers.</p>
+
+  <h3>Who accumulated</h3>
+  <p>Beyond the railways and the HBC, 266 companies, trusts and boards hold 8,543 quarters (~1.37 million acres) in the register: the Saskatchewan Valley Land Company alone has 2,099, the Canada Saskatchewan Land Company 825, the Manitoba and North-West Land Corporation 789, the Temperance Colonization Society 614, the Winnipeg Western Land Corporation 604. Their acquisitions cluster in 1887, 1891, 1902 and 1906–07, and 53% of company rows are typed as railway grants — they were the wholesale buyers of the subsidy lands. Among individuals, Augustus Meredith Nanton (of Osler, Hammond &amp; Nanton, Winnipeg) is named on 428 quarters and "Osler, Edmund Boyd et al" on 145. Of individually held quarters, 60% belong to names that appear once, 24% to names appearing twice (largely homestead + pre-emption pairs), and 16% to names on three or more. The Soldier Settlement Board of Canada holds 590 quarters, nearly all dated 1919–21 — the state buying back land it had once given away.</p>
+
+  <h2>Reading it: liberal order and ongoing accumulation</h2>
+  <p>McKay's liberal order framework treats Canada as a project of rule organised around the liberal triad — liberty, equality, property — with property as the master term. The register is that project's instrument in its purest form: it exists to attach a single named holder to a bounded parcel and to record the date the attachment became a legal fact. What the data adds is that the attachment was slow, unstable, and only partly individual.</p>
+  <ol class="hyp">
+    <li><b>The liberal subject was manufactured through failure.</b> Half of all homestead quarters passed through at least one failed claimant. The free-grant system did not so much settle individuals on land as run a continuous sorting process, in which the parcel stayed constant and the holder was replaced until one proved up. The "independent proprietor" of liberal ideology is the survivor of this process, not its premise.</li>
+    <li><b>Title lagged occupation by a generation in the first decade.</b> The 15-year median wait for the 1880s cohort means that for most of the 1880s and 1890s the "property" on the ground was possessory, not legal. The liberal order arrived as a promise of freehold that was cashed only in the Laurier boom.</li>
+    <li><b>Primitive accumulation was not a founding moment but a standing mechanism.</b> Marx's chapter on colonization (Capital I, ch. 33) is about the colonial state pricing land so that labourers cannot become proprietors too quickly. The Dominion Lands Act offered free land — but withheld half of every township from free entry for railways, the HBC and school sales, and priced the pre-emption. The register shows the withheld half being sold into the value the free half created (the CPR sequence above), land companies buying railway grants wholesale, scrip converted to speculator title within a year, reserve land entered before it was surrendered, and the state re-purchasing farms for soldiers in 1919 and re-taking failed land for forest reserves in the 1930s. Dispossession and re-enclosure run through the whole series.</li>
+    <li><b>The register erases collective tenure by the way it records it.</b> Reserves entered under chiefs' names as "claimants", Doukhobor villages entered as half-sections under individuals, scrip converted to fee simple: in each case a non-liberal form of holding is transcribed into the form of an individual holder before it is alienated. The paperwork is itself part of the transformation.</li>
+    <li><b>Infrastructure followed enclosure, then led it.</b> Before 1910 settlers preceded the railway; after 1910 the railway preceded settlers. The liberal order's material apparatus — the branch line, the elevator, the townsite — was built into land that free-grant settlers had already made valuable, and only later became the thing that drew them.</li>
+  </ol>
+  <div class="callout"><p><b>What would test these.</b> H1 needs name-linkage: did failed claimants re-enter elsewhere (sorting) or leave (attrition)? H2 needs a sample of original files for the 1880s cohort to separate administrative delay from failure to prove up. H3 needs CPR sale prices (already in <span class="k">cpr_qs.pmtiles</span>) joined to adjacent homestead entry years. H4 needs the Notes field parsed systematically — it holds the Doukhobor villages, the reserve names and the half-section splits.</p></div>
+
+  <h2>Caveats</h2>
+  <div class="caveat">
+    <p><b>Transcription is 58% complete and uneven.</b> W3 is at 62%, W1 R30 has not been started, and several W2 and W3 ranges (R18, R04, R03 in W2; R22–R30 in W3) are under 50%. Every geographic statement above is provisional until the south-eastern and north-western ranges catch up.</p>
+    <p><b>Only 38% of populated rows carry a date.</b> 173,404 rows have a claimant but no usable year. The timing analysis rests on the dated subset, which may over-represent quarters that went smoothly to patent.</p>
+    <p><b>Railway years come from <span class="k">rail_lines.geojson</span></b>, whose construction dates are not complete for every segment; the 16 km threshold is a judgement. The cohort pattern (before → after 1910) is robust to the threshold; the exact percentages are not.</p>
+    <p><b>Reserve polygons and the DLS grid are both reconstructions.</b> Cowessess shows entries dated 1882–86 inside a polygon surrendered in 1907; that is more likely a boundary or dating artefact than a finding, and should be checked before it is cited.</p>
+    <p><b>Some counts are register artefacts.</b> Railway and HBC rows show entry = patent because the register records the grant date in both fields; those rows are excluded from the lag analysis. The "Indian Reserve" and "Provincial Forest" types are the register's own categories, not events.</p>
+  </div>
+
+  <h2>Next steps</h2>
+  <ul>
+    <li>Name-link claimants across quarters and across the failed/successful columns (H1); flag homestead + pre-emption pairs; check the 54-quarter "Davidson, Sarah Matilda" and other large individual holders for company nominees.</li>
+    <li>Parse the Notes field for half-section splits, Doukhobor villages, reserve names and "assigned to" transfers — 13,324 rows have notes, 6,703 of them recording a patentee different from the claimant.</li>
+    <li>Join CPR sale price and year to adjacent even-section entry timing at the township level.</li>
+    <li>Re-run everything when W1 R30 and the W3 R22–R30 sheets come in; the south-eastern corner (1882–84) and the dry south-west (1908–12) are the two cohorts most affected by gaps.</li>
+    <li>Pull a sample of original homestead files for 1880s entrants with 15+ year lags.</li>
+  </ul>
+  <p style="color:var(--ink-3);font-size:.85rem;margin-top:3rem">Built from <span class="k">W1.xlsx</span>, <span class="k">W2.xlsx</span>, <span class="k">W3.xlsx</span> (25 Aug 2026 refresh) via <span class="k">scripts/build_homesteads.py</span> parsing, plus <span class="k">rail_lines</span>, <span class="k">settlement_townships</span> and <span class="k">reserve_surrenders</span> layers from <span class="k">docs/</span>. Analysis scripts: <span class="k">scripts/analysis/</span> (build_table.py → analyze.py → analyze2.py); this page is <span class="k">docs/analysis/register_to_freehold.html</span>.</p>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+const D = {"byYear": {"years": [1879, 1880, 1881, 1882, 1883, 1884, 1885, 1886, 1887, 1888, 1889, 1890, 1891, 1892, 1893, 1894, 1895, 1896, 1897, 1898, 1899, 1900, 1901, 1902, 1903, 1904, 1905, 1906, 1907, 1908, 1909, 1910, 1911, 1912, 1913, 1914, 1915, 1916, 1917, 1918, 1919, 1920, 1921, 1922, 1923, 1924, 1925, 1926, 1927, 1928, 1929, 1930, 1931, 1932, 1933, 1934, 1935], "W1": [0, 1, 154, 822, 421, 412, 147, 191, 158, 115, 140, 138, 115, 77, 31, 26, 14, 27, 70, 70, 148, 155, 236, 2735, 976, 251, 788, 247, 190, 417, 43, 72, 75, 45, 22, 33, 57, 171, 31, 56, 1, 6, 20, 5, 5, 3, 14, 11, 17, 1, 31, 4, 18, 5, 3, 2, 1], "W2": [7, 2, 76, 2551, 2719, 2156, 928, 908, 854, 231, 471, 496, 209, 672, 282, 487, 158, 182, 107, 417, 849, 1108, 11501, 8207, 3472, 681, 900, 801, 403, 1796, 405, 1166, 329, 401, 329, 305, 181, 146, 196, 246, 80, 59, 105, 25, 44, 44, 44, 46, 57, 55, 369, 27, 587, 12, 11, 10, 14], "W3": [0, 0, 10, 90, 39, 421, 353, 543, 85, 45, 80, 50, 608, 70, 88, 61, 39, 20, 25, 136, 418, 256, 2345, 2035, 3203, 3168, 5792, 4915, 2333, 7194, 3208, 3082, 1766, 1520, 837, 548, 338, 349, 235, 710, 400, 145, 199, 84, 49, 49, 53, 67, 91, 165, 442, 68, 10, 150, 40, 38, 10]}, "lag": {"cohort": [1880, 1885, 1890, 1895, 1900, 1905, 1910, 1915, 1920, 1925], "median": [15.0, 14.0, 10.0, 5.0, 5.0, 5.0, 6.0, 7.0, 8.0, 6.0], "n": [5803, 2001, 1648, 1672, 17416, 12609, 6141, 585, 393, 207], "ge10": [66.8, 68.0, 54.7, 8.9, 7.8, 9.5, 17.6, 35.7, 28.2, 0.0]}, "failed": {"decade": [1880, 1890, 1900, 1910, 1920, 1930], "rate": [62.7, 42.4, 45.3, 49.6, 51.3, 12.5], "n": [7918, 3369, 30569, 7386, 942, 128]}, "rail": {"decade": [1880, 1890, 1900, 1910, 1920, 1930], "before": [10142, 3330, 45731, 3919, 263, 9], "same": [1349, 246, 2774, 855, 18, 5], "after": [3427, 2470, 19571, 8109, 1819, 641], "none": [205, 44, 1685, 844, 205, 355]}, "tenure": {"decade": [1880, 1890, 1900, 1910, 1920, 1930], "series": ["Homestead", "Railway grant", "Sale", "Pre-emption", "HBC", "Métis scrip", "Other/reserved"], "counts": {"Homestead": [7918, 3369, 30569, 7386, 942, 128], "Railway grant": [1407, 1501, 32198, 908, 41, 19], "Sale": [1746, 960, 1703, 3309, 1159, 213], "Pre-emption": [285, 20, 2190, 1317, 1, 0], "HBC": [3528, 133, 1176, 203, 47, 1], "Métis scrip": [121, 65, 1647, 4, 9, 0], "Other/reserved": [118, 42, 278, 600, 106, 649]}}, "bands": [{"band": "T1–10", "W1": 1902, "W2": 1902, "W3": 1910, "n": 18619}, {"band": "T11–20", "W1": 1900, "W2": 1901, "W3": 1909, "n": 24584}, {"band": "T21–30", "W1": 1902, "W2": 1900, "W3": 1908, "n": 17523}, {"band": "T31–40", "W1": 1906, "W2": 1906, "W3": 1906, "n": 26549}, {"band": "T41–50", "W1": 1915, "W2": 1906, "W3": 1905, "n": 19692}, {"band": "T51–56", "W1": 1925, "W2": null, "W3": 1920, "n": 1056}]};
+const tip = document.getElementById('tip');
+const fmt = n => n.toLocaleString('en-CA');
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function showTip(e, html){ tip.innerHTML = html; tip.style.opacity = 1; moveTip(e); }
+function moveTip(e){ const x = Math.min(e.clientX + 14, window.innerWidth - 270); tip.style.left = x + 'px'; tip.style.top = (e.clientY + 14) + 'px'; }
+function hideTip(){ tip.style.opacity = 0; }
+const NS = 'http://www.w3.org/2000/svg';
+function el(t, a, parent){ const n = document.createElementNS(NS, t); for (const k in a) n.setAttribute(k, a[k]); if (parent) parent.appendChild(n); return n; }
+function niceMax(v){ const p = Math.pow(10, Math.floor(Math.log10(v))); const f = v / p; const m = [1,1.5,2,2.5,3,4,5,6,8,10].find(k => f <= k); return m * p; }
+
+/* generic column chart: cats = x labels; series = [{name,color,values}]; opts: {stack, pct, yfmt, labelEvery, direct:[idx], unit} */
+function columns(id, cats, series, opts = {}){
+  const box = document.getElementById(id);
+  const W = 860, H = opts.h || 300, m = {t: 18, r: 12, b: 34, l: 52};
+  const iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const n = cats.length, slot = iw / n, bw = Math.min(24, slot * 0.7);
+  const totals = cats.map((_, i) => series.reduce((s, sr) => s + sr.values[i], 0));
+  const stacked = opts.stack || opts.pct;
+  const rawMax = opts.pct ? 100 : Math.max(...(stacked ? totals : series.flatMap(s => s.values)));
+  const ymax = opts.pct ? 100 : niceMax(rawMax);
+  const y = v => m.t + ih - (v / ymax) * ih;
+  const svg = el('svg', {viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': box.querySelector('.ct').textContent});
+  const ax = el('g', {class: 'axis'}, svg);
+  const isNice = v => { const q = v / Math.pow(10, Math.floor(Math.log10(v))); return [1, 2, 2.5, 5].some(k => Math.abs(q - k) < 1e-9); };
+  const div = [4, 5, 3, 2, 6, 8].find(k => isNice(ymax / k)) || 4;
+  const ticks = opts.pct ? [0, 25, 50, 75, 100] : Array.from({length: div + 1}, (_, k) => k * ymax / div);
+  ticks.forEach(t => { el('line', {x1: m.l, x2: W - m.r, y1: y(t), y2: y(t), class: t === 0 ? 'base' : ''}, ax);
+    const tx = el('text', {x: m.l - 8, y: y(t) + 4, 'text-anchor': 'end'}, ax); tx.textContent = (opts.pct ? t + '%' : fmt(t)) + (opts.ysuffix || ''); });
+  const every = opts.labelEvery || 1;
+  cats.forEach((c, i) => { if (i % every === 0) { const tx = el('text', {x: m.l + slot * (i + .5), y: H - 12, 'text-anchor': 'middle'}, ax); tx.textContent = c; } });
+  const surface = css('--paper');
+  cats.forEach((c, i) => {
+    let base = 0; const x0 = m.l + slot * (i + .5) - bw / 2;
+    const denom = opts.pct ? (totals[i] || 1) : 1;
+    series.forEach((sr, si) => {
+      const raw = sr.values[i]; const v = opts.pct ? raw / denom * 100 : raw;
+      if (stacked) {
+        const top = y(base + v), bot = y(base); const hgt = Math.max(0, bot - top - (si < series.length - 1 && v > 0 ? 2 : 0));
+        const isTop = si === series.length - 1 || series.slice(si + 1).every(s => s.values[i] === 0);
+        const r = el('path', {d: rect(x0, top, bw, hgt, isTop ? 4 : 0), fill: sr.color}, svg);
+        hover(r, e => showTip(e, `<b>${c}</b><br>${sr.name}: ${fmt(raw)}${opts.pct ? ' (' + v.toFixed(1) + '%)' : ''}<br>total ${fmt(totals[i])}`));
+        base += v;
+      } else {
+        const gx = x0 + (bw / series.length) * si, gw = bw / series.length - (series.length > 1 ? 2 : 0);
+        const r = el('path', {d: rect(gx, y(v), gw, y(0) - y(v), 4), fill: sr.color}, svg);
+        hover(r, e => showTip(e, `<b>${c}</b><br>${sr.name}: ${opts.yfmt ? opts.yfmt(v, i) : fmt(v)}`));
+      }
+    });
+    if (opts.direct && opts.direct.includes(i)) {
+      const v = stacked ? totals[i] : series[0].values[i];
+      const t = el('text', {x: m.l + slot * (i + .5), y: y(opts.pct ? 100 : v) - 6, 'text-anchor': 'middle', class: 'dl'}, svg);
+      t.textContent = opts.yfmt ? opts.yfmt(v, i) : fmt(v);
+    }
+    // wide invisible hit target
+    const hit = el('rect', {x: m.l + slot * i, y: m.t, width: slot, height: ih, fill: 'transparent'}, svg);
+    hover(hit, e => showTip(e, `<b>${c}</b><br>` + series.map(sr => `${sr.name}: ${opts.pct ? (sr.values[i] / (totals[i] || 1) * 100).toFixed(1) + '% (' + fmt(sr.values[i]) + ')' : (opts.yfmt ? opts.yfmt(sr.values[i], i) : fmt(sr.values[i]))}`).join('<br>')));
+  });
+  if (series.length > 1) { const lg = document.createElement('div'); lg.className = 'legend';
+    series.forEach(s => { const sp = document.createElement('span'); sp.innerHTML = `<i style="background:${s.color}"></i>${s.name}`; lg.appendChild(sp); }); box.appendChild(lg); }
+  box.appendChild(svg);
+  // table view
+  const btn = document.createElement('button'); btn.className = 'tbtn'; btn.type = 'button'; btn.textContent = 'Show table';
+  const tb = document.createElement('div'); tb.className = 'tbl tw';
+  let h = '<table><tr><th></th>' + series.map(s => `<th class="n">${s.name}</th>`).join('') + (stacked && series.length > 1 ? '<th class="n">Total</th>' : '') + '</tr>';
+  cats.forEach((c, i) => { h += `<tr><td>${c}</td>` + series.map(s => `<td class="n">${opts.yfmt ? opts.yfmt(s.values[i], i) : fmt(s.values[i])}</td>`).join('') + (stacked && series.length > 1 ? `<td class="n">${fmt(totals[i])}</td>` : '') + '</tr>'; });
+  tb.innerHTML = h + '</table>';
+  btn.addEventListener('click', () => { tb.classList.toggle('open'); btn.textContent = tb.classList.contains('open') ? 'Hide table' : 'Show table'; });
+  box.appendChild(btn); box.appendChild(tb);
+}
+function rect(x, y, w, h, r){ if (h <= 0) return ''; r = Math.min(r, h, w / 2);
+  return `M${x},${y + h} V${y + r} Q${x},${y} ${x + r},${y} H${x + w - r} Q${x + w},${y} ${x + w},${y + r} V${y + h} Z`; }
+function hover(node, fn){ node.addEventListener('mouseenter', fn); node.addEventListener('mousemove', e => { fn(e); }); node.addEventListener('mouseleave', hideTip); }
+
+const C = ['--s1','--s2','--s3','--s4','--s5','--s6','--s7','--s8'].map(css);
+columns('c-year', D.byYear.years.map(String),
+  [{name: 'W1', color: C[0], values: D.byYear.W1}, {name: 'W2', color: C[1], values: D.byYear.W2}, {name: 'W3', color: C[2], values: D.byYear.W3}],
+  {stack: true, labelEvery: 5, direct: [D.byYear.years.indexOf(1882), D.byYear.years.indexOf(1901), D.byYear.years.indexOf(1908)]});
+columns('c-lag', D.lag.cohort.map(c => c + '–' + String(c + 4).slice(2)),
+  [{name: 'Median years to patent', color: C[0], values: D.lag.median}],
+  {h: 260, yfmt: (v, i) => v + ' yrs', direct: [0, 4]});
+columns('c-fail', D.failed.decade.map(d => d + 's'),
+  [{name: 'Quarters with a failed claimant', color: C[1], values: D.failed.rate}],
+  {h: 240, yfmt: v => v.toFixed(1) + '%', ysuffix: '%', direct: [0, 2, 5]});
+columns('c-rail', D.rail.decade.map(d => d + 's'),
+  [{name: 'Entry before rail', color: C[0], values: D.rail.before}, {name: 'Same year', color: C[2], values: D.rail.same}, {name: 'Entry after rail', color: C[1], values: D.rail.after}, {name: 'No rail by 1935', color: css('--sn'), values: D.rail.none}],
+  {pct: true, h: 260});
+columns('c-tenure', D.tenure.decade.map(d => d + 's'),
+  D.tenure.series.map((name, i) => ({name, color: C[i], values: D.tenure.counts[name]})),
+  {pct: true, h: 280});
+</script>
+</html>

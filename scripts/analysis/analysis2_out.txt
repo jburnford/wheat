@@ -1,0 +1,466 @@
+== a. HOMESTEAD (H) entry->patent lag ==
+n 48484  lag==0: 110 (0.2%)  entry==success==patent: 98
+            n  median  mean    p0  p3_5   ge6  ge10
+cohort                                             
+1880.0   5803    15.0  14.7   0.3  19.2  78.9  66.8
+1885.0   2001    14.0  13.6   0.7  12.4  83.6  68.0
+1890.0   1648    10.0  11.3   0.6  13.0  85.7  54.7
+1895.0   1672     5.0   6.1   0.3  50.1  48.9   8.9
+1900.0  17416     5.0   5.8   0.1  58.7  40.3   7.8
+1905.0  12609     5.0   5.8   0.1  62.8  36.3   9.5
+1910.0   6141     6.0   6.9   0.2  48.1  51.0  17.6
+1915.0    585     7.0   8.7   0.9  24.1  73.7  35.7
+1920.0    393     8.0   7.9   0.0  19.1  79.9  28.2
+1925.0    207     6.0   5.8   0.0  42.5  57.0   0.0
+1930.0      9     4.0   3.8  11.1  88.9   0.0   0.0
+excluding lag 0:
+            n  median  mean
+cohort                     
+1880.0   5783    15.0  14.8
+1885.0   1987    14.0  13.7
+1890.0   1638    10.0  11.3
+1895.0   1667     5.0   6.1
+1900.0  17393     5.0   5.8
+1905.0  12592     5.0   5.8
+1910.0   6126     6.0   6.9
+1915.0    580     7.5   8.8
+1920.0    393     8.0   7.9
+1925.0    207     6.0   5.8
+1930.0      8     4.5   4.2
+H lag by meridian (lag>0):
+      size  median  mean
+mer                     
+1     4399     8.0  10.9
+2    20538     6.0   8.7
+3    23437     5.0   6.0
+
+== b. METIS SCRIP (C) ==
+type_raw
+North West Half-Breed Scrip    1767
+North West Half-Breed Grant      80
+North West half-Breed Scrip       1
+Name: count, dtype: int64
+by meridian: {2: 1356, 3: 469, 1: 23}
+by year:
+year
+1881      1
+1882     13
+1883     17
+1884      5
+1885     26
+1886     24
+1887     13
+1888      8
+1889     14
+1890     10
+1891      9
+1892      9
+1893      7
+1894      1
+1895      3
+1897      1
+1898      3
+1899     22
+1900    262
+1901    527
+1902    613
+1903     82
+1904     23
+1905     80
+1906     24
+1907      7
+1908     15
+1909     14
+1911      1
+1916      1
+1919      2
+1921      5
+1922      1
+1923      2
+1928      1
+top townships:
+key
+7-11-W2     65
+12-11-W2    63
+12-12-W2    62
+10-11-W2    52
+11-12-W2    51
+14-16-W2    50
+11-11-W2    37
+8-11-W2     36
+6-11-W2     34
+11-13-W2    33
+5-11-W2     32
+12-14-W2    32
+9-13-W2     31
+12-15-W2    31
+11-10-W2    31
+Name: count, dtype: int64
+townships with any scrip: 260
+scrip: lag entry->patent
+count    1791.0
+mean        1.5
+std         3.4
+min       -16.0
+25%         0.0
+50%         1.0
+75%         1.0
+max        31.0
+dtype: float64
+scrip names sample:
+first_name
+Hamelin, Lazare          9
+Monkman, Philip          8
+Welsh, Norbert           7
+Cook, James              7
+Ferguson, Antoine        7
+Dumont, Edouard          6
+Spence, James            6
+Fleury, Patrice          6
+Larence, Jean Norbert    5
+Lapierre, Joseph         5
+Name: count, dtype: int64
+scrip churn: 44.9 % ; n_success>1: 626
+
+== c. CORPORATE / FINANCIER / STATE HOLDINGS ==
+holder
+individual              224353
+railway                  29740
+state/forest/reserve     11702
+company/trust             8543
+HBC                       5232
+(unnamed)                 2280
+Name: count, dtype: int64
+quarters by holder class, dated share and median year:
+                           n  dated  med_year
+holder                                       
+(unnamed)               2280   1857    1912.0
+HBC                     5232   5063    1885.0
+company/trust           8543   7600    1904.0
+individual            224353  63488    1904.0
+railway                29740  28570    1902.0
+state/forest/reserve   11702   1445    1930.0
+
+companies/trusts: distinct names 266  quarters 8543  acres ~ 1366880
+first_name
+SASKATCHEWAN VALLEY LAND COMPANY                    2099
+CANADA SASKATCHEWAN LAND COMPANY                     825
+MANITOBA AND NORTH-WEST LAND CORPORATION             789
+TEMPERANCE COLONIZATION SOCIETY                      614
+WINNIPEG WESTERN LAND CORPORATION                    604
+SOLDIER SETTLEMENT BOARD OF CANADA                   590
+CANADA NORTH WEST LAND COMPANY                       491
+NATIONAL TRUST COMPANY                               413
+NORTHWEST COLONIZATION COMPANY                       333
+ONTARIO AND QU'APPELLE LAND COMPANY                  290
+PRIMITIVE METHODIST COLONIZATION COMPANY             217
+DOMINION LANDS COLONIZATION COMPANY                  124
+CANADA SETTLERS’ LOAN AND TRUST COMPANY              115
+FERTILE BELT COLONIZATION COMPANY                    103
+MONTREAL AND WESTERN LAND COMPANY                     96
+HASLAM LAND & INVESTMENT COMPANY                      49
+IMPERIAL COLONIZATION BOARD                           42
+QU'APPELLE VALLEY FARMING COMPANY                     41
+GRAND TRUNK PACIFIC TOWN AND DEVELOPMENT COMPANY      40
+W.B.S. TRIMBLE COMPANY                                34
+CANADA HOMESTEAD SETTLEMENT COMPANY                   31
+CANADIAN REAL ESTATE COMPANY                          25
+GRAND TRUNK PACIFIC BRANCH LINES COMPANY              23
+PROVINCIAL FOREST L OF L BANK                         20
+SASKATCHEWAN LAND + HOMESTEAD COMPANY                 20
+Name: count, dtype: int64
+company/trust acquisitions by year:
+year
+1881       2
+1882      20
+1883      30
+1884      72
+1885       6
+1886      51
+1887     550
+1888      19
+1889      30
+1890     118
+1891     565
+1892      15
+1893      14
+1894     275
+1895      17
+1896       9
+1897      57
+1898      64
+1899     290
+1900      19
+1901     275
+1902    1163
+1903     123
+1904     469
+1905     143
+1906    1350
+1907     674
+1908      52
+1909      35
+1910      56
+1911      38
+1912      74
+1913     102
+1914      80
+1915      70
+1916      60
+1917      84
+1918     100
+1919     261
+1920      54
+1921      70
+1922      16
+1923       5
+1926       7
+1927       1
+1929       8
+1930       7
+company by meridian: {3: 4133, 2: 3668, 1: 742}
+company rows by grp: {'R': 4521, 'S': 2431, '-': 792, 'K': 692, 'H': 74, 'O': 23, 'C': 6, 'B': 3, 'P': 1}
+
+individual names on >=4 quarters: 3616  on >=10: 422
+first_name
+NANTON, AUGUSTUS MEREDITH            428
+"CUMBERLAND DISTRICT"                271
+OSLER, EDMUND BOYD ET AL             145
+AHTAHKAHKOOP                         132
+MUSKODAY                             102
+KEPPELL STOCK ASSOCIATION             80
+ANDERSON, JOHN                        78
+BROWN, GEORGE WILLIAM                 74
+PET-TY-QUAU-KY                        71
+GRANT, FREDERICK + GRANT, FORSYTH     63
+JOHNSON, JOHN                         54
+DAVIDSON, SARAH MATILDA               54
+SCROGGIN, LEONARD KERLEY              53
+KEE-SEE-KOOSE                         51
+SMITH, JAMES                          51
+ACKERMAN, BENJAMIN FRANKLIN           49
+SEEMAN, RICHARD                       47
+MCDONALD, JOHN                        46
+CLARK, JOHN                           44
+CHAFFEY, BENJAMIN E.                  43
+BROWN, WILLIAM                        42
+O'GRADY, JOHN WALLER DE COWREY        40
+ANDERSON, WILLIAM                     40
+BROWN, JAMES                          39
+WILSON, WILLIAM                       39
+Name: count, dtype: int64
+individuals: share of quarters held by names on 1 quarter: 59.7 %; on 2: 24.0 %; 3+: 16.3 %
+
+== d. PRE-EMPTION / PURCHASED HOMESTEAD ==
+by meridian: {3: 3523, 2: 235, 1: 73}
+by year:
+year
+1881       1
+1882      85
+1883      89
+1884      36
+1885      15
+1886      10
+1887       9
+1888       9
+1889      31
+1891      18
+1896       2
+1901       1
+1902       5
+1903      11
+1904      24
+1905     165
+1906     200
+1907      72
+1908    1039
+1909     673
+1910     651
+1911     311
+1912     186
+1913      80
+1914      53
+1915      15
+1916       5
+1917       7
+1918       7
+1919       2
+1920       1
+P by township band:
+twp
+(0, 10]      443
+(10, 20]     448
+(20, 30]     738
+(30, 40]    1945
+(40, 60]     257
+Name: count, dtype: int64
+purchased homestead raw types:
+type_raw
+Pur. Hd.      1
+Pur. Hstd.    1
+Name: count, dtype: int64
+
+== e. FAILED CLAIMANTS ==
+total failed-claim name entries: 110764  quarters with >=1 failed: 96248  successful-name entries: 283863
+failed per quarter distribution:
+n_failed
+0    185602
+1     86021
+2      7269
+3      2080
+4       570
+5       308
+Name: count, dtype: int64
+H quarters: failed>=1 48.6 % ; failed>=2 15.8 %
+failed rate by meridian (H):
+mer
+1    59.7
+2    49.0
+3    46.1
+Name: n_failed, dtype: float64
+failed rate by band (H):
+twp
+(0, 10]     53.0
+(10, 20]    48.6
+(20, 30]    52.1
+(30, 40]    47.9
+(40, 50]    44.2
+(50, 60]    45.3
+Name: n_failed, dtype: float64
+failed rate (H) by decade of first entry:
+decade
+1880.0    62.7
+1890.0    42.4
+1900.0    45.3
+1910.0    49.6
+1920.0    51.3
+1930.0    12.5
+Name: n_failed, dtype: float64
+
+== f. SOLDIER / MILITARY ==
+type_raw
+South African Volunteer Homestead    565
+Soldier                              356
+                                     334
+Military Homestead                   245
+School Land Sale                     133
+Special Grant                        114
+Soldier Settlement Board               4
+Military Bounty Grant                  4
+Homestead                              3
+Land Sale                              2
+Canadian Pacific Railway               1
+Military Bounty Grant Warrant          1
+Time Sale                              1
+Ranche                                 1
+Name: count, dtype: int64
+by year:
+year
+1881      1
+1882     29
+1883     24
+1884     10
+1885     10
+1886    121
+1887     12
+1888      4
+1889      3
+1890      5
+1891      3
+1892     22
+1893      2
+1897      2
+1901      1
+1902      5
+1903     26
+1904      5
+1905     21
+1906     29
+1907     18
+1908     84
+1909    311
+1910    130
+1911     92
+1912     63
+1913     34
+1914     29
+1915     16
+1916     16
+1917      7
+1918      8
+1919     54
+1920     78
+1921     88
+1922     17
+1923      4
+1924      7
+1925      4
+1926      7
+1927      8
+1928      5
+1929      4
+1930      1
+by meridian: {3: 999, 2: 681, 1: 84}
+
+== g. TOWNSHIP FILL SPEED (even sections, >=40 dated) ==
+townships: 770
+count    770.0
+mean       9.6
+std        8.7
+min        0.0
+25%        3.0
+50%        6.0
+75%       16.7
+max       49.0
+Name: span, dtype: float64
+           size  median  mean
+first_dec                    
+1880        315    17.4  15.5
+1890         81     9.5  10.1
+1900        364     3.9   4.5
+1910          8     8.7   8.7
+1920          2     6.3   6.3
+share filled (p10->p90) within 2 yrs: 22.5 % ; within 5: 46.1 %
+
+== h. NOTES sample ==
+rows with notes: 13324
+0
+patent       6703
+lease         717
+reserve       540
+assign        343
+sale          338
+homestead     111
+sold           96
+company        67
+surrender      38
+transfer       27
+cancel         20
+scrip           5
+minor           1
+Name: count, dtype: int64
+  - Patented to James Joseph Foy v. Hiram J. Roberts 1892-03-07.
+  - Patented to Alexander Locking.
+  - South 1/2: [Ida Mary]. North 1/2: [Sarah]. Both halves patented to James Gardiner + D.J. Wilson.
+  - Robertson, George F.
+  - 96.60 acres: [Hart]. 3.70 acres: Sale, claimed 1929-02-20, [White], patented 1929-04-12.
+  - South 1/2: [Bellrose], patented to Harold Henderson Richards. North 1/2: [Killips], patented 1903-02-17 to Cameron Bartl
+  - Passenger, Frank
+  - to Ole Spetz and Carl P. Carlson.
+  - Doukhobor Village of Tomboscoe. North 1/2 [Dobosoff]. South 1/2 [Relkoff]: claimed 1918-11-28, patented 1919-08-28. 0.72
+  - Patented to William John Soles.
+  - Patented to the Soldier Settlement Board of Canada.
+  - 6.00 acres [CPR]. 185.68 acres [MSWCRy]: patented 1905-03-06.
+  - 147.42 acres [McDonald]. 12.58 acres [CPR]: patented 1895-10-14.
+  - Indian Reserve [Cote]. 54.90 acres [Owegar].
+  - 3 acres: [school], patented 1919-10-01. No claim dates.
+  - Doukhobor Village of Lubomiernoe. 155.291 acres [Birukoff]. 4.709 acres [Negrave]: Sale, claimed 1920-06-18, patented 19
+  - 78.9 acres: [patented 1909]. 81.10 acres: Special, patented 1911-03-10.
+  - "Release of reservations in above Patent"
+  - Assigned to John W. Tabashniuk 1929-11-16.
+  - 107.5 acres: [Raymond]. 40.10 acres: Sale, claimed 1949-08-18, [Leon], patented 1949-09-10.
+  - No patent year.
+  - Doukhobor Village of Efremovo.
+  - "Release of reservation in above Patent"
+  - Watson, Ira Walker
+  - Scott, Frank H.

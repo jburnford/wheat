@@ -32,3 +32,6 @@ tables/unmatched_stations.csv
 tables/web_lookup_queue.csv
 data/cpr_land_sales/dls_anchors.csv
 docs/homesteads_qs.geojson
+
+# homestead analysis intermediates (rebuild with scripts/analysis/build_table.py)
+data/homesteads/analysis/
