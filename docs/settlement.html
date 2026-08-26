@@ -293,7 +293,8 @@ function updateStats(year){
   const idx=year-YEAR_MIN;
   let cpr=0, home=0, rail=0, surA=0, towns=0;
   if(townData) for(const f of townData.features) if((f.properties.fy||9999)<=year) towns++;
-  if(cprTwp) for(const f of cprTwp.features) cpr+=f.properties.cum[idx]||0;
+  const cidx=year-1881;   // CPR township arrays are indexed from 1881 (build_settlement.py), not YEAR_MIN
+  if(cprTwp && cidx>=0) for(const f of cprTwp.features) cpr+=f.properties.cum[cidx]||0;
   if(homeTwp) for(const f of homeTwp.features) home+=f.properties.cum[idx]||0;
   if(railData) for(const f of railData.features){
     const c=f.properties.cnstrctd, a=f.properties.abndnd;
