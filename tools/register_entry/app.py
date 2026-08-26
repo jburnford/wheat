@@ -28,6 +28,37 @@ QS_ORDER = {"NE": 0, "NW": 1, "SE": 2, "SW": 3}
 LOCK = threading.Lock()
 IMAGE_ROOT = None
 MANIFEST = []
+CACHE = DATA / ".cache"
+PREFETCHING = set()
+
+FILE_LOCKS = {}
+FILE_LOCKS_GUARD = threading.Lock()
+def cached(rel):
+    """Return a local copy of IMAGE_ROOT/rel, copying it into data/register/.cache first if needed."""
+    src = (IMAGE_ROOT / rel).resolve()
+    if not str(src).startswith(str(IMAGE_ROOT.resolve())) or not src.exists(): return None
+    dst = CACHE / rel
+    with FILE_LOCKS_GUARD: lock = FILE_LOCKS.setdefault(str(dst), threading.Lock())
+    with lock:                                   # one copier per file; a concurrent request waits, then finds it cached
+        if dst.exists() and dst.stat().st_size == src.stat().st_size: return dst
+        dst.parent.mkdir(parents=True, exist_ok=True); tmp = dst.with_name(dst.name + f".{threading.get_ident()}.part")
+        with open(src, "rb") as f, open(tmp, "wb") as g:
+            while True:
+                b = f.read(1 << 20)
+                if not b: break
+                g.write(b)
+        os.replace(tmp, dst); return dst
+
+def prefetch(paths):
+    key = tuple(paths)
+    if not IMAGE_ROOT or key in PREFETCHING: return
+    PREFETCHING.add(key)
+    def run():
+        for rel in paths:
+            try: cached(rel.replace("\\", "/"))
+            except Exception: pass
+        PREFETCHING.discard(key)
+    threading.Thread(target=run, daemon=True).start()
 
 # Type vocabulary: the values David has used, most frequent first (from the typed sheets, Aug 2026).
 TYPES = ["Homestead", "Canadian Pacific Railway", "Sale", "Pre-emption", "School Land Sale", "Hudson Bay Company", "Canadian Northern Railway",
@@ -37,7 +68,7 @@ TYPES = ["Homestead", "Canadian Pacific Railway", "Sale", "Pre-emption", "School
          "Manitoba and Southeastern Railway", "Great North-West Central Railway", "Canadian Pacific Railway Grant", "Special Grant", "Ranche",
          "Pasture Lease", "Grazing Permit", "Open for Grazing", "Cultivation Lease", "Exchange", "Northwest Colonization Company",
          "North West Half-Breed Grant", "Canadian Pacific Railway Sale", "Pasture Sale", "Provincial Land Sale", "Grand Trunk Pacific Railway Townsites",
-         "Free Grant", "Drainage Sale", "Church + Cemetery site", "Other"]
+         "Free Grant", "Drainage Sale", "Church + Cemetery site", "Blank (no entry)", "Other"]
 
 def load_sheet(name):
     p = DATA / f"{name}.csv"
@@ -118,18 +149,23 @@ class H(SimpleHTTPRequestHandler):
             rows.sort(key=lambda r: (int(r["PSECT"]), QS_ORDER.get(r["QSECT"], 9)))
             self._json({"rows": rows, "types": TYPES}); return
         if path == "/api/images":
-            self._json(images_for(q["mer"][0].upper(), q["rge"][0], int(q["twp"][0]))); return
+            hits = images_for(q["mer"][0].upper(), q["rge"][0], int(q["twp"][0]))
+            prefetch([h["path"] for h in hits if h.get("viewable", True)])   # warm the local cache for this township in the background
+            self._json(hits); return
         if path.startswith("/img/"):
             if not IMAGE_ROOT: self.send_error(404); return
-            rel = unquote(path[5:]); p = (IMAGE_ROOT / rel).resolve()
-            if not str(p).startswith(str(IMAGE_ROOT.resolve())) or not p.exists(): self.send_error(404); return
+            rel = unquote(path[5:]); p = cached(rel)
+            if p is None: self.send_error(404); return
             ctype = mimetypes.guess_type(str(p))[0] or "application/octet-stream"
             self.send_response(200); self.send_header("Content-Type", ctype); self.send_header("Content-Length", str(p.stat().st_size)); self.send_header("Cache-Control", "max-age=3600"); self.end_headers()
-            with open(p, "rb") as f:
-                while True:
-                    chunk = f.read(1 << 16)
-                    if not chunk: break
-                    self.wfile.write(chunk)
+            try:
+                with open(p, "rb") as f:
+                    while True:
+                        chunk = f.read(1 << 20)
+                        if not chunk: break
+                        self.wfile.write(chunk)
+            except (BrokenPipeError, ConnectionResetError):
+                pass   # browser moved on to another page mid-transfer
             return
         if path == "/api/status":
             code, out = git("status", "--porcelain", "data/register"); self._json({"changed": [l[3:] for l in out.splitlines()], "image_root": str(IMAGE_ROOT) if IMAGE_ROOT else None, "manifest": len(MANIFEST)}); return

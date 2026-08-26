@@ -150,15 +150,22 @@ function toast(m){ const t = $("#toast"); t.textContent = m; t.classList.add("sh
 async function loadSheets(){
   sheets = await api("/api/sheets");
   const s = $("#sheet"); s.innerHTML = sheets.map(x => `<option value="${x.name}">${x.name.replace("_"," ")} — ${x.typed}/${x.rows} typed</option>`).join("");
-  const saved = localStorage.getItem("re.sheet"); if (saved && sheets.some(x => x.name === saved)) s.value = saved;
+  const saved = localStorage.getItem("re.sheet");
+  if (saved && sheets.some(x => x.name === saved)) s.value = saved;
+  else {   // first run: open the volume with the most plan townships still to do
+    const unfinished = x => (x.plan || []).filter(t => { const d = x.townships.find(y => y.twp === t); return d && d.typed < d.n * .5; }).length;
+    const best = sheets.slice().sort((a, b) => unfinished(b) - unfinished(a))[0]; if (best && unfinished(best)) s.value = best.name;
+  }
   onSheet();
 }
 function onSheet(){
   sheet = $("#sheet").value; localStorage.setItem("re.sheet", sheet);
   const info = sheets.find(x => x.name === sheet); const plan = new Set(info.plan || []);
   $("#twp").innerHTML = info.townships.map(t => { const done = t.typed >= t.n * .5; const mark = plan.has(t.twp) ? "★ " : ""; return `<option value="${t.twp}">${mark}T${t.twp} — ${t.typed}/${t.n} typed${t.index ? ", " + t.index + " with index names" : ""}${done ? " ✓" : ""}</option>`; }).join("");
-  const savedT = localStorage.getItem("re.twp." + sheet); if (savedT) $("#twp").value = savedT;
-  if (!$("#twp").value && info.plan && info.plan.length) $("#twp").value = info.plan[0];
+  const savedT = localStorage.getItem("re.twp." + sheet);
+  const firstTodo = (info.plan || []).find(t => { const d = info.townships.find(y => y.twp === t); return d && d.typed < d.n * .5; });
+  if (savedT && [...$("#twp").options].some(o => o.value === savedT)) $("#twp").value = savedT;
+  else if (firstTodo) $("#twp").value = String(firstTodo);
   onTwp();
 }
 async function onTwp(){
@@ -296,15 +303,22 @@ document.addEventListener("keydown", e => {
 
 // ---------------- image viewer
 const V = $("#viewer"), IMG = $("#page"); let z = 1, tx = 0, ty = 0, rot = 0, drag = null;
-function apply(){ IMG.style.transform = `translate(${tx}px,${ty}px) scale(${z}) rotate(${rot}deg)`; $("#izoom").textContent = Math.round(z * 100) + "%"; }
+// Rotation is remembered per volume and per page (browsers already honour the photos' EXIF orientation).
+function defaultRot(){ const v = localStorage.getItem("re.rot." + sheet); return v === null ? 0 : parseInt(v); }   // browsers apply the photo's EXIF orientation; ⟳ once sets the default for the volume
+function apply(){
+  const W = IMG.naturalWidth || 0, H = IMG.naturalHeight || 0;   // keep the rotated image anchored at its top-left
+  const ox = rot === 90 ? H * z : rot === 180 ? W * z : 0, oy = rot === 180 ? H * z : rot === 270 ? W * z : 0;
+  IMG.style.transform = `translate(${tx + ox}px,${ty + oy}px) scale(${z}) rotate(${rot}deg)`; $("#izoom").textContent = Math.round(z * 100) + "%";
+}
 function fit(){ if (!IMG.naturalWidth) return; z = (V.clientWidth - 16) / (rot % 180 ? IMG.naturalHeight : IMG.naturalWidth); tx = 8; ty = 8; apply(); }
 V.addEventListener("wheel", e => { e.preventDefault(); const k = e.deltaY < 0 ? 1.12 : 1 / 1.12; const rect = V.getBoundingClientRect(); const mx = e.clientX - rect.left, my = e.clientY - rect.top; tx = mx - (mx - tx) * k; ty = my - (my - ty) * k; z *= k; apply(); }, {passive: false});
 V.addEventListener("mousedown", e => { drag = {x: e.clientX, y: e.clientY, tx, ty}; V.classList.add("dragging"); });
 window.addEventListener("mousemove", e => { if (!drag) return; tx = drag.tx + e.clientX - drag.x; ty = drag.ty + e.clientY - drag.y; apply(); });
 window.addEventListener("mouseup", () => { drag = null; V.classList.remove("dragging"); });
-$("#ifit").onclick = fit; $("#irot").onclick = () => { rot = (rot + 90) % 360; apply(); };
-IMG.onload = () => { $("#nopage").style.display = "none"; const saved = localStorage.getItem("re.view." + (images[imgIdx] || {}).path); if (saved) { ({z, tx, ty, rot} = JSON.parse(saved)); apply(); } else fit(); };
-setInterval(() => { if (images[imgIdx]) localStorage.setItem("re.view." + images[imgIdx].path, JSON.stringify({z, tx, ty, rot})); }, 2000);
+$("#ifit").onclick = fit; $("#irot").onclick = () => { rot = (rot + 90) % 360; localStorage.setItem("re.rot." + sheet, rot); fit(); };
+let loadedPath = null;   // only remember a view once the page has actually loaded (not the pre-load state)
+IMG.onload = () => { $("#nopage").style.display = "none"; loadedPath = (images[imgIdx] || {}).path; const saved = localStorage.getItem("re.view." + loadedPath); if (saved) { ({z, tx, ty, rot} = JSON.parse(saved)); apply(); } else { rot = defaultRot(); fit(); } };
+setInterval(() => { if (loadedPath && images[imgIdx] && images[imgIdx].path === loadedPath && IMG.naturalWidth) localStorage.setItem("re.view." + loadedPath, JSON.stringify({z, tx, ty, rot})); }, 2000);
 async function loadImages(){
   const r = rows[0]; if (!r) return;
   images = await api(`/api/images?mer=W${r.PMER}&rge=${r.PRGE}&twp=${twp}`);
@@ -314,7 +328,7 @@ async function loadImages(){
 function showImage(){
   const x = images[imgIdx];
   if (!x) { IMG.removeAttribute("src"); $("#nopage").style.display = "flex"; $("#nopage").textContent = images.length ? "" : "No page image found for this township — use the image list, or check data/register/images.csv"; return; }
-  $("#imgsel").value = imgIdx;
+  $("#imgsel").value = imgIdx; loadedPath = null;
   if (x.viewable === false) { IMG.removeAttribute("src"); $("#nopage").style.display = "flex"; $("#nopage").textContent = "This page is a HEIC file, which the browser cannot display: " + x.path.split(/[\\/]/).pop() + " — convert the township folder to JPG."; return; }
   IMG.src = "/img/" + x.path.split(/[\\/]/).map(encodeURIComponent).join("/");
 }
