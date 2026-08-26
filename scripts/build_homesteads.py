@@ -2,8 +2,8 @@
 """Extract Saskatchewan homestead records (W1/W2/W3 workbooks) and place them on
 the calibrated open DLS grid (scripts/dls_grid.py).
 
-This is WIP source data: ~485k quarter-section rows, ~256k populated, of which
-~60k carry an entry date. Handles the known data issues:
+This is WIP source data: ~485k quarter-section rows, ~283k populated, of which
+~108k carry an entry date. Handles the known data issues:
   * date columns sometimes hold a name (misaligned) -> only true year values used
   * `Successful_Claims` may list several claimants (`;`) -> counted; when there is
     no date and >1 name the patentee is ambiguous (flagged)
