@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Register entry</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--bg:#f4f5f2;--paper:#fff;--ink:#1c2320;--ink2:#5b655f;--ink3:#8d968f;--rule:#d6dbd6;--acc:#1f3f66;--acc-soft:#e3eaf4;--ok:#2e7d32;--ok-soft:#e4f2e5;--warn:#9a4d12;--warn-soft:#f8ebdd;--chip:#e9ecf3;--chip-on:#1f3f66;--chip-fail:#c9502b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 "Segoe UI",system-ui,-apple-system,sans-serif;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+header{display:flex;align-items:center;gap:14px;padding:8px 14px;background:var(--paper);border-bottom:1px solid var(--rule);flex-wrap:wrap}
+header h1{font-size:15px;margin:0;font-weight:600}
+header select,header button,header input{font:inherit;padding:4px 8px;border:1px solid var(--rule);border-radius:4px;background:#fff}
+header button{cursor:pointer}
+.sp{flex:1}
+.stat{font-size:12.5px;color:var(--ink2)}
+main{flex:1;display:grid;grid-template-columns:minmax(380px,1fr) 470px;min-height:0}
+#viewer{position:relative;background:#2a2d2b;overflow:hidden;cursor:grab}
+#viewer.dragging{cursor:grabbing}
+#viewer img{position:absolute;left:0;top:0;transform-origin:0 0;user-select:none;-webkit-user-drag:none;image-rendering:auto}
+#viewer .nopage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#cfd3cf;font-size:14px;text-align:center;padding:30px}
+#vbar{position:absolute;left:8px;top:8px;display:flex;gap:6px;align-items:center;background:rgba(255,255,255,.92);padding:5px 8px;border-radius:5px;font-size:12.5px;max-width:calc(100% - 16px)}
+#vbar select{max-width:340px;font:inherit}
+#vbar button{font:inherit;padding:2px 7px;cursor:pointer}
+aside{background:var(--paper);border-left:1px solid var(--rule);display:flex;flex-direction:column;min-height:0}
+#nav{display:flex;flex-wrap:wrap;gap:3px;padding:8px 12px;border-bottom:1px solid var(--rule);max-height:150px;overflow:auto}
+#nav .sec{display:grid;grid-template-columns:1fr 1fr;gap:1px;width:36px}
+#nav .q{height:9px;background:#e6e9e6;border:1px solid #fff;cursor:pointer}
+#nav .q.typed{background:#7aa7e0}.q.app{background:var(--acc)}.q.cur{outline:2px solid var(--warn);outline-offset:-1px}
+#nav .sec b{grid-column:1/3;font-size:9px;color:var(--ink3);text-align:center;font-weight:500;line-height:1}
+#form{flex:1;overflow:auto;padding:10px 14px 14px}
+.lld{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.lld b{font-size:22px;letter-spacing:.02em}
+.lld span{color:var(--ink2);font-size:13px}
+.hint{font-size:12.5px;color:var(--ink2);background:var(--acc-soft);padding:6px 8px;border-radius:4px;margin:6px 0}
+.hint.warn{background:var(--warn-soft);color:var(--warn)}
+label{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);margin:10px 0 3px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{border:1px solid transparent;background:var(--chip);padding:4px 9px;border-radius:14px;cursor:pointer;font-size:13.5px;user-select:none}
+.chip.on{background:var(--chip-on);color:#fff}
+.chip.fail{background:#fff;border-color:var(--chip-fail);color:var(--chip-fail);text-decoration:line-through}
+.chip .x{margin-left:6px;opacity:.6}
+.row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+input[type=text],select,textarea{width:100%;font:inherit;padding:5px 7px;border:1px solid var(--rule);border-radius:4px;background:#fff}
+input.bad{border-color:#c62828;background:#fff5f5}
+textarea{min-height:52px;resize:vertical}
+.kbd{font:11px ui-monospace,Menlo,Consolas,monospace;background:#eef0ee;border:1px solid var(--rule);border-radius:3px;padding:0 4px;color:var(--ink2)}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+button.p{background:var(--acc);color:#fff;border:0;padding:8px 14px;border-radius:5px;font:inherit;font-weight:600;cursor:pointer}
+button.s{background:#fff;border:1px solid var(--rule);padding:7px 11px;border-radius:5px;font:inherit;cursor:pointer}
+button:disabled{opacity:.5;cursor:default}
+.saved{font-size:12px;color:var(--ok)}
+.tiny{font-size:12px;color:var(--ink3)}
+#toast{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:8px 14px;border-radius:5px;font-size:13px;opacity:0;transition:opacity .15s;pointer-events:none}
+#toast.show{opacity:1}
+dialog{border:1px solid var(--rule);border-radius:8px;padding:16px 18px;max-width:520px;font:inherit}
+dialog textarea{min-height:60px}
+kbd{font:inherit}
+.help{font-size:12px;color:var(--ink2);line-height:1.6}
+</style>
+</head>
+<body>
+<header>
+  <h1>Township General Register — entry</h1>
+  <select id="sheet"></select>
+  <select id="twp"></select>
+  <span class="stat" id="prog"></span>
+  <span class="sp"></span>
+  <span class="stat" id="git"></span>
+  <button id="commit">Commit</button>
+  <button id="helpbtn" title="keyboard shortcuts">?</button>
+</header>
+<main>
+  <div id="viewer">
+    <div id="vbar">
+      <button id="iprev" title="previous image">◀</button>
+      <select id="imgsel"></select>
+      <button id="inext" title="next image">▶</button>
+      <button id="ifit" title="fit width">fit</button>
+      <button id="irot" title="rotate">⟳</button>
+      <label style="display:inline;font-size:12px;text-transform:none;letter-spacing:0;margin:0"><input type="checkbox" id="ifollow" checked> follow section</label>
+      <span id="izoom" class="tiny"></span>
+    </div>
+    <div class="nopage" id="nopage">No image root configured — start the app with --images "G:\HGIS LAB\Saskatchewan Archives\Township General Register"</div>
+    <img id="page" alt="" draggable="false">
+  </div>
+  <aside>
+    <div id="nav"></div>
+    <div id="form">
+      <div class="lld"><b id="lld">—</b><span id="lldsub"></span></div>
+      <div id="hints"></div>
+      <label>Names on the file <span class="tiny">(click = successful · shift-click = failed · click again to clear)</span></label>
+      <div class="chips" id="chips"></div>
+      <div style="margin-top:6px;display:flex;gap:6px"><input type="text" id="newname" placeholder="add a name not in the index: Surname, Given"><button class="s" id="addname">add</button></div>
+      <label>Type <span class="tiny">(<span class="kbd">1</span>–<span class="kbd">9</span> quick keys, <span class="kbd">0</span> other)</span></label>
+      <select id="type"></select>
+      <div class="row">
+        <div><label>First date</label><input type="text" id="FirstDate" placeholder="YYYY-MM-DD"></div>
+        <div><label>Success date</label><input type="text" id="FirstDateSuccess" placeholder="YYYY-MM-DD"></div>
+        <div><label>Patent date</label><input type="text" id="Patent_Date" placeholder="YYYY-MM-DD"></div>
+      </div>
+      <div class="row">
+        <div><label>Number of claims</label><input type="text" id="Number_of_claims" placeholder="auto"></div>
+        <div style="grid-column:2/4"><label>Successful (as saved)</label><input type="text" id="Successful_Claims" placeholder="Surname, Given; Surname, Given"></div>
+      </div>
+      <div><label>Failed (as saved)</label><input type="text" id="Failed_Claims" placeholder="Surname, Given; …"></div>
+      <label>Notes</label>
+      <textarea id="Notes" placeholder="e.g. 6.05 acres: [CPR], patented 1910-07-25. Patented to Simeon Storpnikoff. North 1/2: [Dobosoff]."></textarea>
+      <div class="btns">
+        <button class="p" id="save">Save &amp; next <span class="kbd" style="color:#fff;background:transparent;border-color:rgba(255,255,255,.4)">Enter</span></button>
+        <button class="s" id="skip" title="next quarter without saving">skip ›</button>
+        <button class="s" id="prevq" title="previous quarter">‹ prev</button>
+        <button class="s" id="copy" title="copy type, dates and names from the previous quarter (Ctrl+D)">copy previous</button>
+        <button class="s" id="clear">clear</button>
+        <span class="saved" id="savedmsg"></span>
+      </div>
+      <div class="tiny" style="margin-top:8px" id="meta"></div>
+    </div>
+  </aside>
+</main>
+<div id="toast"></div>
+<dialog id="commitdlg">
+  <form method="dialog">
+    <b>Commit register entries to git</b>
+    <p class="tiny" id="commitfiles"></p>
+    <label>Message</label><textarea id="commitmsg"></textarea>
+    <label><input type="checkbox" id="pushbox"> push to GitHub after committing</label>
+    <div class="btns"><button class="p" value="ok">Commit</button><button class="s" value="cancel">Cancel</button></div>
+  </form>
+</dialog>
+<dialog id="helpdlg">
+  <b>Shortcuts</b>
+  <div class="help">
+    <b>Enter</b> save &amp; next · <b>Ctrl+→ / Ctrl+←</b> next / previous quarter without saving · <b>Ctrl+D</b> copy previous quarter<br>
+    <b>1–9</b> pick a common type (when not in a text box) · <b>0</b> Other · <b>Alt+H</b> Homestead · <b>Alt+C</b> CPR prefill<br>
+    <b>PageUp / PageDown</b> previous / next image · <b>mouse wheel</b> zoom (over the image) · <b>drag</b> pan · <b>F</b> fit width<br>
+    Dates accept <code>1903</code>, <code>1903-04</code>, <code>1903-04-17</code>, <code>17 Apr 1903</code>, <code>Apr 17 1903</code>. Number of claims fills itself from the names.<br>
+    Every save rewrites <code>data/register/&lt;sheet&gt;.csv</code>; press <b>Commit</b> when you stop for the day.
+  </div>
+  <form method="dialog"><div class="btns"><button class="p">Close</button></div></form>
+</dialog>
+<script>
+const $ = s => document.querySelector(s);
+const api = (p, o) => fetch(p, o).then(r => r.json());
+let sheets = [], sheet = null, twp = null, rows = [], cur = 0, types = [], names = [], images = [], imgIdx = 0, prevRow = null;
+const HOT = ["Homestead","Canadian Pacific Railway","Sale","Pre-emption","School Land Sale","Hudson Bay Company","Canadian Northern Railway","Provincial Forest","Indian Reserve"];
+function toast(m){ const t = $("#toast"); t.textContent = m; t.classList.add("show"); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove("show"), 1800); }
+
+// ---------------- sheets & townships
+async function loadSheets(){
+  sheets = await api("/api/sheets");
+  const s = $("#sheet"); s.innerHTML = sheets.map(x => `<option value="${x.name}">${x.name.replace("_"," ")} — ${x.typed}/${x.rows} typed</option>`).join("");
+  const saved = localStorage.getItem("re.sheet"); if (saved && sheets.some(x => x.name === saved)) s.value = saved;
+  onSheet();
+}
+function onSheet(){
+  sheet = $("#sheet").value; localStorage.setItem("re.sheet", sheet);
+  const info = sheets.find(x => x.name === sheet); const plan = new Set(info.plan || []);
+  $("#twp").innerHTML = info.townships.map(t => { const done = t.typed >= t.n * .5; const mark = plan.has(t.twp) ? "★ " : ""; return `<option value="${t.twp}">${mark}T${t.twp} — ${t.typed}/${t.n} typed${t.index ? ", " + t.index + " with index names" : ""}${done ? " ✓" : ""}</option>`; }).join("");
+  const savedT = localStorage.getItem("re.twp." + sheet); if (savedT) $("#twp").value = savedT;
+  if (!$("#twp").value && info.plan && info.plan.length) $("#twp").value = info.plan[0];
+  onTwp();
+}
+async function onTwp(){
+  twp = parseInt($("#twp").value); localStorage.setItem("re.twp." + sheet, twp);
+  const r = await api(`/api/sheet?name=${sheet}&twp=${twp}`); rows = r.rows; types = r.types;
+  $("#type").innerHTML = `<option value=""></option>` + types.map((t, i) => { const k = HOT.indexOf(t); return `<option value="${t.replace(/"/g,"&quot;")}">${k >= 0 ? (k+1) + " · " : ""}${t}</option>`; }).join("");
+  const first = rows.findIndex(x => !x.Type); cur = first >= 0 ? first : 0; prevRow = null;
+  renderNav(); show(); loadImages();
+}
+function renderNav(){
+  const n = $("#nav"); let h = "";
+  for (let s = 1; s <= 36; s++) {
+    const qs = ["NW","NE","SW","SE"].map(q => { const i = rows.findIndex(r => parseInt(r.PSECT) === s && r.QSECT === q); const r = rows[i];
+      return `<div class="q ${r && r.entered_at ? "app" : r && r.Type ? "typed" : ""} ${i === cur ? "cur" : ""}" data-i="${i}" title="${q}-${s}"></div>`; }).join("");
+    h += `<div class="sec">${qs}<b>${s}</b></div>`;
+  }
+  n.innerHTML = h;
+  n.querySelectorAll(".q").forEach(el => el.onclick = () => { const i = parseInt(el.dataset.i); if (i >= 0) { cur = i; show(); } });
+  const typed = rows.filter(r => r.Type).length; $("#prog").textContent = `T${twp}: ${typed}/${rows.length} typed`;
+}
+
+// ---------------- current quarter
+let follow = true, lastAuto = -1;
+function pageForSection(sec){ if (!images.length) return 0; return Math.min(images.length - 1, Math.floor((sec - 1) * images.length / 36)); }
+function followPage(){ if (!follow || !images.length) return; const want = pageForSection(parseInt(rows[cur].PSECT)); if (want !== imgIdx) { imgIdx = want; lastAuto = want; showImage(); } }
+function show(){
+  const r = rows[cur]; if (!r) return;
+  followPage();
+  $("#lld").textContent = `${r.QSECT} ${r.PSECT} – ${r.PTWP} – ${r.PRGE} – W${r.PMER}`;
+  $("#lldsub").textContent = `${cur + 1} of ${rows.length}${r.entered_at ? " · saved " + r.entered_at : r.Type ? " · typed in workbook" : ""}`;
+  // names: successful/failed as saved, else index names
+  names = [];
+  const succ = split(r.Successful_Claims), fail = split(r.Failed_Claims), idx = split(r.index_names);
+  for (const n of succ) names.push({n, s: "on"}); for (const n of fail) names.push({n, s: "fail"});
+  for (const n of idx) if (!names.some(x => x.n === n)) names.push({n, s: ""});
+  renderChips();
+  $("#type").value = r.Type || defaultType(r); syncTypeSelect();
+  for (const c of ["FirstDate","FirstDateSuccess","Patent_Date","Number_of_claims","Successful_Claims","Failed_Claims","Notes"]) { $("#" + c).value = r[c] || ""; $("#" + c).classList.remove("bad"); }
+  const hints = [];
+  const sec = parseInt(r.PSECT);
+  if (r.cpr_hint) hints.push(`<div class="hint">CPR catalogue: <b>${esc(r.cpr_hint)}</b> — <a href="#" id="usecpr">use</a> (Alt+C)</div>`);
+  if (sec === 8 || sec === 26) hints.push(`<div class="hint">Section ${sec}: usually Hudson's Bay Company land</div>`);
+  if (sec === 11 || sec === 29) hints.push(`<div class="hint">Section ${sec}: usually school land</div>`);
+  if (!r.Type && !idx.length && !r.cpr_hint) hints.push(`<div class="hint warn">No homestead file in the Archives index and no CPR sale for this quarter — expect a sale, grant, reserve or forest entry, or nothing.</div>`);
+  $("#hints").innerHTML = hints.join("");
+  const u = $("#usecpr"); if (u) u.onclick = e => { e.preventDefault(); useCpr(); };
+  $("#savedmsg").textContent = ""; $("#meta").textContent = r.image ? "image: " + r.image : "";
+  renderNav();
+}
+function defaultType(r){ const sec = parseInt(r.PSECT); if (r.cpr_hint) return "Canadian Pacific Railway"; if (sec === 8 || sec === 26) return "Hudson Bay Company"; if (sec === 11 || sec === 29) return "School Land Sale"; if (r.index_names) return "Homestead"; return ""; }
+function split(s){ return (s || "").split(";").map(x => x.trim()).filter(Boolean); }
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function renderChips(){
+  $("#chips").innerHTML = names.map((x, i) => `<span class="chip ${x.s}" data-i="${i}">${esc(x.n)}<span class="x" title="remove">×</span></span>`).join("") || `<span class="tiny">no names — add one below if the register shows a claimant</span>`;
+  $("#chips").querySelectorAll(".chip").forEach(el => {
+    el.onclick = e => { const i = parseInt(el.dataset.i);
+      if (e.target.classList.contains("x")) { names.splice(i, 1); }
+      else if (e.shiftKey) names[i].s = names[i].s === "fail" ? "" : "fail";
+      else names[i].s = names[i].s === "on" ? "" : "on";
+      renderChips(); syncNames(); };
+  });
+}
+function syncNames(){
+  $("#Successful_Claims").value = names.filter(x => x.s === "on").map(x => x.n).join("; ");
+  $("#Failed_Claims").value = names.filter(x => x.s === "fail").map(x => x.n).join("; ");
+  const n = names.filter(x => x.s).length; if (n) $("#Number_of_claims").value = n;
+}
+$("#addname").onclick = () => { const v = $("#newname").value.trim(); if (!v) return; names.push({n: v, s: "on"}); $("#newname").value = ""; renderChips(); syncNames(); };
+$("#newname").addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); e.stopPropagation(); $("#addname").click(); } });
+function syncTypeSelect(){ const t = $("#type"); if (![...t.options].some(o => o.value === t.value)) { const o = document.createElement("option"); o.value = o.textContent = t.value; t.appendChild(o); } }
+function useCpr(){ const r = rows[cur]; const parts = (r.cpr_hint || "").split("|").map(s => s.trim()); $("#type").value = "Canadian Pacific Railway"; syncTypeSelect();
+  if (parts[0] && !names.some(x => x.n === parts[0])) { names.push({n: parts[0], s: "on"}); renderChips(); syncNames(); }
+  const d = parseDate(parts[1] || ""); if (d && !$("#FirstDate").value) $("#FirstDate").value = d; toast("CPR catalogue values filled — check against the register"); }
+
+// ---------------- dates
+const MON = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,sept:9,oct:10,nov:11,dec:12};
+function parseDate(s){
+  s = (s || "").trim(); if (!s) return "";
+  let m;
+  if ((m = s.match(/^(1[89]\d\d)(?:[-\/.](\d{1,2})(?:[-\/.](\d{1,2}))?)?$/))) return m[1] + (m[2] ? "-" + m[2].padStart(2,"0") + (m[3] ? "-" + m[3].padStart(2,"0") : "") : "");
+  if ((m = s.match(/^(\d{1,2})\s+([a-z]+)\.?,?\s+(1[89]\d\d)$/i)) && MON[m[2].toLowerCase().slice(0,4)] ) return `${m[3]}-${String(MON[m[2].toLowerCase().slice(0,4)]).padStart(2,"0")}-${m[1].padStart(2,"0")}`;
+  if ((m = s.match(/^([a-z]+)\.?\s+(\d{1,2}),?\s+(1[89]\d\d)$/i)) && MON[m[1].toLowerCase().slice(0,4)]) return `${m[3]}-${String(MON[m[1].toLowerCase().slice(0,4)]).padStart(2,"0")}-${m[2].padStart(2,"0")}`;
+  if ((m = s.match(/^(1[89]\d\d),?\s+([a-z]+)\.?\s+(\d{1,2})$/i)) && MON[m[2].toLowerCase().slice(0,4)]) return `${m[1]}-${String(MON[m[2].toLowerCase().slice(0,4)]).padStart(2,"0")}-${m[3].padStart(2,"0")}`;
+  if ((m = s.match(/^(\d{1,2})[-\/](\d{1,2})[-\/](1[89]\d\d)$/))) return `${m[3]}-${m[2].padStart(2,"0")}-${m[1].padStart(2,"0")}`;
+  return null;
+}
+for (const c of ["FirstDate","FirstDateSuccess","Patent_Date"]) $("#" + c).addEventListener("blur", e => { const v = e.target.value.trim(); if (!v) { e.target.classList.remove("bad"); return; } const d = parseDate(v); if (d === null) e.target.classList.add("bad"); else { e.target.value = d; e.target.classList.remove("bad"); } });
+
+// ---------------- save / navigate
+function collect(){
+  const r = rows[cur]; const out = Object.assign({}, r);
+  out.Type = $("#type").value.trim();
+  for (const c of ["FirstDate","FirstDateSuccess","Patent_Date"]) { const v = $("#" + c).value.trim(); const d = v ? parseDate(v) : ""; if (d === null) { $("#" + c).classList.add("bad"); throw new Error("bad date in " + c); } out[c] = d; }
+  out.Successful_Claims = $("#Successful_Claims").value.trim(); out.Failed_Claims = $("#Failed_Claims").value.trim();
+  out.Number_of_claims = $("#Number_of_claims").value.trim() || String(split(out.Successful_Claims).length + split(out.Failed_Claims).length || "");
+  out.Notes = $("#Notes").value.trim();
+  out.image = images[imgIdx] ? images[imgIdx].path : (r.image || "");
+  if (out.FirstDate && out.Patent_Date && out.Patent_Date < out.FirstDate) { if (!confirm("Patent date is before first date — save anyway?")) throw new Error("cancelled"); }
+  return out;
+}
+async function save(advance = true){
+  let row; try { row = collect(); } catch (e) { toast(e.message); return; }
+  if (!row.Type) { toast("choose a Type"); $("#type").focus(); return; }
+  const res = await api("/api/save", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({sheet, row})});
+  if (!res.ok) { toast("save failed: " + res.error); return; }
+  Object.assign(rows[cur], row, {entered_at: res.entered_at}); prevRow = rows[cur];
+  $("#savedmsg").textContent = "saved " + res.entered_at; refreshGit();
+  if (advance) next(); else renderNav();
+}
+function next(){ if (cur < rows.length - 1) { cur++; show(); } else { toast("end of township — pick the next one"); renderNav(); } }
+function prev(){ if (cur > 0) { cur--; show(); } }
+function copyPrev(){ const p = prevRow || rows[cur - 1]; if (!p) return; $("#type").value = p.Type; syncTypeSelect();
+  for (const c of ["FirstDate","FirstDateSuccess","Patent_Date"]) $("#" + c).value = p[c] || "";
+  // same claimant on the neighbouring quarter is common (homestead + pre-emption pair): carry the successful name if it is in this quarter's index names
+  const ps = split(p.Successful_Claims); for (const x of names) if (ps.includes(x.n)) x.s = "on"; renderChips(); syncNames(); toast("copied from previous quarter"); }
+$("#save").onclick = () => save(true); $("#skip").onclick = next; $("#prevq").onclick = prev; $("#copy").onclick = copyPrev;
+$("#clear").onclick = () => { $("#type").value = ""; for (const c of ["FirstDate","FirstDateSuccess","Patent_Date","Number_of_claims","Successful_Claims","Failed_Claims","Notes"]) $("#" + c).value = ""; names.forEach(x => x.s = ""); renderChips(); };
+$("#sheet").onchange = onSheet; $("#twp").onchange = onTwp;
+document.addEventListener("keydown", e => {
+  const inText = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); save(true); return; }   // Shift+Enter = newline in Notes
+  if (e.ctrlKey && e.key === "ArrowRight") { e.preventDefault(); next(); return; }
+  if (e.ctrlKey && e.key === "ArrowLeft") { e.preventDefault(); prev(); return; }
+  if (e.ctrlKey && (e.key === "d" || e.key === "D")) { e.preventDefault(); copyPrev(); return; }
+  if (e.altKey && (e.key === "h" || e.key === "H")) { e.preventDefault(); $("#type").value = "Homestead"; return; }
+  if (e.altKey && (e.key === "c" || e.key === "C")) { e.preventDefault(); useCpr(); return; }
+  if (e.key === "PageDown") { e.preventDefault(); imgStep(1); return; }
+  if (e.key === "PageUp") { e.preventDefault(); imgStep(-1); return; }
+  if (!inText) {
+    if (/^[1-9]$/.test(e.key)) { const t = HOT[parseInt(e.key) - 1]; if (t) { $("#type").value = t; toast(t); } }
+    else if (e.key === "0") { $("#type").value = "Other"; syncTypeSelect(); }
+    else if (e.key === "f" || e.key === "F") fit();
+  }
+});
+
+// ---------------- image viewer
+const V = $("#viewer"), IMG = $("#page"); let z = 1, tx = 0, ty = 0, rot = 0, drag = null;
+function apply(){ IMG.style.transform = `translate(${tx}px,${ty}px) scale(${z}) rotate(${rot}deg)`; $("#izoom").textContent = Math.round(z * 100) + "%"; }
+function fit(){ if (!IMG.naturalWidth) return; z = (V.clientWidth - 16) / (rot % 180 ? IMG.naturalHeight : IMG.naturalWidth); tx = 8; ty = 8; apply(); }
+V.addEventListener("wheel", e => { e.preventDefault(); const k = e.deltaY < 0 ? 1.12 : 1 / 1.12; const rect = V.getBoundingClientRect(); const mx = e.clientX - rect.left, my = e.clientY - rect.top; tx = mx - (mx - tx) * k; ty = my - (my - ty) * k; z *= k; apply(); }, {passive: false});
+V.addEventListener("mousedown", e => { drag = {x: e.clientX, y: e.clientY, tx, ty}; V.classList.add("dragging"); });
+window.addEventListener("mousemove", e => { if (!drag) return; tx = drag.tx + e.clientX - drag.x; ty = drag.ty + e.clientY - drag.y; apply(); });
+window.addEventListener("mouseup", () => { drag = null; V.classList.remove("dragging"); });
+$("#ifit").onclick = fit; $("#irot").onclick = () => { rot = (rot + 90) % 360; apply(); };
+IMG.onload = () => { $("#nopage").style.display = "none"; const saved = localStorage.getItem("re.view." + (images[imgIdx] || {}).path); if (saved) { ({z, tx, ty, rot} = JSON.parse(saved)); apply(); } else fit(); };
+setInterval(() => { if (images[imgIdx]) localStorage.setItem("re.view." + images[imgIdx].path, JSON.stringify({z, tx, ty, rot})); }, 2000);
+async function loadImages(){
+  const r = rows[0]; if (!r) return;
+  images = await api(`/api/images?mer=W${r.PMER}&rge=${r.PRGE}&twp=${twp}`);
+  $("#imgsel").innerHTML = images.map((x, i) => `<option value="${i}">${esc(x.page || x.path.split(/[\\/]/).pop())}</option>`).join("");
+  follow = true; $("#ifollow").checked = true; imgIdx = pageForSection(parseInt(rows[cur].PSECT)); showImage();
+}
+function showImage(){
+  const x = images[imgIdx];
+  if (!x) { IMG.removeAttribute("src"); $("#nopage").style.display = "flex"; $("#nopage").textContent = images.length ? "" : "No page image found for this township — use the image list, or check data/register/images.csv"; return; }
+  $("#imgsel").value = imgIdx;
+  if (x.viewable === false) { IMG.removeAttribute("src"); $("#nopage").style.display = "flex"; $("#nopage").textContent = "This page is a HEIC file, which the browser cannot display: " + x.path.split(/[\\/]/).pop() + " — convert the township folder to JPG."; return; }
+  IMG.src = "/img/" + x.path.split(/[\\/]/).map(encodeURIComponent).join("/");
+}
+function imgStep(d){ if (!images.length) return; imgIdx = (imgIdx + d + images.length) % images.length; follow = false; $("#ifollow").checked = false; showImage(); }
+$("#iprev").onclick = () => imgStep(-1); $("#inext").onclick = () => imgStep(1); $("#imgsel").onchange = e => { imgIdx = parseInt(e.target.value); follow = false; showImage(); };
+$("#ifollow").onchange = e => { follow = e.target.checked; if (follow) followPage(); };
+
+// ---------------- git
+async function refreshGit(){ const s = await api("/api/status"); $("#git").textContent = s.changed.length ? `${s.changed.length} file(s) changed, not committed` : "all committed"; if (!s.image_root) $("#nopage").style.display = "flex"; }
+$("#commit").onclick = async () => { const s = await api("/api/status"); $("#commitfiles").textContent = s.changed.length ? "Files: " + s.changed.join(", ") : "Nothing to commit."; $("#commitmsg").value = `Register entry ${sheet.replace("_"," ")} T${twp} — ${new Date().toISOString().slice(0,10)}`;
+  const d = $("#commitdlg"); d.showModal(); d.addEventListener("close", async function h(){ d.removeEventListener("close", h); if (d.returnValue !== "ok") return; const r = await api("/api/commit", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({message: $("#commitmsg").value, push: $("#pushbox").checked})}); toast(r.ok ? "committed" : "commit failed — see console"); console.log(r.output); refreshGit(); }); };
+$("#helpbtn").onclick = () => $("#helpdlg").showModal();
+loadSheets(); refreshGit();
+</script>
+</body>
+</html>

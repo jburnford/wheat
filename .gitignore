@@ -35,3 +35,4 @@ docs/homesteads_qs.geojson
 
 # homestead analysis intermediates (rebuild with scripts/analysis/build_table.py)
 data/homesteads/analysis/
+data/register/*.tmp
