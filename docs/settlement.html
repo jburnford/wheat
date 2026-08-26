@@ -183,15 +183,13 @@ maplibregl.addProtocol('pmtiles', protocol.tile);
 const map = new maplibregl.Map({
   container:'map', center:[-106.0,52.3], zoom:5.3, minZoom:4.5, maxZoom:15,
   maxBounds:[[-112,48.4],[-99.5,56.8]],   // Saskatchewan
-  style:{version:8, glyphs:'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
-    sources:{basemap:{type:'raster',
-      tiles:['https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-             'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'],
-      tileSize:256, attribution:'© OpenStreetMap, © CARTO | WORK IN PROGRESS · '+
+  // Basemap: OpenFreeMap's Positron style (vector, no API key). CARTO's
+  // basemaps.cartocdn.com raster tiles began demanding an API key in Aug 2026.
+  style:'https://tiles.openfreemap.org/styles/positron',
+  attributionControl:{customAttribution:'WORK IN PROGRESS · '+
         'CPR: U Calgary Archives · Homesteads: Allan, Clifford &amp; Troupe · '+
         'Reserves/Métis: Rabbitskin, Rioux, Clifford &amp; Troupe (HGIS Lab, U Sask) · '+
-        'Towns: Jessica Jack (U Sask) · Railways: U Toronto'}},
-    layers:[{id:'basemap',type:'raster',source:'basemap'}]}
+        'Towns: Jessica Jack (U Sask) · Railways: U Toronto'}
 });
 map.addControl(new maplibregl.NavigationControl(),'bottom-right');
 window.map = map;
