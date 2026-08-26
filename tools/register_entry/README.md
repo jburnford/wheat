@@ -60,6 +60,7 @@ For each quarter:
    Keys 1–9 pick the nine common types, 0 = Other, or use the dropdown.
 3. **Dates** — type `1903`, `1903-04-17`, `17 Apr 1903` or `Apr 17 1903`; they
    normalise on leaving the box. Patent-before-entry asks for confirmation.
+   Register abbreviations: *Home* = Homestead, *Pre.* = Pre-emption, *P.H.* = Purchased Homestead (common in the pre-emption belt, W3 R20–30), *Ranche* = ranch lease; red *can.* = cancelled.
 4. **Notes** — free text, as in the workbook (partial acreages, "Patented to …",
    half-section splits).
 5. **Enter** saves and moves to the next quarter. **Ctrl+D** copies type, dates

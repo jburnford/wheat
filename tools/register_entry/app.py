@@ -61,7 +61,7 @@ def prefetch(paths):
     threading.Thread(target=run, daemon=True).start()
 
 # Type vocabulary: the values David has used, most frequent first (from the typed sheets, Aug 2026).
-TYPES = ["Homestead", "Canadian Pacific Railway", "Sale", "Pre-emption", "School Land Sale", "Hudson Bay Company", "Canadian Northern Railway",
+TYPES = ["Homestead", "Canadian Pacific Railway", "Sale", "Pre-emption", "School Land Sale", "Purchased Homestead", "Hudson Bay Company", "Canadian Northern Railway",
          "Qu’Appelle, Long Lake, and Saskatchewan Railroad and Steamboat Company", "Provincial Forest", "Indian Reserve", "Transferred",
          "North West Half-Breed Scrip", "Time Sale", "Settlement", "Soldier", "South African Volunteer Homestead", "Military Homestead",
          "Canadian Pacific Railway Souris Branch", "Manitoba South-Western Colonization Railway", "Manitoba and North Western Railway",
