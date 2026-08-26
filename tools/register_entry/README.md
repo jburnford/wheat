@@ -15,7 +15,7 @@ the app itself. `import_sheet.py`, `scan_images.py` and `export_xlsx.py` need
 git clone https://github.com/jburnford/wheat.git
 cd wheat
 python tools\register_entry\import_sheet.py W3 R22      :: one CSV per range sheet you plan to work on
-python tools\register_entry\scan_images.py "G:\HGIS LAB\Saskatchewan Archives\Township General Register"
+python tools\register_entry\scan_images.py "Q:\HGIS LAB\Saskatchewan Archives\Township General Register"
 ```
 
 `import_sheet.py` writes `data/register/W3_R22.csv` — one row per quarter
@@ -38,9 +38,15 @@ manifest ignores the originals. Townships that have not been photographed yet
 
 ## Daily use
 
+Double-click `tools\register_entry\run.bat`, or from a terminal in the repo:
+
 ```bat
-python tools\register_entry\app.py --images "G:\HGIS LAB\Saskatchewan Archives\Township General Register"
+python tools\register_entry\app.py
 ```
+
+The app finds the register images on whichever drive the HGIS Lab share is
+mapped to (Q: on the lab computers, G: elsewhere, or `\\datastore\HGISLab`);
+pass `--images "<folder>"` only if it can't.
 
 The browser opens at <http://127.0.0.1:8765>. Pick the sheet and township
 (townships in this year's sampling plan are marked ★). The left pane shows the

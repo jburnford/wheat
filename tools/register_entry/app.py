@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Township General Register entry app — single user, standard library only.
 
-    python tools/register_entry/app.py --images "G:\\HGIS LAB\\Saskatchewan Archives\\Township General Register"
+    python tools/register_entry/app.py                # finds the register folder on Q:, G: or \\\\datastore\\HGISLab
+    python tools/register_entry/app.py --images "Q:\\HGIS LAB\\Saskatchewan Archives\\Township General Register"
 
 Then open http://127.0.0.1:8765 (it opens automatically). Data lives in
 data/register/<W>_<R>.csv (one row per quarter section, created by
@@ -197,9 +198,11 @@ def main():
     global IMAGE_ROOT
     ap = argparse.ArgumentParser(); ap.add_argument("--images", default=os.environ.get("REGISTER_IMAGES", "")); ap.add_argument("--port", type=int, default=8765); ap.add_argument("--no-browser", action="store_true")
     a = ap.parse_args()
-    if a.images:
-        IMAGE_ROOT = Path(a.images)
-        if not IMAGE_ROOT.exists(): print(f"warning: image root not found: {IMAGE_ROOT}"); IMAGE_ROOT = None
+    SUB = "HGIS LAB/Saskatchewan Archives/Township General Register"
+    candidates = [a.images] if a.images else [f"{d}:/{SUB}" for d in "QGHPRSTZ"] + [f"//datastore/HGISLab/{SUB}", f"/mnt/q/{SUB}", f"/mnt/g/{SUB}"]
+    for c in candidates:                              # first mapped drive that has the register folder wins
+        if c and Path(c).exists(): IMAGE_ROOT = Path(c); break
+    if IMAGE_ROOT is None: print("warning: register image folder not found" + (f": {a.images}" if a.images else " on Q:, G: or \\\\datastore\\HGISLab — pass --images \"<path>\"")); 
     load_manifest()
     DATA.mkdir(parents=True, exist_ok=True)
     if not sheet_names():
