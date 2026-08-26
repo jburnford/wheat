@@ -60,6 +60,8 @@ def main():
     df = pd.read_excel(ROOT / f"{mer}.xlsx", sheet_name=sheet)
     df = df.dropna(subset=["PTWP", "PRGE", "PSECT"])
     for c in ("PSECT", "PTWP", "PRGE", "PMER"): df[c] = pd.to_numeric(df[c], errors="coerce").astype("Int64")
+    df["PMER"] = df.PMER.fillna(int(mer[1]))            # some sheets leave the meridian column blank
+    df = df.dropna(subset=["PSECT", "PTWP", "PRGE"])
     df["QSECT"] = df.QSECT.astype(str).str.strip().str.upper()
     if a.twp:
         keep = {int(x) for x in a.twp.split(",")}; df = df[df.PTWP.isin(keep)]
