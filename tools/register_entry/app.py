@@ -125,6 +125,23 @@ def git(*args):
     except Exception as e:
         return 1, str(e)
 
+KEY = ("QSECT", "PSECT", "PTWP", "PRGE", "PMER")
+ENTRY_COLS = ("Type", "FirstDate", "FirstDateSuccess", "Successful_Claims", "Failed_Claims", "Patent_Date", "Number_of_claims", "Notes", "image", "entered_at")
+PUSHED_CACHE = {}
+def pushed_rows(name):
+    """Rows of data/register/<name>.csv as they are on the upstream branch (origin/main after a push), keyed by quarter.
+    Cached per upstream commit, so one `git show` per push rather than per township."""
+    code, head = git("rev-parse", "@{upstream}")
+    if code: return {}
+    hit = PUSHED_CACHE.get(name)
+    if hit and hit[0] == head: return hit[1]
+    code, text = git("show", f"@{{upstream}}:data/register/{name}.csv")
+    up = {}
+    if not code:
+        for r in csv.DictReader(io.StringIO(text)):
+            up[tuple(r.get(k, "") for k in KEY)] = tuple(r.get(c, "") for c in ENTRY_COLS)
+    PUSHED_CACHE[name] = (head, up); return up
+
 class H(SimpleHTTPRequestHandler):
     def log_message(self, *a): pass
     def _json(self, obj, code=200):
@@ -148,6 +165,8 @@ class H(SimpleHTTPRequestHandler):
             n = q["name"][0]; twp = int(q["twp"][0])
             rows = [r for r in load_sheet(n) if int(r["PTWP"]) == twp]
             rows.sort(key=lambda r: (int(r["PSECT"]), QS_ORDER.get(r["QSECT"], 9)))
+            up = pushed_rows(n)   # a quarter is "pushed" when it was saved in the app and GitHub holds exactly what is on disk
+            for r in rows: r["pushed"] = bool(r["entered_at"]) and up.get(tuple(r[k] for k in KEY)) == tuple(r[c] for c in ENTRY_COLS)
             self._json({"rows": rows, "types": TYPES}); return
         if path == "/api/images":
             hits = images_for(q["mer"][0].upper(), q["rge"][0], int(q["twp"][0]))

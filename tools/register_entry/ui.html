@@ -26,7 +26,8 @@ aside{background:var(--paper);border-left:1px solid var(--rule);display:flex;fle
 #nav{display:flex;flex-wrap:wrap;gap:3px;padding:8px 12px;border-bottom:1px solid var(--rule);max-height:150px;overflow:auto}
 #nav .sec{display:grid;grid-template-columns:1fr 1fr;gap:1px;width:36px}
 #nav .q{height:9px;background:#e6e9e6;border:1px solid #fff;cursor:pointer}
-#nav .q.typed{background:#7aa7e0}.q.app{background:var(--acc)}.q.cur{outline:2px solid var(--warn);outline-offset:-1px}
+#nav .q.typed{background:#7aa7e0}#nav .q.app{background:var(--acc)}#nav .q.pushed{background:var(--ok)}#nav .q.cur{outline:2px solid var(--warn);outline-offset:-1px}
+#navkey{font-size:10.5px;color:var(--ink3);padding:0 12px 6px;border-bottom:1px solid var(--rule)}#navkey i{display:inline-block;width:9px;height:9px;vertical-align:-1px;margin:0 3px 0 8px;background:#e6e9e6}
 #nav .sec b{grid-column:1/3;font-size:9px;color:var(--ink3);text-align:center;font-weight:500;line-height:1}
 #form{flex:1;overflow:auto;padding:10px 14px 14px}
 .lld{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
@@ -86,6 +87,7 @@ kbd{font:inherit}
   </div>
   <aside>
     <div id="nav"></div>
+    <div id="navkey"><i style="background:#7aa7e0"></i>typed in workbook <i style="background:var(--acc)"></i>saved in app <i style="background:var(--ok)"></i>on GitHub</div>
     <div id="form">
       <div class="lld"><b id="lld">—</b><span id="lldsub"></span></div>
       <div id="hints"></div>
@@ -135,7 +137,8 @@ kbd{font:inherit}
     <b>1–9</b> pick a common type (when not in a text box) · <b>0</b> Other · <b>Alt+H</b> Homestead · <b>Alt+C</b> CPR prefill<br>
     <b>PageUp / PageDown</b> previous / next image · <b>mouse wheel</b> zoom (over the image) · <b>drag</b> pan · <b>F</b> fit width<br>
     Dates accept <code>1903</code>, <code>1903-04-17</code>, <code>17 Apr 1903</code>, <code>16th Nov 25</code>, <code>1/11/31</code> (day/month/yy as the register writes it); two-digit years become 19xx (18xx for 70–99). Number of claims fills itself from the names.<br>
-    Every save rewrites <code>data/register/&lt;sheet&gt;.csv</code>; press <b>Commit</b> when you stop for the day.
+    Every save rewrites <code>data/register/&lt;sheet&gt;.csv</code>; press <b>Commit</b> when you stop for the day.<br>
+    Section grid: <i style="display:inline-block;width:9px;height:9px;background:#7aa7e0"></i> typed in the workbook · <i style="display:inline-block;width:9px;height:9px;background:var(--acc)"></i> saved in the app · <i style="display:inline-block;width:9px;height:9px;background:var(--ok)"></i> committed and pushed to GitHub.
   </div>
   <form method="dialog"><div class="btns"><button class="p">Close</button></div></form>
 </dialog>
@@ -179,12 +182,13 @@ function renderNav(){
   const n = $("#nav"); let h = "";
   for (let s = 1; s <= 36; s++) {
     const qs = ["NW","NE","SW","SE"].map(q => { const i = rows.findIndex(r => parseInt(r.PSECT) === s && r.QSECT === q); const r = rows[i];
-      return `<div class="q ${r && r.entered_at ? "app" : r && r.Type ? "typed" : ""} ${i === cur ? "cur" : ""}" data-i="${i}" title="${q}-${s}"></div>`; }).join("");
+      const st = !r ? "" : r.pushed ? "pushed" : r.entered_at ? "app" : r.Type ? "typed" : "";
+      return `<div class="q ${st} ${i === cur ? "cur" : ""}" data-i="${i}" title="${q}-${s}${st === "pushed" ? " · on GitHub" : st === "app" ? " · saved, not pushed" : st === "typed" ? " · typed in workbook" : ""}"></div>`; }).join("");
     h += `<div class="sec">${qs}<b>${s}</b></div>`;
   }
   n.innerHTML = h;
   n.querySelectorAll(".q").forEach(el => el.onclick = () => { const i = parseInt(el.dataset.i); if (i >= 0) { cur = i; show(); } });
-  const typed = rows.filter(r => r.Type).length; $("#prog").textContent = `T${twp}: ${typed}/${rows.length} typed`;
+  const typed = rows.filter(r => r.Type).length, pushed = rows.filter(r => r.pushed).length; $("#prog").textContent = `T${twp}: ${typed}/${rows.length} typed${pushed ? `, ${pushed} on GitHub` : ""}`;
 }
 
 // ---------------- current quarter
@@ -195,7 +199,7 @@ function show(){
   const r = rows[cur]; if (!r) return;
   followPage();
   $("#lld").textContent = `${r.QSECT} ${r.PSECT} – ${r.PTWP} – ${r.PRGE} – W${r.PMER}`;
-  $("#lldsub").textContent = `${cur + 1} of ${rows.length}${r.entered_at ? " · saved " + r.entered_at : r.Type ? " · typed in workbook" : ""}`;
+  $("#lldsub").textContent = `${cur + 1} of ${rows.length}${r.entered_at ? " · saved " + r.entered_at + (r.pushed ? " · on GitHub" : "") : r.Type ? " · typed in workbook" : ""}`;
   // names: successful/failed as saved, else index names
   names = [];
   const succ = split(r.Successful_Claims), fail = split(r.Failed_Claims), idx = split(r.index_names);
@@ -345,7 +349,8 @@ $("#ifollow").onchange = e => { follow = e.target.checked; if (follow) followPag
 // ---------------- git
 async function refreshGit(){ const s = await api("/api/status"); $("#git").textContent = s.changed.length ? `${s.changed.length} file(s) changed, not committed` : "all committed"; if (!s.image_root) $("#nopage").style.display = "flex"; }
 $("#commit").onclick = async () => { const s = await api("/api/status"); $("#commitfiles").textContent = s.changed.length ? "Files: " + s.changed.join(", ") : "Nothing to commit."; $("#commitmsg").value = `Register entry ${sheet.replace("_"," ")} T${twp} — ${new Date().toISOString().slice(0,10)}`;
-  const d = $("#commitdlg"); d.showModal(); d.addEventListener("close", async function h(){ d.removeEventListener("close", h); if (d.returnValue !== "ok") return; const r = await api("/api/commit", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({message: $("#commitmsg").value, push: $("#pushbox").checked})}); toast(r.ok ? "committed" : "commit failed — see console"); console.log(r.output); refreshGit(); }); };
+  const d = $("#commitdlg"); d.showModal(); d.addEventListener("close", async function h(){ d.removeEventListener("close", h); if (d.returnValue !== "ok") return; const r = await api("/api/commit", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({message: $("#commitmsg").value, push: $("#pushbox").checked})}); toast(r.ok ? "committed" : "commit failed — see console"); console.log(r.output); refreshGit(); refreshNav(); }); };
+async function refreshNav(){ if (!sheet || !twp) return; const r = await api(`/api/sheet?name=${sheet}&twp=${twp}`); if (r.rows.length === rows.length) { rows = r.rows; renderNav(); } }
 $("#helpbtn").onclick = () => $("#helpdlg").showModal();
 loadSheets(); refreshGit();
 </script>
