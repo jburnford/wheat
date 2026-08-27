@@ -74,7 +74,7 @@ Data credits, with deep thanks to their creators:
 
 - **CPR land sales** — **University of Calgary Archives** (geocoded catalogue, via
   Borealis `doi:10.5683/SP3/JVTACU`, CC0).
-- **Homestead records** — **David Allan, Jim Clifford & Cheryl Troupe**, *Historical
+- **Homestead records** — **David Allen, Jim Clifford & Cheryl Troupe**, *Historical
   GIS (HGIS) Lab, University of Saskatchewan* (`W1/W2/W3` quarter-section transcriptions).
 - **First Nations reserves, surrenders & Métis communities** — **Ashley Rabbitskin,
   Julian Rioux, Jim Clifford & Cheryl Troupe**, *HGIS Lab, University of Saskatchewan*.

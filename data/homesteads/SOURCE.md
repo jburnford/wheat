@@ -1,6 +1,6 @@
 # Saskatchewan Homestead Records + Open DLS Grid
 
-**Created by David Allan, Jim Clifford & Cheryl Troupe — Historical GIS (HGIS) Lab,
+**Created by David Allen, Jim Clifford & Cheryl Troupe — Historical GIS (HGIS) Lab,
 University of Saskatchewan.**
 
 ## Source records (work in progress)
