@@ -1,7 +1,7 @@
 QSECT,PSECT,PTWP,PRGE,PMER,Type,FirstDate,FirstDateSuccess,Successful_Claims,Failed_Claims,Patent_Date,Number_of_claims,Notes,index_names,cpr_hint,entered_at,image
-NE,1,1,25,2,,,,,,,,,"Rogers, George Albert; Sutherland, W.A.",,,
-NW,1,1,25,2,,,,,,,,,"Garin, John; Gavin, John Martin; Sutherland, W.A.",,,
-SE,1,1,25,2,,,,,,,,,,,,
+NE,1,1,25,2,Pre-emption,1911-06-25,1918-11-17,"Rogers, George Albert","Sutherland, W.A.",1923-11-27,2,Success date very hard to read,"Rogers, George Albert; Sutherland, W.A.",,2026-09-18 13:20,W2\Range 25\Township 01\R25 - T01 - (1).JPG
+NW,1,1,25,2,Homestead,1911-07-25,1914-07-13,"Gavin, John Martin","Sutherland, W.A.",1917-12-04,2,,"Garin, John; Gavin, John Martin; Sutherland, W.A.",,2026-09-18 13:29,W2\Range 25\Township 01\R25 - T01 - (1).JPG
+SE,1,1,25,2,Homestead,1914-07-25,1914-07-26,"Craig, B. J.",,1938-07-03,1,"very difficult to read, many different names entered but crossed out. Successful patent recorded in between lines.",,,2026-09-18 13:40,W2\Range 25\Township 01\R25 - T01 - (1).JPG
 SW,1,1,25,2,,,,,,,,,,,,
 NE,2,1,25,2,,,,,,,,,"Foster, T.B.; Gavin, John Martin",,,
 NW,2,1,25,2,,,,,,,,,,,,
