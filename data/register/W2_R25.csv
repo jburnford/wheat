@@ -22,7 +22,7 @@ SW,5,1,25,2,Pre-emption,1909-09-18,1910-07-15,"Brooks, Elmer John","Gillies, Vic
 NE,6,1,25,2,Homestead,1910-12-20,1912-10-04,"Randall, Charles Emerson","Samuelson, George Morris",1917-10-04,2,,"Randall, Charles Emerson; Samuelson, George Morris",,2026-10-07 09:35,W2\Range 25\Township 01\R25 - T01 - (2).JPG
 NW,6,1,25,2,Homestead,1910-11-21,1910-11-21,"Stubblefield, Elmer Elsworth",,1914-06-23,1,,"Stubblefield, Elmer Elsworth",,2026-10-07 09:37,W2\Range 25\Township 01\R25 - T01 - (2).JPG
 SE,6,1,25,2,Homestead,1910-07-15,1910-07-15,"Brooks, Elmer John",,1914-10-05,1,,"Brooks, Elmer John",,2026-10-07 09:38,W2\Range 25\Township 01\R25 - T01 - (2).JPG
-SW,6,1,25,2,,,,,,,,,"Stubblefield, Elmer Elsworth",,,
+SW,6,1,25,2,Pre-emption,1910-11-21,1910-11-21,"Stubblefield, Elmer Elsworth",,,1,"patent date is partially obscured by tape on the page, cannot make out the year","Stubblefield, Elmer Elsworth",,2026-10-14 13:53,W2\Range 25\Township 01\R25 - T01 - (2).JPG
 NE,7,1,25,2,Homestead,1911-06-13,1916-08-17,"Scalf, George Edward","Walters, Charles",1920-12-16,2,,"Scalf, George Edward; Walters, Charles",,2026-10-07 09:54,W2\Range 25\Township 01\R25 - T01 - (3).JPG
 NW,7,1,25,2,Homestead,1911-06-13,1911-06-13,"Walters, Charles",,1914-10-09,1,,"Walters, Charles",,2026-10-07 09:57,W2\Range 25\Township 01\R25 - T01 - (3).JPG
 SE,7,1,25,2,Homestead,1912-09-10,1929-02-06,Joseph Krall,E. Randall; Frank Gillies,1932-10-18,3,"had to input names manually might be wrong, first entry year may be incorrect",,,2026-10-07 10:17,W2\Range 25\Township 01\R25 - T01 - (3).JPG
@@ -50,7 +50,7 @@ SW,12,1,25,2,Homestead,1914-07-25,1917-10-31,"Hanson, Hans Peter","Sergent, Leon
 NE,13,1,25,2,,,,,,,,,"Roberts, Dorothea Edna (Mrs.)",,,
 NW,13,1,25,2,,,,,,,,,"Roberts, Dorothea Edna (Mrs.)",,,
 SE,13,1,25,2,,,,,,,,,"Markle, George Alexander; Markle, George Nelson; Markle, James Walter; Markle, Jane (Mrs.)",,,
-SW,13,1,25,2,,,,,,,,,"Bartole, Joseph",,,
+SW,13,1,25,2,Purchased Homestead,1913-07-19,1913-07-19,"Bartole, Joseph",,1919-09-18,1,"Type might be wrong, ledger only has P.H written down","Bartole, Joseph",,2026-10-14 13:57,W2\Range 25\Township 01\R25 - T01 - (5).JPG
 NE,14,1,25,2,Homestead,1913-04-12,1913-04-12,"Bartole, Jacob",,1917-07-14,1,,"Bartole, Jacob",,2026-10-07 12:17,W2\Range 25\Township 01\R25 - T01 - (5).JPG
 NW,14,1,25,2,Homestead,1911-01-30,1911-01-30,"Cleator, Walter",,1920-01-15,1,,"Cleator, Walter",,2026-10-07 12:17,W2\Range 25\Township 01\R25 - T01 - (5).JPG
 SE,14,1,25,2,,,,,,,,,"Bartole, Jacob",,,
@@ -59,54 +59,54 @@ NE,15,1,25,2,Pre-emption,1911-01-30,1912-05-25,"McCuaig, Donald Angus","Veysey, 
 NW,15,1,25,2,Homestead,1911-01-30,1913-01-20,"Jensen, Jens","Veysey, Carl",1917-01-18,2,,"Jensen, Jens; Veysey, Carl",,2026-10-07 12:22,W2\Range 25\Township 01\R25 - T01 - (5).JPG
 SE,15,1,25,2,Homestead,1911-01-30,1912-05-25,"McCuaig, Donald Angus","Veysey, James H.",1916-11-29,2,,"McCuaig, Donald Angus; Veysey, James H.",,2026-10-07 12:23,W2\Range 25\Township 01\R25 - T01 - (5).JPG
 SW,15,1,25,2,Homestead,1911-01-30,1913-01-20,"Sorenson, Charles Alvin","Veysey, Carl",1916-12-20,2,,"Sorenson, Charles Alvin; Veysey, Carl",,2026-10-07 12:23,W2\Range 25\Township 01\R25 - T01 - (5).JPG
-NE,16,1,25,2,,,,,,,,,"Sanders, Arthur Bernard",,,
+NE,16,1,25,2,Homestead,1911-04-28,1911-04-28,"Sanders, Arthur Bernard",,,1,"patent year is illegible, might be 1914-10-12","Sanders, Arthur Bernard",,2026-10-14 13:59,W2\Range 25\Township 01\R25 - T01 - (6).JPG
 NW,16,1,25,2,Homestead,1910-03-24,1910-03-24,"Hansen, Archie William",,1913-07-08,1,,"Hansen, Archie William",,2026-10-07 12:25,W2\Range 25\Township 01\R25 - T01 - (6).JPG
 SE,16,1,25,2,Homestead,1919-04-04,1919-04-04,"Schmidt, Louie","Atherton, Charles",1924-02-20,2,,"Atherton, Charles; Schmidt, Louie",,2026-10-07 12:26,W2\Range 25\Township 01\R25 - T01 - (6).JPG
-SW,16,1,25,2,,,,,,,,,"Hansen, Archie W.; Morrison, George Charles",,,
-NE,17,1,25,2,,,,,,,,,"Casper, Andrew; Gray, Charles N.; Gray, David Moffat; Rinard, Frederick Alonzo",,,
-NW,17,1,25,2,,,,,,,,,"Anderson, Horace Christopher",,,
-SE,17,1,25,2,,,,,,,,,"Gray, Charles N.; Gray, David Moffatt; Nelson, Albert Davey (Dewey); Rinard, Frederick",,,
+SW,16,1,25,2,Homestead,1910-03-24,1914-08-06,"Morrison, George Charles","Hansen, Archie W.",1918-03-18,2,,"Hansen, Archie W.; Morrison, George Charles",,2026-10-14 13:59,W2\Range 25\Township 01\R25 - T01 - (6).JPG
+NE,17,1,25,2,Homestead,1910-04-01,1917-08-14,"Casper, Andrew","Gray, Charles N.; Gray, David Moffat; Rinard, Frederick Alonzo",1924-01-11,4,"the year the patent was issued is not very clear, 1924 seems to be the most likely year but it could also be 1921","Casper, Andrew; Gray, Charles N.; Gray, David Moffat; Rinard, Frederick Alonzo",,2026-10-14 12:04,W2\Range 25\Township 01\R25 - T01 - (6).JPG
+NW,17,1,25,2,Homestead,1913-04-05,1913-04-05,"Anderson, Horace Christopher",,1917-10-02,1,,"Anderson, Horace Christopher",,2026-10-14 12:04,W2\Range 25\Township 01\R25 - T01 - (6).JPG
+SE,17,1,25,2,Homestead,1910-04-01,1917-07-28,"Nelson, Albert Davey (Dewey)","Gray, Charles N.; Gray, David Moffatt; Rinard, Frederick",1924-06-14,4,,"Gray, Charles N.; Gray, David Moffatt; Nelson, Albert Davey (Dewey); Rinard, Frederick",,2026-10-14 12:05,W2\Range 25\Township 01\R25 - T01 - (6).JPG
 SW,17,1,25,2,,,,,,,,,,,,
 NE,18,1,25,2,,,,,,,,,,,,
-NW,18,1,25,2,,,,,,,,,"Eng, Carl J.; Lakken, Haakan; Shaffer, Harry",,,
-SE,18,1,25,2,,,,,,,,,"Anderson, Herbert Benjamin; Cumbers, Albert",,,
-SW,18,1,25,2,,,,,,,,,"Anderson, Herbert Benjamin; Cumbers, Albert",,,
-NE,19,1,25,2,,,,,,,,,"Glesner, Joseph; Kingston, Owen W.",,,
-NW,19,1,25,2,,,,,,,,,"Kingston, Owen Wright",,,
+NW,18,1,25,2,Homestead,1910-08-25,1915-09-15,"Lakken, Haakan","Eng, Carl J.; Shaffer, Harry",1922-05-03,3,,"Eng, Carl J.; Lakken, Haakan; Shaffer, Harry",,2026-10-14 12:12,W2\Range 25\Township 01\R25 - T01 - (6).JPG
+SE,18,1,25,2,Pre-emption,1912-04-17,1914-07-23,"Anderson, Herbert Benjamin","Chambers, A",1928-09-01,2,,"Anderson, Herbert Benjamin; Cumbers, Albert",,2026-10-14 12:17,W2\Range 25\Township 01\R25 - T01 - (6).JPG
+SW,18,1,25,2,Homestead,1912-04-17,,"Anderson, Herbert Benjamin","Cumbers, Albert",1918-07-23,2,no successful entry date listed in the ledger/visible,"Anderson, Herbert Benjamin; Cumbers, Albert",,2026-10-14 12:19,W2\Range 25\Township 01\R25 - T01 - (6).JPG
+NE,19,1,25,2,Homestead,1910-08-12,1913-09-10,"Glesner, Joseph","Kingston, Owen W.",1917-01-18,2,"success date unclear, could also be 1913-06-28","Glesner, Joseph; Kingston, Owen W.",,2026-10-14 12:23,W2\Range 25\Township 01\R25 - T01 - (7).JPG
+NW,19,1,25,2,Homestead,1910-08-12,1912-03-22,"Kingston, Owen Wright","Kingston, Owen W",1917-03-21,2,,"Kingston, Owen Wright",,2026-10-14 12:29,W2\Range 25\Township 01\R25 - T01 - (7).JPG
 SE,19,1,25,2,,,,,,,,,,,,
-SW,19,1,25,2,,,,,,,,,"Eng, Carl J.; Lakken, Hoaken; McFarland, James Alexander; Shaffer, Harry",,,
-NE,20,1,25,2,,,,,,,,,"Nelson, James; Hovland, C.S.",,,
-NW,20,1,25,2,,,,,,,,,"Caswell, Nathan Wellington",,,
-SE,20,1,25,2,,,,,,,,,"Nelson, James; Hovland, C.S.",,,
-SW,20,1,25,2,,,,,,,,,"Brooks, Addie (Mrs.); Caswell, Nathan W.; Hoar, Addie (Mrs.)",,,
-NE,21,1,25,2,,,,,,,,,"Creelman, George E.; Halvorson, John; McKechnie, Samuel R.; Sanders, A. B.",,,
+SW,19,1,25,2,Homestead,1910-08-25,1925-11-03,"McFarland, James Alexander","Eng, Carl J.; Lakken, Hoaken; Shaffer, Harry",1929-03-30,4,,"Eng, Carl J.; Lakken, Hoaken; McFarland, James Alexander; Shaffer, Harry",,2026-10-14 12:31,W2\Range 25\Township 01\R25 - T01 - (7).JPG
+NE,20,1,25,2,Pre-emption,1910-05-18,1910-11-30,"Nelson, James","Hovland, C.S.",1918-08-15,2,,"Nelson, James; Hovland, C.S.",,2026-10-14 12:32,W2\Range 25\Township 01\R25 - T01 - (7).JPG
+NW,20,1,25,2,Homestead,1911-05-04,1911-05-04,"Caswell, Nathan Wellington",,1915-09-14,1,,"Caswell, Nathan Wellington",,2026-10-14 12:33,W2\Range 25\Township 01\R25 - T01 - (7).JPG
+SE,20,1,25,2,Homestead,1910-05-10,1910-11-30,"Nelson, James","Hovland, C.S.",1914-10-07,2,,"Nelson, James; Hovland, C.S.",,2026-10-14 12:34,W2\Range 25\Township 01\R25 - T01 - (7).JPG
+SW,20,1,25,2,Homestead,1911-05-04,1911-09-09,"Hoar, Addie (Mrs.)","Caswell, Nathan W.",1917-07-11,2,patented to Addie Brooks from Addie Hoar,"Brooks, Addie (Mrs.); Caswell, Nathan W.; Hoar, Addie (Mrs.)",,2026-10-14 12:40,W2\Range 25\Township 01\R25 - T01 - (7).JPG
+NE,21,1,25,2,Homestead,1910-07-28,1913-09-22,"Halvorson, John","Creelman, George E.; McKechnie, Samuel R.; Sanders, A. B.",1917-11-09,4,,"Creelman, George E.; Halvorson, John; McKechnie, Samuel R.; Sanders, A. B.",,2026-10-14 12:41,W2\Range 25\Township 01\R25 - T01 - (7).JPG
 NW,21,1,25,2,,,,,,,,,"Sanders, Harry; Shaw, A.M.",,,
-SE,21,1,25,2,,,,,,,,,"Bredstrand, Leonard N.; Creelmann, George E.; Halvorson, John; Lee, Andrew T.; McKechnie, Samuel R.; Sanders, A. B.",,,
+SE,21,1,25,2,Homestead,1910-07-28,1916-08-23,"Lee, Andrew T.","Bredstrand, Leonard N.; Creelmann, George E.; Halvorson, John; McKechnie, Samuel R.; Sanders, A. B.",1921-08-22,6,,"Bredstrand, Leonard N.; Creelmann, George E.; Halvorson, John; Lee, Andrew T.; McKechnie, Samuel R.; Sanders, A. B.",,2026-10-14 12:43,W2\Range 25\Township 01\R25 - T01 - (7).JPG
 SW,21,1,25,2,,,,,,,,,"Sanders, Harry; Shaw, A.M.",,,
-NE,22,1,25,2,,,,,,,,,,,,
-NW,22,1,25,2,,,,,,,,,"De Long, Rex",,,
-SE,22,1,25,2,,,,,,,,,"Brizezinski, Tony; Bruce, Percey; Jacoby, Ferdinand; Rutherford, Frederick Warren; Vancuren, Alvin Burnett",,,
-SW,22,1,25,2,,,,,,,,,"Bruce, Percy; De Long, Rex; Jacoby, Ferdinand; Marks, Reinhard; Rutherford, Fredrick Warren",,,
+NE,22,1,25,2,Homestead,1911-08-05,1911-08-05,"Prichard, Arthur",,1917-07-04,1,,,,2026-10-14 12:46,W2\Range 25\Township 01\R25 - T01 - (8).JPG
+NW,22,1,25,2,Homestead,1910-07-29,1911-08-05,"Prichard, Arthur","De Long, Rex",1917-09-04,2,,"De Long, Rex",,2026-10-14 12:48,W2\Range 25\Township 01\R25 - T01 - (8).JPG
+SE,22,1,25,2,Homestead,1912-07-24,1926-05-07,"Vancuren, Alvin Burnett","Brizezinski, Tony; Bruce, Percey; Jacoby, Ferdinand; Rutherford, Frederick Warren",1929-12-16,5,"success date is very difficult to read, although the year is probably correct","Brizezinski, Tony; Bruce, Percey; Jacoby, Ferdinand; Rutherford, Frederick Warren; Vancuren, Alvin Burnett",,2026-10-14 12:52,W2\Range 25\Township 01\R25 - T01 - (8).JPG
+SW,22,1,25,2,Homestead,1910-07-29,1925-08-31,"Marks, Reinhard","Bruce, Percy; De Long, Rex; Jacoby, Ferdinand; Rutherford, Fredrick Warren",1929-01-07,5,"success entry date is difficult to read, year may not be correct","Bruce, Percy; De Long, Rex; Jacoby, Ferdinand; Marks, Reinhard; Rutherford, Fredrick Warren",,2026-10-14 12:54,W2\Range 25\Township 01\R25 - T01 - (8).JPG
 NE,23,1,25,2,,,,,,,,,,,,
-NW,23,1,25,2,,,,,,,,,"Callan, Joseph Raymond",,,
-SE,23,1,25,2,,,,,,,,,"Callan, Andrew Cornelius",,,
-SW,23,1,25,2,,,,,,,,,"Bartole, Joseph; Callan, Joseph R.; Handran, William",,,
-NE,24,1,25,2,,,,,,,,,"Handran, William A; Hoffmann, Peter",,,
-NW,24,1,25,2,,,,,,,,,"Merrill, Albert Howard",,,
-SE,24,1,25,2,,,,,,,,,"Markle, George Alexander",,,
-SW,24,1,25,2,,,,,,,,,"Markle, George Alexander",,,
-NE,25,1,25,2,,,,,,,,,"Patterson, John James; White, William Patrick",,,
-NW,25,1,25,2,,,,,,,,,,,,
-SE,25,1,25,2,,,,,,,,,"Handran, William Andrew; Hoffmann, Peter; Skundberg, Edwin",,,
-SW,25,1,25,2,,,,,,,,,"Merrill, Albert Howard",,,
-NE,26,1,25,2,,,,,,,,,"White, William Patrick",,,
+NW,23,1,25,2,Homestead,1911-08-11,1911-08-11,"Callan, Joseph Raymond",,1914-11-24,1,,"Callan, Joseph Raymond",,2026-10-14 12:55,W2\Range 25\Township 01\R25 - T01 - (8).JPG
+SE,23,1,25,2,Homestead,1911-08-11,1911-08-11,"Callan, Andrew Cornelius",,1914-11-24,1,,"Callan, Andrew Cornelius",,2026-10-14 12:56,W2\Range 25\Township 01\R25 - T01 - (8).JPG
+SW,23,1,25,2,Homestead,1911-08-11,1916-11-24,"Bartole, Joseph","Callan, Joseph R.; Handran, William",1921-07-25,3,,"Bartole, Joseph; Callan, Joseph R.; Handran, William",,2026-10-14 12:57,W2\Range 25\Township 01\R25 - T01 - (8).JPG
+NE,24,1,25,2,Homestead,1910-05-16,1912-07-12,"Handran, William A","Hoffmann, Peter",1916-03-21,2,,"Handran, William A; Hoffmann, Peter",,2026-10-14 12:58,W2\Range 25\Township 01\R25 - T01 - (8).JPG
+NW,24,1,25,2,Homestead,1910-11-14,1910-11-14,"Merrill, Albert Howard",,1919-01-21,1,,"Merrill, Albert Howard",,2026-10-14 12:58,W2\Range 25\Township 01\R25 - T01 - (8).JPG
+SE,24,1,25,2,Homestead,1910-06-16,1910-06-16,"Markle, George Alexander",,1919-03-26,1,,"Markle, George Alexander",,2026-10-14 12:59,W2\Range 25\Township 01\R25 - T01 - (8).JPG
+SW,24,1,25,2,Homestead,1910-06-16,1910-06-16,"Markle, George Alexander",,1914-04-06,1,,"Markle, George Alexander",,2026-10-14 13:00,W2\Range 25\Township 01\R25 - T01 - (8).JPG
+NE,25,1,25,2,Homestead,1911-03-07,1911-03-07,"Patterson, John James",,1914-10-05,1,,"Patterson, John James; White, William Patrick",,2026-10-14 13:00,W2\Range 25\Township 01\R25 - T01 - (9).JPG
+NW,25,1,25,2,Pre-emption,1910-06-16,1910-06-16,"White, William Patrick",,1921-02-23,1,,,,2026-10-14 13:15,W2\Range 25\Township 01\R25 - T01 - (9).JPG
+SE,25,1,25,2,Homestead,1910-06-16,1924-12-10,"Skundberg, Edwin","Handran, William Andrew; Hoffmann, Peter",1928-09-28,3,,"Handran, William Andrew; Hoffmann, Peter; Skundberg, Edwin",,2026-10-14 13:12,W2\Range 25\Township 01\R25 - T01 - (9).JPG
+SW,25,1,25,2,Homestead,1910-11-19,1910-11-19,"Merrill, Albert Howard",,1914-03-31,1,,"Merrill, Albert Howard",,2026-10-14 13:13,W2\Range 25\Township 01\R25 - T01 - (9).JPG
+NE,26,1,25,2,Homestead,1910-06-16,1910-06-16,"White, William Patrick",,1914-03-06,1,,"White, William Patrick",,2026-10-14 13:14,W2\Range 25\Township 01\R25 - T01 - (9).JPG
 NW,26,1,25,2,,,,,,,,,,,,
 SE,26,1,25,2,,,,,,,,,,,,
 SW,26,1,25,2,,,,,,,,,,,,
-NE,27,1,25,2,,,,,,,,,"Atkinson, Jesse Campbell",,,
-NW,27,1,25,2,,,,,,,,,"Atkinson, Fay Leon",,,
-SE,27,1,25,2,,,,,,,,,"Marks, Reinhard; Schmidt, Adolf",,,
-SW,27,1,25,2,,,,,,,,,"Marks, Reinhard; Schmidt, Adolf",,,
+NE,27,1,25,2,Homestead,1911-01-30,1911-08-18,"Johnson, H. A. (Mrs)","Atkinson, Jesse Campbell",1920-03-20,2,,"Atkinson, Jesse Campbell",,2026-10-14 14:06,W2\Range 25\Township 01\R25 - T01 - (9).JPG
+NW,27,1,25,2,Homestead,1911-01-30,1911-08-12,"Johnson, H. A. (Mrs)","Atkinson, Fay Leon",1920-03-20,2,,"Atkinson, Fay Leon",,2026-10-14 14:05,W2\Range 25\Township 01\R25 - T01 - (9).JPG
+SE,27,1,25,2,Pre-emption,1911-05-30,1913-06-04,"Schmidt, Adolf","Marks, Reinhard",1919-10-14,2,"total of 3 claims, but I can't read the second name","Marks, Reinhard; Schmidt, Adolf",,2026-10-14 13:18,W2\Range 25\Township 01\R25 - T01 - (9).JPG
+SW,27,1,25,2,Homestead,1911-05-30,1913-05-04,"Schmidt, Adolf","Marks, Reinhard",1916-09-19,2,,"Marks, Reinhard; Schmidt, Adolf",,2026-10-14 13:19,W2\Range 25\Township 01\R25 - T01 - (9).JPG
 NE,28,1,25,2,,,,,,,,,"Marks, Henry",,,
 NW,28,1,25,2,,,,,,,,,"Keating, Richard F.; Tilton, Leland T.; White, John Thomas",,,
 SE,28,1,25,2,,,,,,,,,"Marks, Henry",,,
@@ -115,34 +115,34 @@ NE,29,1,25,2,,,,,,,,,,,,
 NW,29,1,25,2,,,,,,,,,,,,
 SE,29,1,25,2,,,,,,,,,,,,
 SW,29,1,25,2,,,,,,,,,,,,
-NE,30,1,25,2,,,,,,,,,"Spencer, Merle Elder",,,
+NE,30,1,25,2,Homestead,1912-07-13,1912-07-13,"Spencer, Merle Elder",,1917-04-17,1,,"Spencer, Merle Elder",,2026-10-14 13:22,W2\Range 25\Township 01\R25 - T01 - (10).JPG
 NW,30,1,25,2,,,,,,,,,,,,
-SE,30,1,25,2,,,,,,,,,"Spencer, James Callyway",,,
-SW,30,1,25,2,,,,,,,,,"Spencer, James Callyway",,,
-NE,31,1,25,2,,,,,,,,,"Gleisner, John G. M.; Thurlow, John Henry",,,
-NW,31,1,25,2,,,,,,,,,"Fredrick, Louis George",,,
+SE,30,1,25,2,Homestead,1912-07-13,1912-07-13,"Spencer, James Callyway",,1918-04-12,1,,"Spencer, James Callyway",,2026-10-14 13:23,W2\Range 25\Township 01\R25 - T01 - (10).JPG
+SW,30,1,25,2,Pre-emption,1912-07-13,1912-07-13,"Spencer, James Callyway",,1921-04-29,1,,"Spencer, James Callyway",,2026-10-14 13:24,W2\Range 25\Township 01\R25 - T01 - (10).JPG
+NE,31,1,25,2,Homestead,1913-07-23,1916-03-17,"Thurlow, John Henry","Gleisner, John G. M.",1921-05-17,2,,"Gleisner, John G. M.; Thurlow, John Henry",,2026-10-14 13:26,W2\Range 25\Township 01\R25 - T01 - (11).JPG
+NW,31,1,25,2,Homestead,1910-07-04,1910-07-04,"Fredrick, Louis George",,1915-03-05,1,,"Fredrick, Louis George",,2026-10-14 13:26,W2\Range 25\Township 01\R25 - T01 - (11).JPG
 SE,31,1,25,2,,,,,,,,,,,,
-SW,31,1,25,2,,,,,,,,,"Frederick, Otto Louis; Fredrick, Louis George",,,
-NE,32,1,25,2,,,,,,,,,"Berg, John",,,
+SW,31,1,25,2,Pre-emption,1910-07-04,1910-07-04,"Fredrick, Louis George",,1921-10-21,1,,"Frederick, Otto Louis; Fredrick, Louis George",,2026-10-14 13:28,W2\Range 25\Township 01\R25 - T01 - (11).JPG
+NE,32,1,25,2,Homestead,1912-11-06,1915-11-29,"Berg, John","William, W. H.",1924-05-16,2,"patent date year might be wrong, it was difficult to read","Berg, John",,2026-10-14 13:31,W2\Range 25\Township 01\R25 - T01 - (11).JPG
 NW,32,1,25,2,,,,,,,,,"Frederick, Arthur Henry",,,
 SE,32,1,25,2,,,,,,,,,,,,
-SW,32,1,25,2,,,,,,,,,"Terentzuk, Peter",,,
-NE,33,1,25,2,,,,,,,,,"Groves, Wilford Clyde",,,
-NW,33,1,25,2,,,,,,,,,"Huber, William Caleb",,,
-SE,33,1,25,2,,,,,,,,,"Merrill, Leslie Clyde; Thurlow, John Henry (Jr.); Wisley, John McIntyre",,,
-SW,33,1,25,2,,,,,,,,,"Huber, William Caleb",,,
-NE,34,1,25,2,,,,,,,,,"Libeck, John",,,
-NW,34,1,25,2,,,,,,,,,"Groves, Wilford Clyde; Johnston, Herbert E.",,,
-SE,34,1,25,2,,,,,,,,,"Heyberger, Lee; Stromme, Knut",,,
-SW,34,1,25,2,,,,,,,,,"Merrill, Leslie Clyde",,,
-NE,35,1,25,2,,,,,,,,,"Weber, Charles Michael",,,
-NW,35,1,25,2,,,,,,,,,"Libeck, John",,,
-SE,35,1,25,2,,,,,,,,,"Weber, Charles Michael",,,
-SW,35,1,25,2,,,,,,,,,"Heyberger, Lee; Hopsdal, Hans",,,
-NE,36,1,25,2,,,,,,,,,"Cain, Benjamin Franklin; Masters, Ezekiel",,,
-NW,36,1,25,2,,,,,,,,,"Converse, James Alvin; Wyrick, R.L.",,,
-SE,36,1,25,2,,,,,,,,,"Cain, Benjamin Franklin; Masters, Ezekiel",,,
-SW,36,1,25,2,,,,,,,,,"Sutton, Charles Clingman",,,
+SW,32,1,25,2,Homestead,1912-07-24,1912-07-24,"Frederich, O. L.",,1916-06-12,1,,"Terentzuk, Peter",,2026-10-14 13:33,W2\Range 25\Township 01\R25 - T01 - (11).JPG
+NE,33,1,25,2,Pre-emption,1913-07-02,1913-07-02,"Groves, Wilford Clyde",,1920-04-24,1,"patent year is unclear, might not be 1920","Groves, Wilford Clyde",,2026-10-14 14:12,W2\Range 25\Township 01\R25 - T01 - (11).JPG
+NW,33,1,25,2,Pre-emption,1911-06-12,1911-06-12,"Huber, William Caleb",,1917-08-28,1,"Patent date month was hard to read, probably wrong","Huber, William Caleb",,2026-10-14 13:37,W2\Range 25\Township 01\R25 - T01 - (11).JPG
+SE,33,1,25,2,Homestead,1911-03-31,1924-08-08,"Thurlow, John Henry (Jr.)","Merrill, Leslie Clyde; Wisley, John McIntyre",1929-03-12,3,,"Merrill, Leslie Clyde; Thurlow, John Henry (Jr.); Wisley, John McIntyre",,2026-10-14 13:39,W2\Range 25\Township 01\R25 - T01 - (11).JPG
+SW,33,1,25,2,Homestead,1911-06-12,1911-06-12,"Huber, William Caleb",,1917-05-21,1,,"Huber, William Caleb",,2026-10-14 13:40,W2\Range 25\Township 01\R25 - T01 - (11).JPG
+NE,34,1,25,2,Homestead,1910-06-09,1910-06-09,"Libeck, John",,1913-11-24,1,,"Libeck, John",,2026-10-14 13:41,W2\Range 25\Township 01\R25 - T01 - (12).JPG
+NW,34,1,25,2,Homestead,1911-08-23,1913-07-02,"Groves, Wilford Clyde","Johnston, Herbert E.",1917-08-21,2,,"Groves, Wilford Clyde; Johnston, Herbert E.",,2026-10-14 13:42,W2\Range 25\Township 01\R25 - T01 - (12).JPG
+SE,34,1,25,2,Homestead,1910-06-16,1911-04-19,"Stromme, Knut","Heyberger, Lee",1917-08-08,2,"patent year might be wrong, last character difficult to read","Heyberger, Lee; Stromme, Knut",,2026-10-14 13:43,W2\Range 25\Township 01\R25 - T01 - (12).JPG
+SW,34,1,25,2,Homestead,1911-05-31,1911-05-31,"Merrill, Leslie Clyde",,1915-03-06,1,,"Merrill, Leslie Clyde",,2026-10-14 13:44,W2\Range 25\Township 01\R25 - T01 - (12).JPG
+NE,35,1,25,2,Homestead,1910-04-06,1910-04-06,"Weber, Charles Michael",,1913-10-16,1,,"Weber, Charles Michael",,2026-10-14 13:45,W2\Range 25\Township 01\R25 - T01 - (12).JPG
+NW,35,1,25,2,Pre-emption,1910-06-09,1910-06-09,"Libeck, John",,1920-06-19,1,,"Libeck, John",,2026-10-14 13:46,W2\Range 25\Township 01\R25 - T01 - (12).JPG
+SE,35,1,25,2,Pre-emption,1910-04-06,1910-04-06,"Weber, Charles Michael",,1928-11-29,1,,"Weber, Charles Michael",,2026-10-14 13:46,W2\Range 25\Township 01\R25 - T01 - (12).JPG
+SW,35,1,25,2,Homestead,1910-06-16,1911-04-19,"Hopsdal, Hans","Heyberger, Lee",1914-07-22,2,,"Heyberger, Lee; Hopsdal, Hans",,2026-10-14 13:47,W2\Range 25\Township 01\R25 - T01 - (12).JPG
+NE,36,1,25,2,Pre-emption,1910-04-21,1912-02-06,"Masters, Ezekiel","Cain, Benjamin Franklin",1919-07-23,2,,"Cain, Benjamin Franklin; Masters, Ezekiel",,2026-10-14 13:48,W2\Range 25\Township 01\R25 - T01 - (12).JPG
+NW,36,1,25,2,Pre-emption,1910-06-16,1911-10-27,"Converse, James Alvin","Wyrick, R.L.",1919-01-22,2,,"Converse, James Alvin; Wyrick, R.L.",,2026-10-14 13:48,W2\Range 25\Township 01\R25 - T01 - (12).JPG
+SE,36,1,25,2,Homestead,1910-04-21,1912-02-06,"Masters, Ezekiel","Cain, Benjamin Franklin",1915-11-20,2,,"Cain, Benjamin Franklin; Masters, Ezekiel",,2026-10-14 13:49,W2\Range 25\Township 01\R25 - T01 - (12).JPG
+SW,36,1,25,2,Homestead,1910-08-22,1910-08-22,"Sutton, Charles Clingman",,,1,"patent date is partially obscured by tape, cannot see the year","Sutton, Charles Clingman",,2026-10-14 13:51,W2\Range 25\Township 01\R25 - T01 - (12).JPG
 NE,1,2,25,2,,,,,,,,,"Sather, Carl Anton",,,
 NW,1,2,25,2,,,,,,,,,"Sather, Carl A.",,,
 SE,1,2,25,2,,,,,,,,,"Montgomery, William",,,
